@@ -1,0 +1,34 @@
+#+title: Wrecking (Memory) Ball: A comparative survey of Processing-in-Memory vs Domain-Specific Accelerators for Graph Traversals (wip title)
+
+* Research Question
+When processing massive, irregular graph workloads, how do Processing-in-Memory (PIM) architectures comparete to discrete Domain-Specific Accelerators (DSAs) in balancing raw throughput against energy efficient and memory bandwidth?
+
+* Motivation and Context
+Graph algorithms (such as Breadth-First Search and PageRank) are foundational to critical modern applications, from real-time fraud detection to network routing. However, their highly irregular memory access patterns defeat traditional CPU caching mechanisms, causing severe bottlenecks known as the "Memory Wall." To address this, recent literature has diverged into two competing architectural philosophies:
+
+- Domain-Specific Accelerators (DSAs): Designing highly specialized on-chip queues and pipelines to maximize vertex processing throughput.
+
+- Processing-in-Memory (PIM): Moving lightweight compute logic directly into the DRAM to eliminate data movement entirely and maximize energy efficiency.
+
+This survey will critically analyze and compare these two competing approaches.
+
+* Methodology
+As an evaluator of the current literature, this survey will extract and compare data from at least 20 peer-reviewed papers.
+
+- Target Venues: The literature search will focus on top-tier architecture and systems conferences, including ISCA, MICRO, HPCA, and ASPLOS (see listin @./brief.org)
+
+- Tools for research: https://connectedpapers.com, https://scholar.google.com, and others that might be well suited.
+
+- Timeframe: The dataset will primarily consist of state-of-the-art research published within the last five years (2021–2026).
+
+- Data Extraction: For each approach, the survey will structure and compare core metrics (e.g., speedup, energy consumption in Watts, thermal constraints) and explicitly expose the underlying assumptions the authors make about graph size or data locality.
+
+* Critical Systems Relevance
+Per the project requirements, this survey will explicitly evaluate how these architectural choices affect critical system properties. Specifically, it will evaluate the trade-offs between performance (the raw speed of DSAs) and efficiency (the energy-proportional computing of PIM architectures).
+
+* 5. Expected Deliverables
+The final 8-12 page survey will feature:
+
+- Comparative tables summarizing the physical characteristics, advantages, and limitations of both PIM and DSA implementations.
+
+- An analysis of where current architectural assumptions fail (e.g., dynamic vs. static graphs), which will directly frame the "Open Challenges and Future Research Directions" section.

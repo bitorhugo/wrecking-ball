@@ -1,0 +1,73 @@
+#+title: Full-Text Extraction Sheet and Corrections Log (Stage 1 §6 queue)
+#+date: 2026-10-11
+
+Source: =papers/= PDFs extracted to =pipeline/fulltext/*.txt= (pypdf). Page refs are PDF page indices. All numbers are quoted *as reported* by the authors and are tagged with their baseline. Do not compare numbers across rows unless the baseline and substrate match (methodology rule, stage1-research-brief §2).
+
+* A. Corrections to =annotated-bibliography.org= (found in the full texts)
+
+| # | Entry | Problem | Correction | Severity |
+|---+-------+---------+------------+----------|
+| C1 | #9 "Alleviating Irregularity… (HiGraph / MDP-network)" | *Two papers merged into one entry.* Title and DOI 10.1145/3352460.3358318 belong to *GraphDynS* (Yan et al., MICRO-52, 2019), but the WHY/HOW/WHAT columns ("MDP-network", "2.2× / 1.5×") describe a different paper (HiGraph) | Use GraphDynS: decoupled datapath + data-aware dynamic scheduling; 4.4× speedup / 11.6× less energy vs. GPGPU at half the bandwidth; 1.9× / 1.8× vs. a prior graph accelerator at equal bandwidth (p1) | *Critical* (would have been a fabricated attribution) |
+| C2 | #19 CommonGraph | Listed as "DSA" | *Software* approach that extends the KickStarter streaming framework (p1). It is the algorithmic basis for MEGA, not hardware | Major (category) |
+| C3 | #20 Glign | Listed as "DSA" | *Software runtime system* for concurrent queries (p1); beats Krill/GraphM. DOI 10.1145/3567955.3567963 | Major (category) |
+| C4 | #4 GraphQ "98.34×" | Matrix implies a speedup over Tesseract | 98.34× = 4-node GraphQ vs. a /single node with a conventional memory hierarchy/. The speedup over Tesseract is 3.3× avg (13.9× max), with 81% energy saving (p1) | Major (misleading number) |
+| C5 | #3 GraphR "132.67×" | Quoted as the headline figure | 132.67× is the /maximum/; the geomean is 16.01× vs. CPU, 1.16–4.12× vs. PIM, 1.69–2.19× vs. GPU (p1) | Major |
+| C6 | Synthesis: "nearly all PIM papers (except CoGraf/FALA) assume static graphs" | Implies CoGraf/FALA handle dynamic graphs | CoGraf, FALA and Piccolo full texts have *zero* mentions of dynamic/streaming/evolving graphs. All three assume static graphs | Major |
+| C7 | #23 Triangle counting | Author list | Add Sadrosadati. Note: this is the /only/ PIM paper in the corpus with an update workload (see D below) | Minor |
+| C8 | #11 FAFNIR | Listed as graph-adjacent | Evaluated on *embedding lookup (recommendation)*, FPGA C/RTL co-sim (p1, p9). Mention it only as a near-memory gather/reduction primitive, or drop it | Minor (scope) |
+| C9 | #17 PrIM | Venue "IEEE TETC / arXiv" uncertain | PDF is the arXiv long version. The SIGMETRICS 2021 abstract and IEEE Access 2022 journal versions both exist per later citations. *Resolve at Stage 2.5* | Pending |
+| C10 | #16 GraphWave | Called a "PIM/DSA hybrid" | An on-chip compute-at-memory accelerator (one functional unit per vertex) aimed at /edge/ graphs. Vertex count is capped by hardware (p-text "number of vertices supported is limited by the hardware"). Classify as an on-chip DSA | Minor |
+
+* B. Per-paper extraction (corpus used in the draft)
+
+** PIM (simulated, 3D-stacked / DRAM-bank logic)
+| Paper | Substrate / sim | Workloads | Headline (as reported) | Baseline | Graph assumption |
+|-------+-----------------+-----------+------------------------+----------+------------------|
+| Tesseract (ISCA'15) | HMC, simulated | 5 graph workloads | ~10× perf, 87% energy reduction (p1) | conventional systems (DDR3 OoO host) | static, partitioned across cubes |
+| GraphP (HPCA'18) | HMC, cycle-accurate sim | 4 algos, 5 graphs | 1.7× speedup, 89% energy saving (p1) | Tesseract | static; source-cut partition |
+| GraphQ (MICRO'19) | HMC, zSim | 4 algos, 5 graphs | 3.3× avg / 13.9× max, 81% energy saving (p1) | Tesseract | static; batched, structured inter-cube comm |
+| SISA (MICRO'21) | in-DRAM bitwise + logic layer | graph mining (set ops) | >10× vs. Bron–Kerbosch (p1) | tuned SW | static |
+| NDMiner (ISCA'22) | DRAM buffer-chip NDP | graph pattern mining | 6.4× / 2.5× vs. SW / HW (abstract, web) | SW / HW baselines | static *[PDF missing; abstract-level only]* |
+| SynCron (HPCA'21) | NDP units, simulated | sync-heavy irregular apps incl. graphs | 1.27× (high contention), 1.35× (real apps) (p1) | prior NDP sync schemes | n/a (infrastructure) |
+| CoGraf (ASPLOS'26) | fine-grained PIM (HBM2/DDR4) | push-based vertex-centric | ROI speedup 4.4×/9.8× vs. non-PIM SOTA (PHI); DRAM energy −88%/−94% (p1) | non-PIM SOTA (HBM2/DDR4) | static; push-only; ROI not end-to-end |
+
+** PIM (analog ReRAM crossbar)
+| GraphR (HPCA'18) | ReRAM crossbar, sim | PR, BFS, SSSP, CF… | 16.01× geomean (max 132.67×), 33.82× energy vs. CPU; 1.16–4.12× vs. PIM (p1) | CPU / GPU / PIM | static; SpMV-expressible only; claims error tolerance |
+| Spara (IPDPS'20) | ReRAM, sim + HSPICE | sparse analytics | 8.21× / 5.01× perf, 8.97× / 5.68× energy vs. GraphR / GraphSAR (p1) | ReRAM accelerators | static; preprocessing reorder |
+| GaaS-X (ISCA'20) | CAM+MAC crossbar, custom sim, 32nm SPICE | PR, BFS, SSSP, CF | 7.7× / 2.4× perf, 22× / 5.7× energy vs. GraphR / GRAM (p1–2) | crossbar accelerators | static; sparse format native |
+
+** PIM (real hardware, UPMEM)
+| PrIM (arXiv/Access) | UPMEM 2,556- & 640-DPU | 16 benchmarks incl. BFS | PIM beats CPU 93.0× / 27.9× on 13 benchmarks /that avoid inter-DPU sync/. *BFS pays the "huge overhead of inter-DPU synchronization via the host CPU"* (p3); host merges frontier serially each iteration (p17, p23) | CPU, GPU | static |
+| PimPam (SIGMOD'24) | UPMEM | graph pattern matching | 22.5× avg vs. GraphPi (CPU) (p17) | CPU SW | static; partitioning to fit MRAM (p10) |
+| ALPHA-PIM (IISWC'25) | UPMEM + PIMulator | BFS, SSSP, PPR via SpMSpV | compute utilization 18.5% kernel / 5% total (BFS) vs. 0.01–0.05% CPU/GPU (p9). The best partitioning depends on input density and dataset (p7). Calls for DMA, ILP, and direct inter-PIM-core interconnect (abstract) | CPU, GPU, SparseP | static |
+| Triangle counting (GrAPL'25, arXiv) | UPMEM | TC | Loses to CPU(CSR) and GPU on static graphs. Beats CPU when updates arrive as 10 append-only batches with full recount, because COO avoids CSR rebuilds (p1, Fig. 7) | CPU, GPU | *insert-only batched updates, non-incremental* |
+
+** DSA (ASIC/on-chip; FPGA reference)
+| Graphicionado (MICRO'16) | Chisel RTL + DRAMSim2 | vertex programs | 1.76–6.54× speedup, 50–100× less energy (p1) | 32-thread SW on 16-core Xeon | static |
+| HATS (MICRO'18) | zsim, 16-core | PR, BFS… | BDFS: up to 2.4× fewer memory accesses, 30% avg (p1) | locality-oblivious SW scheduling | static; no preprocessing |
+| GraphDynS (MICRO'19) | sim | vertex programs | 4.4× / 11.6× energy vs. GPGPU at half the BW; 1.9× / 1.8× vs. accelerator at equal BW (p1) | GPU / Graphicionado-class | static |
+| GraphWave (DATE'22) | gate-level sim | traversal | 97.80 GTEPS, 63.94 GTEPS/W (abstract) | — | static; vertex count bounded by on-chip FUs |
+| ReGraph (MICRO'22) | HBM FPGA (U280/U50) | PR, BFS, CC… | 1.6–5.9× perf, 12× resource efficiency vs. FPGA SOTA (p2) | FPGA accelerators | static; dense/sparse partition classes |
+| JetStream (MICRO'21) | event-driven accel., sim | streaming (add/del/update) | 90% less time vs. cold start; ~18× vs. KickStarter/GraphBolt (p1) | SW streaming frameworks | *dynamic* |
+| TDGraph (ISCA'22) | 64-core sim + accelerator | streaming | 7.1–21.4× vs. SW streaming; 4.6–12.7× vs. HATS (p1–2) | SW / HATS, Minnow, PHI, DepGraph | *dynamic* |
+| MEGA (MICRO'23) | accel., sim | evolving (multi-snapshot) | 24–120× vs. CommonGraph (SW); 4.08–5.98× vs. JetStream (p1) | SW / JetStream | *dynamic, multi-snapshot* |
+| MGX (ISCA'22) | accel. memory protection | DNN + graph | protection overhead 33% → 5% for graph accelerators (abstract, web) | conventional enc+integrity | *[PDF missing]* |
+
+** Hybrid (PIM + cache/tiling)
+| Piccolo (HPCA'25) | DDR4 Ramulator + FPGA emulation of in-memory scatter-gather | vertex programs | up to 3.28×, 59.7% energy reduction vs. prior art (p2); baseline accelerator is GraphDynS (p8) | GraphDynS (SPM/cache), PIM | static |
+| FALA (MICRO'25) | HBM2, fine-grained column access + locality-aware PIM | vertex programs | 1.56× speedup, −35.3% energy geomean (p1) | Piccolo, PEI, GraphPIM | static |
+
+** Software context (not hardware; cite as context only)
+CommonGraph (ASPLOS'23), Glign (ASPLOS'23), KickStarter/GraphBolt (as baselines).
+
+** Security / dependability / dynamic-graph position papers
+| IMPACT (DSN'25; PDF = arXiv v4) | PnM and PuM timing covert channels via shared row buffer: 8.2 / 14.8 Mb/s, 3.6× / 6.5× over SOTA (p1, v4 numbers; *DSN camera-ready figures may differ, verify*). Defense overhead evaluated on *GraphBIG BFS/CC/TC/BC* |
+| Memory-Centric Computing (ICS'26 workshop) | Processing-in-DRAM *amplifies read disturbance* (158× fewer accesses to the first bitflip) and creates 14.8 Mb/s timing channels (p1). This is a dependability point as well as a security one |
+| Kim & Kim (MEMSYS'20) | "prior PIM-based graph processing work operated only on static graphs"; design considerations only, no evaluation (p1) |
+| Gui et al. (JCST'19) survey | first author confirmed: "Gui CY, Zheng L, He BS et al." (p1) |
+
+* C. Thesis status after full-text check
+- *Assumption axis (mutability)*: strengthened. Every PIM and hybrid hardware design checked is static. The only PIM evidence with updates (triangle counting) is real-hardware, insert-only, non-incremental, and its advantage comes from the data format, not the architecture. DSA dynamic designs: JetStream → TDGraph → MEGA.
+- *Real-PIM reality check*: strengthened. PrIM gives direct evidence that *BFS* (the RQ's flagship traversal) is bottlenecked by host-mediated inter-DPU synchronization.
+- *Hybrid convergence*: Piccolo uses a DSA (GraphDynS) as its baseline and adds in-memory scatter-gather. FALA beats Piccolo and PEI. This is concrete evidence that the two camps are merging.
+- *Security*: IMPACT evaluates on graph workloads, which strengthens the critical-systems section.

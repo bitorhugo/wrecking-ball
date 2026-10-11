@@ -1,0 +1,316 @@
+#+title: Annotated Bibliography — Architectures for Irregular Graph Workloads (PIM vs. DSA)
+
+Deep-research ~three-way-scan~ mode output. Extracted via live web search (WebSearch/WebFetch) against ACM DL, IEEE Xplore, arXiv, dblp, and publisher/author pages. Every entry below was verified this session against at least one of those sources — none are asserted from memory alone. Where a claim (title/venue/year/authors) could only be partially confirmed, that is flagged explicitly in the entry.
+
+* Search Strategy
+
+- *Databases/engines used*: General web search (Google-backed) scoped toward ACM Digital Library, IEEE Xplore, arXiv, dblp, ResearchGate, Semantic Scholar, and author/lab pages (Stanford CSL, MIT CSAIL/Sanchez group, Princeton MRM group, USC ALCHEM, SAFARI ETH Zürich, Seoul National University AISys Lab). No institutional-subscription database (e.g., direct ACM/IEEE API) was queried — access was via public search and open pages only.
+
+- *Keywords*: "processing-in-memory graph," "near-data processing graph analytics," "graph processing accelerator," "PIM graph accelerator," "ReRAM graph accelerator," "streaming/dynamic graph accelerator," "graph traversal accelerator BFS PageRank," "HBM graph accelerator," each combined with target-venue names and year ranges (2021–2026), plus targeted verification queries for specific paper names surfaced along the way (e.g., "GraphP," "GraphQ," "HATS," "Spara," "GaaS-X"). Separate queries were run for the critical-systems angle: "graph accelerator fault tolerance / dependability," "graph accelerator security / side channel," "predictable real-time graph accelerator."
+
+- *Boolean strategy*: Informal (natural-language multi-term queries rather than strict AND/OR/NOT), because the search backend is a general web search, not a database query interface. Each candidate paper name surfaced by an initial query was independently re-searched to confirm venue, year, and authorship before inclusion.
+
+- *Date range*: Primary target 2021–2026 (per selected-topic.org). A small set of pre-2021 papers (2015–2020) are included as *seminal/background* works that later papers explicitly build on or compare against (Tesseract, Graphicionado, GraphP, GraphR, HATS, GraphQ, Spara, GaaS-X) — flagged as such in the matrix. This mirrors the course brief's "most... within the last five years" (not all) requirement.
+
+- *Inclusion criteria*: (1) Peer-reviewed conference/journal/workshop paper (or arXiv preprint clearly on track to / already published at a verifiable venue); (2) proposes or evaluates a PIM, near-data-processing, or domain-specific hardware architecture; (3) target workload is graph processing, graph analytics, graph traversal, or a directly adjacent irregular/sparse workload (e.g., sparse gather, synchronization primitives for graph-like access patterns) used as infrastructure by graph accelerators; (4) verifiable via at least one authoritative or semi-authoritative source (ACM DL, IEEE Xplore, dblp, arXiv, author page).
+
+- *Exclusion criteria*: Graph Neural Network /training/ accelerators were excluded unless they generalize to classical graph analytics (BFS/PageRank/SSSP/graph mining/pattern matching) — GNN-training-only accelerators (e.g., pure GCN/HGNN inference chips) are outside this survey's scope per selected-topic.org's focus on graph traversal workloads, even though many surfaced in search due to keyword overlap. FPGA-only accelerators were largely excluded in favor of ASIC/PIM designs, except where they are the dominant published venue for a specific sub-problem (noted in Limitations). Papers I could not verify beyond a single low-confidence secondary source (blog posts, unverified aggregator sites) were dropped rather than guessed at.
+
+- *Last searched*: 2026-09-28.
+
+- *Coverage distribution note*: The corpus skews toward Processing-in-Memory (17 of 27) relative to pure DSA (9 of 27) plus 1 hybrid — this reflects genuine publication volume in this specific sub-area (PIM-for-graphs is a more actively worked niche at ISCA/MICRO/HPCA than dedicated graph DSAs in 2021–2026) rather than a search bias; DSA-for-graphs papers cluster more heavily in the pre-2021 window (Graphicionado 2016, HATS 2018, Alleviating Irregularity 2019). This asymmetry is itself a finding worth noting in the paper: DSA-for-graphs may be a more mature/saturated design space than PIM-for-graphs, which is still seeing rapid architectural churn as real PIM hardware (UPMEM) matures.
+
+* Comparison Matrix
+
+| # | Paper                                                | Venue / Year                        | Category      | WHY (bottleneck)                                                                            | HOW (mechanism)                                                                                          | Key WHAT (results / open gap)                                                                                                    |
+|---+-------------------------------------------------------+--------------------------------------+----------------+-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------|
+| 1 | Tesseract                                            | ISCA 2015                           | PIM            | Memory bandwidth wall in graph processing                                                   | 3D-stacked memory + logic layer, in-order cores, message-passing, graph-specific prefetchers               | Foundational speedup/energy gains vs. CPU/GPU; assumes static graph fits across HMC cubes, no dynamic updates                    |
+| 2 | GraphP                                               | HPCA 2018                           | PIM            | Tesseract's irregular inter-cube communication dominates cost                               | "Source-cut" graph partitioning + inner-group broadcasting to restructure communication                    | ~1.7x avg speedup, 30–95% energy reduction vs. Tesseract; assumes partition-time knowledge of static graph structure             |
+| 3 | GraphR                                               | HPCA 2018                           | PIM (ReRAM)    | Digital PIM still bandwidth/energy limited for SpMV-expressible graph kernels               | Analog ReRAM crossbars as graph engines; sparse-matrix representation in ReRAM                              | 10.01x (up to 132.67x) speedup, 33.82x energy savings vs. CPU; assumes algorithm reducible to SpMV, tolerates analog imprecision |
+| 4 | GraphQ                                               | MICRO 2019                          | PIM            | GraphP still has irregular inter-cube messages at fine grain                                | Batched/overlapped inter-cube communication via reordering + heterogeneous cores per access type            | 4-node GraphQ: 98.34x speedup vs. single node; static communication schedule assumes graph doesn't change during run             |
+| 5 | Spara                                                | IPDPS 2020                          | PIM (ReRAM)    | Skewed real-world degree distributions cause severe sparsity/zero-fill waste in crossbar PIM | Mid-point vertex mapping (random wordlines, consecutive bitlines) + bank-parallel crossbar architecture     | 8.21x/5.01x speedup and 8.97x/5.68x energy savings vs. GraphR/GraphSAR; targets static graphs, degree skew handling is the focus |
+| 6 | GaaS-X                                               | ISCA 2020                           | PIM (ReRAM/crossbar) | Crossbar PIM wastes cycles on redundant writes / dense conversions for sparse graphs   | COO-format sparse storage in content-addressable memory + crossbar, avoiding dense conversion               | 7.7x/2.4x speedup, 22x/5.7x energy savings vs. prior crossbar accelerators; still a static-graph, offline-partitioned design     |
+| 7 | HATS                                                 | MICRO 2018                          | DSA            | Software-only locality scheduling (e.g., bounded-DFS) is too fine-grained for CPUs to exploit online | Hardware-accelerated traversal scheduler co-designed with bounded depth-first scheduling (BDFS)      | Up to 2.4x fewer memory accesses, 3.1x performance gain, only 0.4% area / 0.2% power overhead; assumes exploitable community structure |
+| 8 | Graphicionado                                        | MICRO 2016                          | DSA            | General-purpose cores waste energy/bandwidth on vertex-programming-style graph analytics     | Datapath + memory-subsystem specialization for the vertex-programming model, small reconfigurable block set | 1.76–6.54x speedup, 50–100x energy reduction vs. 32-thread CPU baseline; assumes graph/working set sized for on-chip scratchpad  |
+| 9 | Alleviating Irregularity in Graph Analytics Acceleration (HiGraph / MDP-network) | MICRO 2019 | DSA | On-chip datapath conflicts and design centralization limit throughput even after off-chip irregularity is addressed | Multiple-stage Decentralized Propagation network (MDP-network) trading latency for throughput | Up to 2.2x speedup (1.5x avg) and better scalability vs. prior accelerators; addresses on-chip, not off-chip/dynamic-graph, irregularity |
+| 10 | SISA                                                 | MICRO 2021                          | PIM            | Complex graph-mining (set-intersection/union heavy) algorithms don't map well to vertex-programming accelerators | Set-centric ISA extensions; in-DRAM bulk bitwise ops for high-degree vertices + near-memory logic for low-degree vertices | >10x speedup over Bron-Kerbosch baseline across 10+ algorithm formulations; targets graph mining, not traversal-style BFS/PageRank specifically |
+| 11 | FAFNIR                                               | HPCA 2021                           | PIM (near-memory) | Sparse gather (irregular random access, e.g. embedding/graph lookups) starves on-chip caches | Near-memory intelligent reduction hardware to cut data movement for gather-heavy access patterns     | Targets sparse-gather workloads broadly (recsys-origin), directly transferable to graph vertex/edge gather; not graph-specific evaluation |
+| 12 | SynCron                                              | HPCA 2021                           | PIM (near-memory) | NDP cores need synchronization but lack cache coherence, hurting parallel irregular workloads (graphs included) | Low-cost hardware synchronization primitives near memory, coherence-free                             | General NDP synchronization solution; applicable to parallel graph algorithms but not evaluated as a dedicated graph accelerator |
+| 13 | JetStream                                            | MICRO 2021                          | DSA            | Streaming/dynamic graphs need continuous re-computation; batch accelerators assume static input | Event-driven hardware accelerator triggering incremental computation per streaming update          | First dedicated streaming-graph hardware accelerator in this set; explicitly targets the dynamic-graph gap static PIM/DSA designs assume away |
+| 14 | TDGraph                                              | ISCA 2022                           | DSA            | Existing streaming-graph acceleration lacks locality-aware incremental execution            | Topology-driven incremental execution on many-core accelerator for more regular state propagation           | Improves locality/regularity for streaming graphs vs. prior approaches; still assumes graph fits accelerator's working structures |
+| 15 | ReGraph                                              | MICRO 2022                          | DSA (FPGA/HBM) | Large graphs exceed on-chip memory; HBM bandwidth underused by naive pipelines               | Heterogeneous processing pipelines on HBM-enabled FPGA scaling to larger graphs                             | Scales graph processing capacity via HBM; FPGA-based (lower peak efficiency ceiling than ASIC PIM/DSA)                           |
+| 16 | GraphWave                                            | DATE 2022                           | PIM/DSA hybrid ("compute-at-memory") | Even PIM designs underutilize per-vertex parallelism; interconnect for multicast is a bottleneck | Dedicated functional unit per vertex ("compute-at-memory"), multi-level multicast interconnect optimization | Up to 97.80 GTEPS throughput, 63.94 GTEPS/W efficiency (state-of-the-art reported figure at publication); published at DATE (EDA venue), not core arch top-tier |
+| 17 | Benchmarking a New Paradigm (PrIM benchmarks)        | IEEE TETC / arXiv 2021–2022         | PIM (real hardware) | No empirical characterization existed for a commercially real PIM system across memory-bound workloads incl. graph processing | 16-workload PrIM benchmark suite run on real UPMEM PIM hardware (not simulation)          | UPMEM PIM beats CPU on most, GPU on 10/16 PrIM benchmarks; establishes that real PIM hardware constraints diverge from idealized simulated PIM papers above |
+| 18 | MEGA                                                 | MICRO 2023                          | DSA            | Evaluating queries across multiple graph snapshots (evolving graphs) redundantly re-executes shared subcomputation | Hardware accelerator built on CommonGraph's incremental-update software model; concurrent multi-snapshot execution | Directly targets dynamic/evolving graphs — a gap most static PIM designs (rows 1–9) explicitly assume away |
+| 19 | CommonGraph                                          | ASPLOS 2023                         | DSA (software/architecture co-design) | Streaming snapshot processing repeats work; deletions are especially expensive to handle incrementally | Converts deletions into additions via a "common graph" shared across snapshots, enabling parallel snapshot processing | 1.38x–8.17x improvement over Kickstarter; breaks sequential-snapshot dependency, foundational for MEGA (row 18) |
+| 20 | Glign                                                | ASPLOS 2023                         | DSA            | Concurrent graph queries interfere via "misaligned" traversal patterns, hurting shared-cache/shared-accelerator efficiency | Traversal-alignment scheduling across concurrent graph processing jobs                    | 3.6x and 4.7x avg speedup vs. Krill and GraphM; targets multi-tenant/concurrent-query scenario, a dependability/predictability-adjacent concern |
+| 21 | PimPam                                               | SIGMOD 2024                         | PIM (real hardware) | Graph pattern matching (subgraph isomorphism-style) has irregular access + high compute variance; unexplored on real PIM | First graph pattern matching framework built for real UPMEM PIM hardware               | Demonstrates real-hardware feasibility for a graph-mining task beyond simple traversal; again surfaces real-PIM's weak per-core compute as a limiting factor |
+| 22 | ALPHA-PIM                                            | IISWC 2025                          | PIM (real hardware) | No comprehensive study of linear-algebraic (SpMV/SpMM-style) graph processing on real, commercially available PIM | Systematic evaluation of linear-algebraic graph kernels on UPMEM hardware               | First comprehensive real-PIM linear-algebra graph study; explicitly frames data-movement bottleneck vs. real (non-idealized) PIM compute constraints |
+| 23 | Accelerating Triangle Counting with Real PIM Systems | IPDPS GrAPL Workshop 2025           | PIM (real hardware) | Triangle counting needs many memory accesses across large regions with low reuse — poor fit for processor-centric systems | Vertex coloring, reservoir sampling, Misra-Gries summaries, uniform edge sampling mapped onto UPMEM DPUs | Surpasses CPU triangle-counting baselines on dynamic graphs in COO format; workshop-tier venue, smaller-scale validation |
+| 24 | FALA                                                 | MICRO 2025                          | PIM (host-cooperative) | Fine-grained (8-byte) irregular vertex-property access doesn't fit coarse PIM column/row granularity | Locality-aware PIM-host cooperation with fine-grained (byte-level) column access and a redesigned cache | Recent (2025) design explicitly addressing the PIM granularity-mismatch gap that Piccolo (row 27) and CoGraf (row 25) also target — a converging research direction |
+| 25 | CoGraf                                               | ASPLOS 2026                         | PIM (fine-grained) | Vertex-centric push-based graph apps' irregular update phase doesn't map to existing fine-grained PIM (FGPIM) designs | Coalescing at optimal granularity + multi-column FGPIM instructions (update phase) + bank-parallel predicated instructions (apply phase) | 96–97% reduction in DRAM row activations/traffic, 9.8x speedup over non-PIM SOTA; very recent (2026), narrows to push-based algorithms specifically |
+| 26 | Piccolo                                              | HPCA 2025                           | Hybrid (PIM + cache co-design) | Neither pure tiling (DSA-style) nor pure PIM alone fully solves fine-grained random scatter-gather for large graphs | Function-in-memory (FIM) in-memory scatter-gather + redesigned cache/MHA combining tiling and PIM benefits | Up to 3.28x speedup, 59.7% energy reduction over prior tiling-only and PIM-only designs — direct empirical evidence that hybrid designs can beat "pure" PIM or "pure" DSA on this workload |
+| 27 | Memory-Centric Computing: Security Benefits and Challenges of Processing-in-DRAM | ICS Workshop (Memory-Centric Computing Systems) 2026 | PIM (cross-cutting, not graph-specific) | Security implications of moving compute into DRAM are largely unexamined even as PIM is adopted | Analyzes DRAM-based TRNGs/PUFs (benefit) vs. amplified read-disturbance (158x fewer accesses to flip bits) and timing covert channels (14.8 Mb/s) (risk) | Not graph-specific, but the only source found in this search that engages security/dependability implications of PIM at all — direct evidence for an Open Challenges gap |
+
+* PIM (Processing-in-Memory) — Detailed Cards
+
+** Tesseract: A Scalable Processing-in-Memory Accelerator for Parallel Graph Processing
+
+Source: ACM/ISCA | Year: 2015 | Link: [[https://dl.acm.org/doi/10.1145/2749469.2750386]] (retrospective: [[https://arxiv.org/abs/2306.15577]])
+Category: PIM
+- *WHY*: Graph processing is bottlenecked by DRAM bandwidth and irregular memory access; moving data to compute (rather than compute to data) was, at the time, largely unexplored at scale for graphs.
+- *HOW*: 3D-stacked memory (HMC-style) with a logic layer per cube containing general-purpose in-order cores; a message-passing programming model for cross-cube remote function calls; graph-specific hardware prefetchers.
+- *WHAT*: Established the viability of PIM for graph workloads and influenced nearly every later PIM-for-graphs paper in this list (GraphP, GraphQ, SISA, etc. all position against it). Assumes a static graph, offline partitioning across cubes, and does not address dynamic updates or irregular /inter-cube/ communication — the exact gap GraphP/GraphQ later close.
+
+** GraphP: Reducing Communication for PIM-Based Graph Processing with Efficient Data Partition
+
+Source: IEEE/HPCA'18 | Year: 2018 | Link: [[http://csl.stanford.edu/~christos/publications/2018.graphp.hpca.pdf]]
+Category: PIM
+- *WHY*: Tesseract's cross-cube message-passing is itself an irregular, high-volume communication pattern that dominates runtime and energy at scale.
+- *HOW*: "Source-cut" graph partitioning (vs. traditional edge-cut) plus inner-group broadcasting, changing what triggers a cross-cube message.
+- *WHAT*: ~1.7x average speedup and 30–95% energy reduction vs. Tesseract on a cycle-accurate simulator, 5 real graphs, 4 algorithms. Still assumes the graph is static and known in full at partition time — no support for dynamic edge insertion/deletion.
+
+** GraphR: Accelerating Graph Processing Using ReRAM
+
+Source: IEEE/HPCA'18 | Year: 2018 | Link: [[https://ieeexplore.ieee.org/document/8327035]]
+Category: PIM (analog, ReRAM)
+- *WHY*: Even digital PIM designs pay overhead moving data between DRAM cells and digital logic; graph algorithms expressible as sparse matrix-vector multiplication (SpMV) can instead be computed directly in the analog domain.
+- *HOW*: ReRAM crossbars ("graph engines") perform analog SpMV; graph data stored in compressed sparse form in the same ReRAM array.
+- *WHAT*: 10.01x (up to 132.67x) speedup and 33.82x energy savings vs. CPU baseline. First ReRAM-based graph accelerator in this corpus. Relies on graph algorithms being expressible as SpMV and tolerant of analog imprecision — a real limitation for algorithms needing exact results.
+
+** Spara: An Energy-Efficient ReRAM-Based Accelerator for Sparse Graph Analytics Applications
+
+Source: IEEE/IPDPS 2020 | Year: 2020 | Link: [[https://ieeexplore.ieee.org/document/9139778/]]
+Category: PIM (ReRAM)
+- *WHY*: Real-world graphs have highly skewed degree distributions; naive crossbar mapping wastes crossbar cells on zero-fill and suffers "activation nondeterminism."
+- *HOW*: Mid-point vertex mapping using random wordlines and consecutive bitlines, combined with a tightly-coupled bank-parallel architecture, to keep crossbar workload density high regardless of degree skew.
+- *WHAT*: 8.21x/5.01x speedup and 8.97x/5.68x energy savings vs. GraphR and GraphSAR respectively. Explicitly engineered around the degree-skew assumption — a strength for real-world (power-law) graphs, but still a static-graph design.
+
+** GaaS-X: Graph Analytics Accelerator Supporting Sparse Data Representation using Crossbar Architectures
+
+Source: ACM/ISCA'20 | Year: 2020 | Link: [[https://dl.acm.org/doi/10.1109/ISCA45697.2020.00044]]
+Category: PIM (ReRAM/crossbar)
+- *WHY*: Prior crossbar PIM designs incur redundant writes and sparse-to-dense conversion overhead when the underlying graph is sparse (which real graphs almost always are).
+- *HOW*: Coordinate-format (COO) sparse storage directly in content-addressable memory (CAM) plus crossbar, avoiding dense-matrix conversion.
+- *WHAT*: 7.7x/2.4x speedup and 22x/5.7x energy savings vs. two prior crossbar accelerators; orders-of-magnitude gains over GPU/CPU. Like GraphR/Spara, targets a static, offline-partitioned graph.
+
+** GraphQ: Scalable PIM-Based Graph Processing
+
+Source: ACM/MICRO'19 | Year: 2019 | Link: [[https://dl.acm.org/doi/10.1145/3352460.3358256]]
+Category: PIM
+- *WHY*: GraphP reduced /how many/ cross-cube messages occur, but the remaining messages are still issued in a fine-grained, irregular, unbatched way.
+- *HOW*: Batches and overlaps inter-cube communication by reordering vertex processing order; uses heterogeneous cores specialized per access type to further regularize traffic.
+- *WHAT*: A 4-node GraphQ configuration achieves 98.34x speedup vs. a single node with conventional memory hierarchy. Communication schedule is computed statically — another design that assumes the graph topology does not change mid-execution.
+
+** GraphWave: A Highly-Parallel Compute-at-Memory Graph Processing Accelerator
+
+Source: IEEE/DATE 2022 | Year: 2022 | Link: [[https://ieeexplore.ieee.org/document/9774535/]]
+Category: PIM/DSA hybrid ("compute-at-memory")
+- *WHY*: Per-vertex parallelism in PIM designs is often underexploited, and multicast-heavy interconnects become the new bottleneck once per-vertex compute is cheap.
+- *HOW*: Dedicated functional unit per vertex ("compute-at-memory," blurring the PIM/DSA line) with a multi-level multicast interconnect optimization.
+- *WHAT*: Reports up to 97.80 GTEPS throughput and 63.94 GTEPS/W efficiency, a strong efficiency figure at time of publication — but published at DATE, an EDA/design-automation venue rather than a core computer-architecture venue (ISCA/MICRO/HPCA), which affects how heavily this result should be weighted relative to peer-reviewed-at-top-venue claims.
+
+** SISA: Set-Centric Instruction Set Architecture for Graph Mining on Processing-in-Memory Systems
+
+Source: ACM/MICRO-54 (2021) | Year: 2021 | Link: [[https://dl.acm.org/doi/10.1145/3466752.3480133]]
+Category: PIM
+- *WHY*: Complex graph /mining/ algorithms (clique listing, motif counting) are dominated by set operations (intersection/union) that vertex-programming-style accelerators (Tesseract-family) don't target well.
+- *HOW*: New set-centric ISA extensions; maps high-degree-vertex bitvector operations to in-DRAM bulk bitwise computing, and low-degree-vertex integer-array operations to near-memory logic layers.
+- *WHAT*: >10x speedup over Bron-Kerbosch baseline for maximal clique listing, demonstrated across 10+ algorithm formulations. Important scope note: this targets graph /mining/, a different workload profile than the BFS/PageRank-style traversal this survey's RQ centers on — cite carefully as an adjacent, not identical, workload class.
+
+** FAFNIR: Accelerating Sparse Gathering by Using Efficient Near-Memory Intelligent Reduction
+
+Source: IEEE/HPCA 2021 | Year: 2021 | Link: [[http://www.cs.umd.edu/~bahar/papers/asgari-hpca21.pdf]]
+Category: PIM (near-memory)
+- *WHY*: Sparse gather (irregular random access over large memory regions with low reuse) — the same access pattern that dominates graph vertex/edge lookups — starves on-chip caches and wastes bandwidth on unused cache-line bytes.
+- *HOW*: Near-memory intelligent reduction hardware that filters/reduces data close to memory before it crosses the memory bus.
+- *WHAT*: Evaluated primarily on recommendation-system embedding lookups, not graph traversal directly — included here because the /mechanism/ (near-memory reduction for sparse gather) is directly transferable, but note this is an adjacent-workload citation, not a graph-native evaluation.
+
+** SynCron: Efficient Synchronization Support for Near-Data-Processing Architectures
+
+Source: IEEE/HPCA 2021 | Year: 2021 | Link: [[https://www.semanticscholar.org/paper/SynCron%3A-Efficient-Synchronization-Support-for-Giannoula-Vijaykumar/9817bf0f78047452761e950c02a1a56f59a1e593]]
+Category: PIM (near-memory, infrastructure)
+- *WHY*: Parallel NDP cores executing irregular workloads (including parallel graph algorithms) need synchronization, but full hardware cache coherence is too costly to replicate near-memory.
+- *HOW*: Low-cost, coherence-free hardware synchronization primitives added near memory.
+- *WHAT*: General NDP infrastructure result, not a graph-specific accelerator — cite as an enabling/infrastructure paper for any PIM graph design needing synchronization, rather than as a competing graph accelerator in the comparison table's performance sense.
+
+** Benchmarking a New Paradigm: An Experimental Analysis of a Real Processing-in-Memory Architecture (PrIM benchmarks)
+
+Source: arXiv / IEEE TETC | Year: 2021 (arXiv), 2022 (IEEE) | Link: [[https://arxiv.org/abs/2105.03814]] ; [[https://ieeexplore.ieee.org/document/9771457/]]
+Category: PIM (real hardware, benchmarking)
+- *WHY*: Almost all PIM-for-graphs papers above (Tesseract through GaaS-X) are simulation-based; no empirical study existed of a commercially real PIM system's actual behavior on memory-bound workloads, including graph processing.
+- *HOW*: PrIM, a 16-workload benchmark suite (including graph processing) run on real UPMEM PIM hardware (DRAM Processing Units).
+- *WHAT*: Real UPMEM PIM outperforms modern CPUs on most PrIM benchmarks and GPUs on 10/16. Critical finding for this survey: *real PIM hardware's DPU cores are weak general-purpose compute units with no direct DPU-to-DPU communication*, which is a materially different constraint than the idealized simulated PIM assumed in Tesseract/GraphP/GraphQ/SISA — this is a strong candidate for the "where architectural assumptions fail" section of the paper.
+
+** PimPam: Efficient Graph Pattern Matching on Real Processing-in-Memory Hardware
+
+Source: ACM/SIGMOD (PACMMOD) 2024 | Year: 2024 | Link: [[https://doi.org/10.1145/3654964]]
+Category: PIM (real hardware)
+- *WHY*: Graph pattern matching (subgraph isomorphism-style queries) has irregular access and highly variable compute intensity per candidate match, unexplored on real (non-simulated) PIM.
+- *HOW*: First graph pattern matching framework built specifically for UPMEM's real PIM hardware, exploiting its bandwidth/parallelism while working around weak per-DPU compute.
+- *WHAT*: Demonstrates real-hardware feasibility for graph-mining-style workloads beyond simple traversal. Reinforces the PrIM-benchmark finding: real PIM's compute weakness (not just bandwidth) is a first-order design constraint that simulation-based papers in this list do not model.
+
+** ALPHA-PIM: Analysis of Linear Algebraic Processing for High-Performance Graph Applications on a Real Processing-In-Memory System
+
+Source: IEEE/IISWC 2025 | Year: 2025 | Link: [[https://ieeexplore.ieee.org/document/11242082/]]
+Category: PIM (real hardware)
+- *WHY*: No comprehensive study existed of linear-algebraic (SpMV/SpMM-style) graph processing specifically on a real, commercially available PIM system.
+- *HOW*: Systematic evaluation of linear-algebraic graph kernels on UPMEM hardware.
+- *WHAT*: First comprehensive real-PIM linear-algebra graph study (per authors' framing); explicitly separates the "data movement is the bottleneck" thesis from the reality of limited real-PIM compute throughput — directly useful evidence for the survey's "assumptions vs. reality" analysis.
+
+** Accelerating Triangle Counting with Real Processing-in-Memory Systems
+
+Source: IPDPS Workshop on Graphs, Architectures, Programming, and Learning (GrAPL) | Year: 2025 | Link: (workshop proceedings; arXiv preprint search-verified, exact arXiv ID not independently confirmed — verify before final citation)
+Category: PIM (real hardware)
+- *WHY*: Triangle counting requires numerous memory accesses across large memory regions with low data reuse — a canonical memory-bound, low-locality graph analytics kernel.
+- *HOW*: Vertex coloring (to minimize inter-core communication), reservoir sampling and Misra-Gries summaries (to fit within limited per-DPU DRAM), and uniform edge sampling for approximate results — all mapped onto real UPMEM DPUs.
+- *WHAT*: Surpasses CPU-based triangle-counting baselines on dynamic graphs in Coordinate List (COO) format. *Workshop-tier venue* (not ISCA/MICRO/HPCA/ASPLOS) — weight accordingly in the survey; still a legitimate, real-hardware, peer-reviewed data point. ⚠ Confirm the exact publication venue/proceedings citation before using in the final paper — this entry's venue detail is the weakest-confirmed in the corpus.
+
+** FALA: Locality-Aware PIM-Host Cooperation for Graph Processing with Fine-Grained Column Access
+
+Source: ACM/MICRO 2025 (58th IEEE/ACM Int'l Symposium on Microarchitecture) | Year: 2025 | Link: [[https://dl.acm.org/doi/10.1145/3725843.3756127]]
+Category: PIM (host-cooperative)
+- *WHY*: Vertex-property accesses in graph workloads are fine-grained (down to 8 bytes) and irregular, but PIM designs typically operate at coarser column/row granularity, wasting bandwidth and creating false sharing.
+- *HOW*: Fine-grained (byte-level) cache-line design for non-contiguous address ranges, combined with locality-aware PIM-host cooperation to decide what stays host-side vs. PIM-side.
+- *WHAT*: Very recent (2025) MICRO paper; part of a visible 2025–2026 cluster (with CoGraf, Piccolo) converging on the idea that PIM-for-graphs' next bottleneck is /access granularity/, not raw bandwidth — a strong "recent architectural assumption shift" data point for the survey.
+
+** CoGraf: Fully Accelerating Graph Applications with Fine-Grained PIM
+
+Source: ACM/ASPLOS 2026 | Year: 2026 | Link: [[https://doi.org/10.1145/3779212.3790142]]
+Category: PIM (fine-grained, FGPIM)
+- *WHY*: Vertex-centric push-based graph algorithms have two phases (update, apply) with different irregularity profiles; existing fine-grained PIM (FGPIM) designs don't fully accelerate both.
+- *HOW*: Coalescing at optimal granularity + multi-column FGPIM instructions for the irregular update phase; bank-parallel instructions with predicates for the more regular-but-conditional apply phase.
+- *WHAT*: 96–97% reduction in DRAM row activations/traffic, 9.8x performance improvement over non-PIM state of the art. Very recent (ASPLOS 2026, essentially at-the-wire for this survey's literature window) and scoped specifically to push-based algorithms — flag any generalization claim to pull-based algorithms as unverified.
+
+** Memory-Centric Computing: Security Benefits and Challenges of Processing-in-DRAM
+
+Source: ACM ICS 2026 Workshops (7th Workshop on Memory-Centric Computing Systems) | Year: 2026 | Link: [[https://arxiv.org/abs/2606.20786]] ; [[https://doi.org/10.1145/3774895.3819989]]
+Category: PIM (cross-cutting; not graph-specific)
+- *WHY*: PIM/Processing-in-DRAM is being adopted for performance/energy reasons, but its security implications — both beneficial (new hardware security primitives) and harmful (new attack surfaces) — are largely unexamined.
+- *HOW*: Analyzes DRAM-based true random number generators (up to 16.05 Gb/s) and physical unclonable functions as /benefits/; analyzes amplified DRAM read disturbance (158x fewer accesses needed to flip bits) and high-throughput memory timing covert channels (14.8 Mb/s) as /risks/.
+- *WHAT*: *This is the only source found in the entire search that substantively engages security or dependability implications of PIM at all*, and it is not graph-specific. This is strong, direct evidence for an "Open Challenges" claim: the security/dependability implications of PIM for graph workloads specifically are an unaddressed gap in the literature — a defensible, citable claim precisely because the search found essentially nothing else.
+
+* Domain-Specific Accelerators (DSA) — Detailed Cards
+
+** Graphicionado: A High-Performance and Energy-Efficient Accelerator for Graph Analytics
+
+Source: IEEE/ACM MICRO 2016 | Year: 2016 | Link: [[https://mrmgroup.cs.princeton.edu/papers/taejun_micro16.pdf]]
+Category: DSA
+- *WHY*: General-purpose processors waste energy and bandwidth executing the vertex-programming model that underlies most graph analytics frameworks (e.g., GraphMat-style abstractions).
+- *HOW*: Data-structure-centric datapath specialization and memory-subsystem specialization for the vertex-programming paradigm, with a small set of reconfigurable blocks to retain flexibility across algorithms.
+- *WHAT*: 1.76–6.54x speedup and 50–100x energy reduction vs. a 32-thread, 16-core Haswell Xeon software baseline. Foundational DSA paper — nearly every later graph DSA in this corpus (HATS, TDGraph, MEGA, etc.) positions against it. Assumes the working set fits the accelerator's on-chip scratchpad memory; large real-world graphs violate this.
+
+** HATS: Exploiting Locality in Graph Analytics through Hardware-Accelerated Traversal Scheduling
+
+Source: IEEE/ACM MICRO 2018 | Year: 2018 | Link: [[https://people.csail.mit.edu/sanchez/papers/2018.hats.micro.pdf]]
+Category: DSA
+- *WHY*: Software-only locality-aware scheduling (e.g., bounded depth-first search) is too fine-grained and dynamic for a CPU to exploit online without heavy preprocessing overhead.
+- *HOW*: A hardware traversal scheduler co-designed with "bounded depth-first scheduling" (BDFS), restricting each core to one small connected graph region at a time.
+- *WHAT*: Up to 2.4x fewer main-memory accesses and 3.1x performance improvement, at only 0.4% area / 0.2% power overhead — an unusually cheap accelerator. Explicitly assumes the graph has exploitable /community structure/ (locality); performance on graphs lacking such structure (e.g., certain random or adversarial graphs) is not the design's target case.
+
+** Alleviating Irregularity in Graph Analytics Acceleration (a.k.a. HiGraph / MDP-network)
+
+Source: IEEE/ACM MICRO 2019 | Year: 2019 | Link: [[https://dl.acm.org/doi/10.1145/3352460.3358318]]
+Category: DSA
+- *WHY*: Prior accelerators solved /off-chip/ memory irregularity but left /on-chip/ datapath conflicts and design centralization (single-point bottlenecks) unaddressed, capping further throughput gains.
+- *HOW*: A "Multiple-stage Decentralized Propagation network" (MDP-network) that trades a small amount of latency for substantially higher throughput by decentralizing the datapath.
+- *WHAT*: Up to 2.2x speedup (1.5x average) and improved scalability vs. prior state-of-the-art accelerators. Scope note: solves an /on-chip/ irregularity problem, distinct from and complementary to the /off-chip/dynamic-graph gap other papers target — useful for distinguishing "which irregularity" a given paper actually solves in the survey's taxonomy.
+
+** JetStream: Graph Analytics on Streaming Data with Event-Driven Hardware Accelerator
+
+Source: ACM/MICRO-54 (2021) | Year: 2021 | Link: [[https://dl.acm.org/doi/10.1145/3466752.3480126]]
+Category: DSA
+- *WHY*: Nearly every static-graph accelerator above (Graphicionado, HATS, GraphP, GraphQ, SISA, etc.) assumes a fixed input graph; real-world graphs (social networks, transaction graphs) are continuously updated streams.
+- *HOW*: Event-driven hardware architecture that triggers incremental re-computation directly in response to streaming graph updates, rather than batch-recomputing.
+- *WHAT*: One of the first dedicated hardware accelerators explicitly targeting the streaming/dynamic-graph case — directly substantiates the "static-graph assumption" critique this survey's thesis is built around.
+
+** TDGraph: A Topology-Driven Accelerator for High-Performance Streaming Graph Processing
+
+Source: ACM/ISCA 2022 | Year: 2022 | Link: [[https://dl.acm.org/doi/10.1145/3470496.3527409]]
+Category: DSA
+- *WHY*: Early streaming-graph accelerators (e.g., JetStream) still lack locality-aware, topology-driven incremental execution, leaving state propagation irregular.
+- *HOW*: A topology-driven incremental execution strategy built into a many-core accelerator design, improving data locality during incremental state propagation.
+- *WHAT*: Improves regularity/locality of streaming graph updates relative to prior streaming accelerators. Still an accelerator-side (not PIM-side) answer to the dynamic-graph gap — useful contrast point against MEGA/CommonGraph's software-architecture co-design answer to the same gap.
+
+** ReGraph: Scaling Graph Processing on HBM-enabled FPGAs with Heterogeneous Pipelines
+
+Source: IEEE/ACM MICRO 2022 | Year: 2022 | Link: (ACM DL / IEEE Xplore MICRO 2022 proceedings — direct DOI not independently re-confirmed in this session; verify before final citation)
+Category: DSA (FPGA + HBM)
+- *WHY*: Graphs at real-world scale exceed on-chip accelerator memory; naive use of HBM bandwidth on FPGAs underutilizes available parallelism.
+- *HOW*: Heterogeneous processing pipelines specifically designed to exploit HBM bandwidth on FPGA fabric for large-graph processing.
+- *WHAT*: Demonstrates scaling to larger graphs than pure on-chip-scratchpad ASIC designs (e.g., Graphicionado) can handle, at the cost of the generally lower peak efficiency of FPGA vs. custom ASIC. ⚠ Verify exact DOI/session-track before citing.
+
+** MEGA: Evolving Graph Accelerator
+
+Source: IEEE/ACM MICRO 2023 | Year: 2023 | Link: [[https://dl.acm.org/doi/10.1145/3613424.3614260]]
+Category: DSA
+- *WHY*: Evaluating a query across multiple graph snapshots over time (to track how a property evolves) redundantly re-executes computation shared across snapshots if done naively.
+- *HOW*: Hardware accelerator built directly on the CommonGraph incremental-update model (see below); supports event-based streaming edge additions and concurrent multi-snapshot execution.
+- *WHAT*: A hardware realization of the CommonGraph software technique — direct evidence that the dynamic/evolving-graph problem is being attacked at both the software-algorithm layer (CommonGraph) and the hardware layer (MEGA) by the same research group, a useful "co-design" narrative thread for the survey.
+
+** CommonGraph: Graph Analytics on Evolving Data
+
+Source: ACM/ASPLOS 2023 | Year: 2023 | Link: [[https://www.cs.ucr.edu/~nael/pubs/asplos23.pdf]] ; [[https://dl.acm.org/doi/10.1145/3575693.3575713]]
+Category: DSA (architecture/software co-design)
+- *WHY*: Streaming snapshot processing that handles deletions directly is expensive; sequential-snapshot dependency also blocks parallelism across snapshots.
+- *HOW*: Converts all deletions into additions by computing a "common graph" present across all snapshots, then incrementally patches in the missing edges per snapshot; breaks the sequential dependency between snapshots.
+- *WHAT*: 1.38x–8.17x improvement over Kickstarter across benchmarks. The software foundation MEGA (above) later hardware-accelerates — a clean example of algorithm-then-architecture co-design in this literature.
+
+** Glign: Taming Misaligned Graph Traversals in Concurrent Graph Processing
+
+Source: ACM/ASPLOS 2023 (Vol. 1) | Year: 2023 | Link: (ACM DL, ASPLOS 2023 Vol. 1 proceedings — direct entry not independently re-fetched this session; venue/year confirmed via secondary ACM "Highlights of Parallel Computing" abstract page, [[https://dl.acm.org/doi/10.1145/3597635.3598028]])
+Category: DSA
+- *WHY*: When multiple graph queries run concurrently (multi-tenant scenario), their traversal patterns can become "misaligned," causing cache/accelerator resource interference and hurting shared efficiency.
+- *HOW*: Traversal-alignment scheduling across concurrently running graph processing jobs.
+- *WHAT*: 3.6x and 4.7x average speedup vs. state-of-the-art concurrent graph systems Krill and GraphM. Directly relevant to the critical-systems *predictability* angle — concurrent-workload interference is exactly the kind of issue that threatens worst-case timing guarantees, yet Glign frames it purely as a throughput problem, not a predictability/isolation one. Worth flagging as an "adjacent but not addressing" case for Open Challenges.
+
+* Hybrid (PIM + DSA co-design)
+
+** Piccolo: Large-Scale Graph Processing with Fine-Grained In-Memory Scatter-Gather
+
+Source: IEEE/HPCA 2025 | Year: 2025 | Link: [[https://ieeexplore.ieee.org/document/10946708/]] ; [[https://arxiv.org/abs/2503.05116]]
+Category: Hybrid (PIM function-in-memory + host-side cache/tiling)
+- *WHY*: Neither pure DSA-style tiling nor pure PIM alone fully solves fine-grained, irregular random scatter-gather over large graphs — tiling pays repeated off-chip round-trips, PIM alone pays for weak per-bank compute and coarse access granularity.
+- *HOW*: "Piccolo-FIM," a function-in-memory design supporting in-memory random scatter-gather, combined with "Piccolo-Cache," a redesigned cache and memory hierarchy architecture (MHA) that captures benefits from both the tiling-based (DSA) and PIM approaches simultaneously.
+- *WHAT*: Up to 3.28x speedup and 59.7% energy reduction over prior tiling-only and PIM-only designs. *This is the single most direct empirical data point in the entire corpus for the survey's "it depends" thesis*: Piccolo's own ablations show that neither the pure-DSA nor the pure-PIM design point is Pareto-optimal, and that the winning region of the design space is explicitly a hybrid — strongly suggesting the "it depends on X" framing should itself resolve toward "and sometimes X favors neither pure architecture."
+
+* Cross-Paper Synthesis
+
+** Common WHY across the PIM camp
+
+Almost every PIM paper (Tesseract → GraphP → GraphQ → GraphR/Spara/GaaS-X → SISA → PrIM/PimPam/ALPHA-PIM) targets the same root cause: *data movement between DRAM and compute, not compute throughput itself, is the bottleneck* for irregular graph access. The design lineage is legible as a chain of "here's the next irregularity that the previous PIM design didn't eliminate": Tesseract (bandwidth) → GraphP/GraphQ (inter-cube communication) → GraphR/Spara/GaaS-X (crossbar sparsity) → SISA (set-op irregularity) → FALA/CoGraf/Piccolo (access-granularity mismatch). This is a genuinely convergent research program, not a scattered set of one-off designs.
+
+** Common WHY across the DSA camp
+
+DSA papers instead target *throughput of the vertex-programming execution model on general-purpose cores*: Graphicionado (datapath/memory specialization) → HATS (locality scheduling) → Alleviating Irregularity (on-chip datapath conflicts) → JetStream/TDGraph/MEGA/CommonGraph (extending the model to streaming/dynamic graphs) → Glign (concurrent-query interference). The DSA camp's chain is less about eliminating data movement and more about *making the compute pipeline match the graph's structural/temporal properties* (locality, evolution, concurrency).
+
+** Divergent HOW within each camp
+
+- *PIM is not monolithic*: digital near-memory logic (Tesseract, GraphP, GraphQ, FAFNIR, SynCron, FALA, CoGraf) is architecturally distinct from analog in-ReRAM compute (GraphR, Spara, GaaS-X) — the former preserves precision and programmability, the latter trades precision for extreme energy efficiency on SpMV-reducible kernels only.
+- *DSA is not monolithic either*: on-chip ASIC pipeline specialization (Graphicionado, HATS, Alleviating Irregularity) is a different bet than FPGA+HBM scale-out (ReGraph), and static-graph accelerators are architecturally distinct from the streaming/dynamic-graph accelerator sub-lineage (JetStream, TDGraph, MEGA/CommonGraph).
+
+** Strongest WHAT findings — with a baseline-comparability caveat
+
+The headline numbers (GraphR's 132.67x speedup, GraphQ's 98.34x, CoGraf's 9.8x, Graphicionado's 100x energy reduction) *are not comparable to each other*: they are measured against different baselines (single-thread CPU vs. multi-thread CPU vs. prior-generation accelerator vs. non-PIM SOTA), different graph datasets, and in most cases via simulation rather than real silicon. The one point of real, apples-to-apples-ish empirical grounding in this corpus is the UPMEM real-hardware line (PrIM benchmarks → PimPam → ALPHA-PIM → triangle-counting workshop paper), which consistently reports that *real PIM compute is a weaker resource than idealized simulated PIM assumes* — a materially different, and more trustworthy, empirical signal than any single simulated speedup number.
+
+** The "it depends on X" signal
+
+Based on what these papers actually assume and test, the axis that most consistently separates where PIM wins from where DSA wins is *graph mutability + access granularity, not raw graph size*:
+
+- *PIM wins* when the access pattern is dominated by /irregular, fine-grained, high-fan-out data movement over an otherwise fixed/slowly-changing dataset/ — this is why nearly all PIM papers (except CoGraf/FALA, which are 2025–2026) implicitly assume a static graph: the PIM value proposition (avoid moving data) is strongest precisely when the data doesn't need to be re-laid-out.
+- *DSA wins* (or at least is the /only/ camp actively working the problem) when the graph is /streaming/dynamic/ (JetStream, TDGraph, MEGA/CommonGraph) or /concurrently queried/ (Glign) — these are exactly the properties that break the PIM camp's static-partition assumption, and no PIM paper in this corpus attempts a dynamic-graph PIM design.
+- *Piccolo (2025) is the direct counter-evidence to a clean binary answer*: it shows a /hybrid/ beats both pure PIM and pure DSA/tiling on the same (large-scale, fine-grained scatter-gather) workload, which is strong support for framing the thesis as "the axis is real, but the two extremes of the axis are not always where the optimum sits — hybrid designs are an emerging third answer, concentrated in 2025–2026 (FALA, CoGraf, Piccolo)."
+
+** Critical-systems angle: dependability, predictability, security — the gap
+
+This is the most important negative finding for the Open Challenges section: *of 27 papers, exactly one (the ICS 2026 PiD security workshop paper) substantively engages security, and none directly engage dependability (fault tolerance) or predictability (worst-case timing) for graph-specific PIM/DSA hardware.* Glign comes closest to a predictability-adjacent concern (concurrent-query interference) but frames it purely as a throughput problem. This is a genuine, defensible gap to build the "Open Challenges" section around — not a search-coverage artifact, since dedicated searches for "graph accelerator fault tolerance/reliability" and "graph accelerator security/side-channel" returned only general (non-graph-specific) AI/ML-accelerator reliability and security literature, never a graph-specific hit.
+
+* Search Limitations
+
+1. *No institutional database access.* All searches went through public web search and open pages (arXiv, ACM/IEEE landing pages, ResearchGate, Semantic Scholar, dblp, author pages) rather than a paywalled ACM DL / IEEE Xplore full-text query interface. Several entries (ReGraph, Glign, the GrAPL workshop triangle-counting paper) have venue details confirmed only via secondary sources (search-engine summaries, ACM "Highlights" abstract pages) rather than a directly re-fetched primary DOI page — these are flagged inline with a ⚠ and should be re-verified against the primary ACM/IEEE page (or dblp) before final citation in the paper.
+2. *Full-text access was not obtained for most entries.* Extraction relied on abstracts, author-page summaries, and search-engine-generated summaries of results pages rather than full-PDF reads in nearly all cases — deeper claims (exact experimental setup, exact baseline configuration, full related-work positioning) should be verified against the actual PDF before being asserted as fact in the paper, especially for any number quoted in the Key WHAT column.
+3. *GNN-training accelerators were deliberately under-sampled.* Many search results returned GNN-training-specific accelerators (MetaNMP, BingoGCN, I-DGNN, SCALE, MEGA-quantization-paper — note: a /different/ "MEGA" than the evolving-graph MEGA included above, a naming collision worth double-checking before citing) that were excluded as out of scope for this survey's traversal/analytics focus; if the final paper's scope broadens to include GNN inference/training, this corpus under-represents that sub-literature and a follow-up search would be needed.
+4. *FPGA-based accelerators were only lightly sampled* (ReGraph, and GraphScale/ScalaBFS/ScalaBFS2/GraphLily noted but not carded in detail) despite being a large, active sub-literature — the survey's framing (PIM vs. DSA/ASIC) makes FPGA a secondary case, but a reviewer could reasonably ask why FPGA-based graph accelerators are underrepresented; worth one sentence of explicit scoping in the paper's Methodology section.
+5. *Critical-systems search (dependability/security/predictability) found almost nothing graph-specific*, as discussed in the synthesis — this was verified as a genuine literature gap via multiple targeted queries, not assumed, but it remains possible that relevant work exists in venues outside this search's reach (e.g., DSN, which is in the course's suggested venue list but was not separately queried in this pass — a DSN-specific follow-up search is recommended before finalizing the Open Challenges section).
+6. *Year currency*: several 2025–2026 entries (CoGraf, FALA, ALPHA-PIM, the PiD security workshop paper, the triangle-counting workshop paper) are very recent and in some cases workshop-tier or just-published; their claims have had less time for community scrutiny/replication than the 2015–2023 entries. Treat their reported numbers as provisional pending the field's response.
+7. *27 candidates were verified, comfortably exceeding the ≥20 reference requirement*; the user should select the final ≥20 based on which best support the chosen thesis angle (rather than including all 27), and should independently pull the primary PDF for any paper before quoting its numbers directly in the paper text, per the course's "AI-generated content and references must be verified against the original sources" requirement.

@@ -1,0 +1,113 @@
+#+title: Stage 1 Research Brief — PIM vs. DSA for Irregular Graph Workloads
+#+date: 2026-10-11
+#+subtitle: academic-pipeline Stage 1 (deep-research, quick mode, gap-closing pass over annotated-bibliography.org)
+
+/AI disclosure: produced with AI-assisted research tools (Claude, ARS academic-pipeline). Every venue/claim below was checked against the source linked beside it during this session; items that could not be confirmed are marked UNVERIFIED and are not treated as evidence./
+
+* 1. Research Question Brief
+
+** Refined research question
+#+begin_quote
+For irregular graph workloads (traversal, analytics and mining), how do Processing-in-Memory (PIM) architectures and discrete Domain-Specific Accelerators (DSAs) trade off throughput, energy efficiency, and effective memory bandwidth, and which workload and system assumptions decide when each is better?
+#+end_quote
+
+(Fixes from =selected-topic.org=: "comparete" → "compare"; "energy efficient" → "energy efficiency". It also makes the "it depends on X" framing an explicit question, since that is where the corpus' strongest contribution lies.)
+
+** Sub-questions
+- *SQ1 (mechanism)*: Which bottleneck does each camp attack (data movement vs. pipeline/locality mismatch), and how has each lineage evolved since 2015?
+- *SQ2 (evidence)*: What do reported results support once baselines, datasets, and evaluation substrate (simulation vs. silicon/FPGA) are normalized? Where can they *not* be compared?
+- *SQ3 (assumptions)*: Which assumptions (static vs. dynamic graph, access granularity, partitionability/skew, graph size vs. memory capacity, single vs. concurrent queries) decide which camp wins?
+- *SQ4 (critical systems)*: How do the two camps differ in security, dependability, and predictability, and what is still unaddressed?
+
+** FINER check
+| Criterion  | Rating | Note |
+|------------+--------+------|
+| Feasible   | High   | 30 verified candidates; survey-only, no experiments |
+| Interesting| High   | Two competing design approaches, plus hybrid designs emerging in 2025–26 |
+| Novel      | Medium | Prior related work: Gui et al. (first author confirmed from the PDF), "A Survey on Graph Processing Accelerators: Challenges and Opportunities", /JCST/ 2019 ([[https://jcst.ict.ac.cn/article/doi/10.1007/s11390-019-1914-z][JCST]]), which predates the 2021–26 PIM/hybrid wave; and Dann et al. 2021 (arXiv 2104.07776, FPGA-only comparison). No 2020–26 survey contrasting PIM and graph DSAs was found in one targeted search. Cite Gui et al. as the prior survey and position this paper as its post-2021 PIM-vs-DSA update. Novelty lies in the assumption-axis framing and the critical-systems gap |
+| Ethical    | N/A    | No human subjects |
+| Relevant   | High   | Matches the course brief's required critical-systems discussion |
+
+** Scope
+- *In*: ASIC/PIM/near-data designs (and FPGA+HBM only as a reference point for DSAs) for BFS/SSSP/PageRank/CC, graph mining/pattern matching, streaming/evolving graphs; real-PIM (UPMEM) characterization studies.
+- *Out*: GNN training/inference accelerators; GPU-only and pure-software graph systems (used only as baselines); storage-level (near-SSD) graph processing.
+- *Decision needed (scope consistency)*: ReGraph (FPGA) is in the matrix, yet FPGAs are otherwise excluded. Recommended: keep ReGraph, and say in one sentence in the paper that FPGA+HBM serves as a reference point for DSAs, with ASIC DSAs as the primary comparison.
+
+* 2. Methodology Blueprint
+
+- *Paradigm / method*: Qualitative comparative survey (structured narrative review) with a fixed extraction scheme. It is not a systematic review or meta-analysis. Reported numbers are *not* pooled, because baselines differ.
+- *Unit of analysis*: one architecture paper.
+- *Extraction sheet (one row per paper; feeds Tables 1–3)*:
+  | Field | Values |
+  |-------+--------|
+  | Camp | PIM-digital / PIM-analog(ReRAM) / PIM-real(UPMEM) / DSA-ASIC / DSA-FPGA / Hybrid |
+  | Workloads | BFS, SSSP, PR, CC, TC, GPM, streaming |
+  | Evaluation substrate | cycle-level sim / analytical model / FPGA prototype / real silicon |
+  | Baseline | 1T CPU / MT CPU / GPU / prior accelerator / non-PIM SOTA |
+  | Datasets & max graph size | e.g., LJ, Twitter, Friendster; |V|, |E| |
+  | Reported speedup / energy (as stated, *with baseline*) | verbatim + page ref |
+  | Bandwidth assumption | internal BW (TSV/bank), external BW |
+  | Key assumptions | static/dynamic, partitioning, skew handling, fits-in-memory, single/concurrent query |
+  | Critical-systems engagement | security / dependability / predictability: none / mentioned / evaluated |
+- *Comparison rule*: a speedup or energy number may appear next to another only if both share baseline class *and* substrate. Otherwise the table cell gets a footnote marker and the text says "not comparable". This turns the corpus' main weakness into an explicit analytical contribution.
+- *Analytical framework*: an assumption-axis matrix (rows = assumptions in SQ3; columns = camps), with each cell marked as evidence-for / evidence-against / untested. Section 6 (Open Challenges) is built from the "untested" cells.
+- *Validity safeguards*: (a) every quoted number is checked against the PDF (Phase 2 queue below); (b) counter-evidence is reported (see §4.2 and §4.3 corrections); (c) search limitations are stated in the paper's method section.
+
+* 3. Verification Log (flagged ⚠ entries)
+
+| # | Paper | Result | Evidence |
+|---+-------+--------+----------|
+| 15 | ReGraph | *VERIFIED*: MICRO 2022 (55th IEEE/ACM MICRO), pp. 1342–1358, Chicago. Authors: X. Chen, Y. Chen, F. Cheng, H. Tan, B. He, W.-F. Wong | [[https://scholars.cityu.edu.hk/en/publications/regraph-scaling-graph-processing-on-hbm-enabled-fpgas-with-hetero/][CityU repository]], [[https://arxiv.org/abs/2203.02676][arXiv 2203.02676]] |
+| 20 | Glign | *VERIFIED (author page)*: ASPLOS 2023, Vol. 1, pp. 78–92, Vancouver. Authors: X. Yin, Z. Zhao, R. Gupta. ACM DOI suffix not confirmed; take it from the PDF's first page | [[https://cs.ucr.edu/~gupta/research/Publications/alll.html][UCR Gupta pubs]], [[https://par.nsf.gov/servlets/purl/10390494][NSF PAR full text]]. Beware the SPAA 2023 /abstract/ version (10.1145/3597635.3598028): do not cite that DOI |
+| 23 | Triangle counting on real PIM | *PARTIAL*: arXiv 2505.04269 (Asquini, Frouzakis, Gómez-Luna, Sadrosadati, Mutlu, Silvestri); presented at GrAPL 2025 (IPDPS workshop, Milan, 4 June 2025). *No proceedings DOI found* | [[https://arxiv.org/abs/2505.04269][arXiv]], [[https://hpc.pnl.gov/grapl/previous/2025/index.html][GrAPL 2025 program]] |
+
+*Recommendation for #23*: cite it as "workshop paper / arXiv preprint". Do not count it toward the ≥20 peer-reviewed references unless the IPDPSW proceedings DOI is located. Note: Sadrosadati was missing from the bibliography's author list.
+
+* 4. Gap-Closing Findings
+
+** 4.1 New verified candidates (peer-reviewed, 2022–2025)
+| New # | Paper | Venue | Why it matters |
+|-------+-------+-------+----------------|
+| 28 | *IMPACT*: Bostancı, Kanellopoulos, et al., "Revisiting Main Memory-Based Covert and Side Channel Attacks in the Context of Processing-in-Memory" | *DSN 2025*, pp. 16–32 | PIM-specific timing covert/side channels via the shared DRAM row buffer; proposes defenses. A peer-reviewed paper at a venue on the course list that can replace or support #27 (workshop) in the security discussion. [[https://arxiv.org/abs/2404.11284][arXiv]], [[https://dblp.dagstuhl.de/db/conf/dsn/dsn2025.html][dblp DSN 2025]] |
+| 29 | *MGX*: Hua, Umar, Zhang, Suh, "Near-Zero Overhead Memory Protection for Data-Intensive Accelerators" | *ISCA 2022*, pp. 726–741, DOI 10.1145/3470496.3527418 | Memory encryption/integrity for *graph-processing* and DNN accelerators. Reported overhead drops from 33% to 5% (graph), as reported, to be checked in the PDF. The first graph-DSA paper in the corpus that evaluates security. [[https://www.csl.cornell.edu/~zhiruz/pdfs/mgx-isca2022.pdf][PDF]] |
+| 30 | *NDMiner*: Talati et al., near-data graph pattern mining | *ISCA 2022*, DOI 10.1145/3470496.3527437 | Near-data processing for set operations in the DRAM buffer chip; a recent PIM-side counterpart to SISA (#10). Reported 6.4× / 2.5× vs. SW / HW baselines. [[https://tnm.engin.umich.edu/wp-content/uploads/sites/353/2022/05/NDMiner_ISCA2022_CameraReady.pdf][PDF]] |
+
+Not added (gray zone = excluded): /DIMMining/ (ISCA 2022, only a secondary AMiner listing found); /Moctopus/ (arXiv 2403.10051, no peer-reviewed venue found); /FARe/ (GNN-on-ReRAM fault tolerance, out of scope and venue unconfirmed).
+
+** 4.2 Disconfirmation test: "no PIM paper attempts a dynamic-graph design"
+*Result: the claim survives only in narrowed form.* Targeted searches found no dynamic/streaming-graph PIM design at ISCA/MICRO/HPCA/ASPLOS in 2021–2026, but dynamic-graph PIM work does exist outside those venues:
+- Kim et al., "Things to Consider to Enable Dynamic Graphs in Processing-in-Memory", MEMSYS 2020: a position/analysis paper ([[https://www.memsys.io/wp-content/uploads/2020/10/p315-kim.pdf][PDF]]).
+- "Accelerating dynamic graph computation via space-aware mapping approach in computing-in-memory systems", /J. Supercomputing/ 2026: a fully-dynamic-graph PIM mapping ([[https://link.springer.com/article/10.1007/s11227-026-08883-x][Springer]]). Venue confirmed; authors and numbers still to be checked.
+- Moctopus (arXiv 2024): PIM graph *database* with batch updates. Unreviewed, so mention it only as a preprint, if at all.
+
+- *Full-text update (see extraction-sheet.org)*: the GrAPL 2025 UPMEM triangle-counting paper (#23) evaluates *insert-only batched updates with a full recount*. PIM beats the CPU there only because COO avoids CSR rebuilds, and it loses on static graphs. It is not an incremental dynamic-graph PIM design.
+
+*Rewrite the claim as*: "Within the top architecture venues surveyed, no PIM design targets streaming or evolving graphs; the problem has been raised (MEMSYS 2020) and addressed only in journal and preprint work [refs]." This is more defensible, and the honest caveat strengthens the Open Challenges section.
+
+** 4.3 Critical-systems search (DSN + targeted)
+*Result: the original gap claim is partly overstated and must be corrected.*
+- *Security*: no longer "exactly one" paper. MGX (ISCA 2022) evaluates memory protection on a graph accelerator, and IMPACT (DSN 2025) shows PIM introduces new timing channels. Corrected framing: /security has been studied only for each camp separately (memory protection for DSAs, timing channels for PIM); no work compares the two camps' attack surfaces on graph workloads./
+- *Dependability*: still a gap. ReRAM fault-tolerance work exists for DNN/GNN workloads, but none was found for classical graph analytics on ReRAM PIM (GraphR, Spara, GaaS-X), despite stuck-at faults affecting the stored adjacency matrix. GraphR argues PageRank-style iterative algorithms are error-tolerant; that argument does not cover BFS/SSSP reachability results. *This is an argument for the paper, not a citation*: present it as an open challenge, clearly marked as analysis.
+- *Predictability*: still a gap. No worst-case-timing work found. Glign (concurrent-query interference) remains the nearest related work.
+
+** 4.4 Recency balance
+After additions, *21 of 30* candidates are from 2021 or later (18 + 3). Recommended final set of about 22–24 refs: keep all 2022–2026 top-venue papers, keep 4–6 seminal pre-2021 papers (Tesseract, Graphicionado, GraphR, HATS, GraphQ), and cite workshop papers (#23, #27) as supplementary.
+
+* 5. Devil's Advocate Checkpoint (thesis stress test)
+
+| Concern | Severity | Disposition |
+|---------+----------+-------------|
+| The "mutability + granularity" axis may be confounded by *timing*: DSAs for dynamic graphs appeared after 2021, and PIM simulators (e.g., for HMC) are built around static partitions. The absence of dynamic PIM may reflect tooling rather than a fundamental limit | Major | Paper must state both explanations and argue which is more likely (the cost of re-partitioning under PIM's per-bank data placement) |
+| Simulated PIM vs. simulated DSA numbers are both optimistic, but PIM is optimistic in a *different way* (real UPMEM results are weaker) | Major | Real-PIM results (#17, #21, #22) become an explicit "reality check" subsection |
+| Survivorship bias: negative results are rarely published | Minor | One sentence in Limitations |
+| Corpus imbalance (17 PIM vs. 9 DSA) | Minor | Already disclosed; keep it as a finding |
+No *Critical* issues. The checkpoint passes with the revisions above.
+
+* 6. Full-Text Verification Queue (waiting on =papers/=)
+Priority (numbers to quote or claims the thesis depends on): #3 GraphR, #4 GraphQ, #8 Graphicionado, #25 CoGraf, #17 PrIM, #21 PimPam, #22 ALPHA-PIM, #13 JetStream, #14 TDGraph, #18 MEGA, #24 FALA, #26 Piccolo, #29 MGX, #28 IMPACT.
+For each: confirm the baseline, substrate, datasets, the headline number with page reference, and the static/dynamic assumption. This fills the extraction sheet in §2. It must be complete before the Stage 2.5 integrity gate, but drafting (Stage 2) can begin in parallel.
+
+* 7. Limitations of this pass
+- dblp's API was unreachable this session. Venues were confirmed through institutional repositories, author pages, conference programs, and publisher pages.
+- Findings in §4 rest on abstracts, programs, and search-engine summaries; numbers are marked "as reported" until the PDFs are checked.
+- Absence claims (§4.2, §4.3) come from targeted web searches, not exhaustive proceedings scans. The paper should present them as "not found in [venues, years]", not as proof that no such work exists.

@@ -1,0 +1,86 @@
+#+title: Wrecking (Memory) Ball
+
+A comparative survey of Processing-in-Memory (PIM) versus Domain-Specific
+Accelerators (DSAs) for irregular graph workloads (traversal, analytics and
+mining), written for the MESCC computer architecture survey project (see
+[[file:brief.org][brief.org]]).
+
+* The survey
+
+Graph workloads such as BFS and PageRank have irregular memory access patterns
+that hit the memory wall. The literature has split into two camps:
+
+- *PIM* moves lightweight compute into or next to memory (3D-stacked logic
+  layers, DRAM banks, ReRAM crossbars, real UPMEM hardware) to remove data
+  movement.
+- *DSAs* build specialized on-chip pipelines and schedulers (Graphicionado,
+  HATS, JetStream, MEGA, ...) that reshape computation around locality.
+
+The paper compares both camps on throughput, energy and memory bandwidth, and
+argues that the deciding factors are graph mutability, access granularity and
+host-mediated communication rather than graph size. It also covers the
+2025-26 hybrid designs, critical-system properties (security, dependability,
+predictability) and open challenges. The research question and sub-questions
+are in [[file:pipeline/stage1-research-brief.org][pipeline/stage1-research-brief.org]].
+
+* Repository layout
+
+| Path                         | Contents                                                     |
+|------------------------------+--------------------------------------------------------------|
+| =brief.org=                  | Course project brief and rubric                              |
+| =selected-topic.org=         | Original topic proposal and research question                |
+| =annotated-bibliography.org= | Annotated bibliography from the initial literature scan      |
+| =papers/=                    | Source PDFs, split into =PIM/=, =DSA/=, =Hybrid/=, =Surveys/= |
+| =pipeline/=                  | Intermediate research and writing artifacts (see below)      |
+
+Note: the source PDFs in =papers/= and their text extractions in
+=pipeline/fulltext/= are copyrighted, so they are kept locally only and are
+not tracked in this repository (see =.gitignore=). To reproduce them, download
+the papers listed in =paper/refs.bib= into =papers/{PIM,DSA,Hybrid,Surveys}/=
+and extract them to text with pypdf.
+| =paper/=                     | The paper: =main.tex=, =refs.bib=, =declarations.tex=, =main.md= |
+
+* Workflow
+
+The survey was built with AI-assisted research tooling (Claude Code with the
+academic-research-skills pipeline). Every claim and reference is checked
+against the original sources, as the brief requires.
+
+1. *Topic selection* - pick the topic and draft the research question
+   (=selected-topic.org=).
+2. *Literature scan* - web searches over ACM DL, IEEE Xplore, arXiv and dblp,
+   focused on ISCA/MICRO/HPCA/ASPLOS 2021-2026 plus seminal earlier work. The
+   result is the annotated bibliography (=annotated-bibliography.org=).
+3. *Research brief* - refine the research question into SQ1-SQ4, close gaps
+   in the corpus and fix the comparison method
+   (=pipeline/stage1-research-brief.org=).
+4. *Full-text extraction* - extract the PDFs in =papers/= to text
+   (=pipeline/fulltext/=) and record each paper's numbers together with
+   their baseline and assumptions in =pipeline/extraction-sheet.org=. This
+   step also logs corrections to the bibliography (merged entries, misread
+   headline numbers, wrong categories).
+5. *Planning* - fix the paper configuration
+   (=pipeline/paper-configuration-record.md=) and write the outline and
+   evidence map (=pipeline/outline.md=).
+6. *Drafting* - write the IEEEtran paper in =paper/main.tex= with a Markdown
+   review copy in =paper/main.md=. The helper scripts in =pipeline/tools/=
+   were used for text inspection and draft edits.
+7. *Review and verification* - self-evaluation against the rubric
+   (=pipeline/stage2/=) and a strict citation audit
+   (=pipeline/citation-audit.md=) that checks every cited key against its
+   source.
+
+* Building the paper
+
+#+begin_src sh
+cd paper
+latexmk -pdf main.tex
+#+end_src
+
+* License
+
+Copyright (c) 2026 Vítor Santos.
+
+This work is licensed under the [[https://creativecommons.org/licenses/by/4.0/][Creative Commons Attribution 4.0 International License]]
+(CC BY 4.0); see [[file:LICENSE][LICENSE]]. The license covers the original content of this
+repository only, not the third-party papers it cites.

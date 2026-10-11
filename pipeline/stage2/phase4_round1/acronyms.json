@@ -1,0 +1,628 @@
+{
+  "checker": "ars-acronym-check/1.0",
+  "input": "pipeline/stage2/phase4_round1/draft.md",
+  "input_sha256": "c0be0ecd09b21c161068492c5e0d9d4edfa3db2c10ac6f544fa163782df2ce91",
+  "status": "partial",
+  "allowlist": {
+    "default": 29,
+    "user": []
+  },
+  "coverage": {
+    "body": "checked",
+    "abstract_en": "not_requested",
+    "abstract_zh": "not_requested"
+  },
+  "scope_lines": {
+    "body": [
+      [
+        1,
+        4
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        18,
+        18
+      ],
+      [
+        20,
+        24
+      ],
+      [
+        26,
+        28
+      ],
+      [
+        30,
+        46
+      ],
+      [
+        48,
+        48
+      ],
+      [
+        50,
+        54
+      ],
+      [
+        56,
+        58
+      ],
+      [
+        60,
+        62
+      ],
+      [
+        64,
+        68
+      ],
+      [
+        70,
+        70
+      ],
+      [
+        72,
+        74
+      ],
+      [
+        76,
+        78
+      ],
+      [
+        80,
+        82
+      ],
+      [
+        84,
+        90
+      ],
+      [
+        92,
+        92
+      ],
+      [
+        94,
+        96
+      ],
+      [
+        98,
+        100
+      ],
+      [
+        102,
+        104
+      ],
+      [
+        106,
+        108
+      ],
+      [
+        110,
+        135
+      ],
+      [
+        137,
+        139
+      ],
+      [
+        141,
+        161
+      ],
+      [
+        163,
+        178
+      ],
+      [
+        180,
+        192
+      ],
+      [
+        194,
+        195
+      ]
+    ]
+  },
+  "unread_sections": [],
+  "coverage_limits": [
+    {
+      "scope": "body",
+      "line": 7,
+      "acronym": "BFS",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 7,
+      "acronym": "SSSP",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 9,
+      "acronym": "PIM",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 9,
+      "acronym": "UPMEM",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 21,
+      "acronym": "COO",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 27,
+      "acronym": "PnM",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 57,
+      "acronym": "SpMV",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 67,
+      "acronym": "CSR",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 73,
+      "acronym": "BDFS",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 85,
+      "acronym": "FGPIM",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 120,
+      "acronym": "CPU",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 128,
+      "acronym": "HATS",
+      "reason": "unconfirmed_definition"
+    }
+  ],
+  "findings": [
+    {
+      "scope": "body",
+      "line": 7,
+      "rule": "undefined",
+      "acronym": "GB",
+      "expansion": null,
+      "occurrences": 5
+    },
+    {
+      "scope": "body",
+      "line": 9,
+      "rule": "undefined",
+      "acronym": "DRAM",
+      "expansion": null,
+      "occurrences": 23
+    },
+    {
+      "scope": "body",
+      "line": 9,
+      "rule": "undefined",
+      "acronym": "DSA",
+      "expansion": null,
+      "occurrences": 67
+    },
+    {
+      "scope": "body",
+      "line": 13,
+      "rule": "undefined",
+      "acronym": "GPU",
+      "expansion": null,
+      "occurrences": 9
+    },
+    {
+      "scope": "body",
+      "line": 13,
+      "rule": "undefined",
+      "acronym": "SQ1",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 13,
+      "rule": "undefined",
+      "acronym": "SQ2",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 13,
+      "rule": "undefined",
+      "acronym": "SQ3",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 13,
+      "rule": "undefined",
+      "acronym": "SQ4",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 27,
+      "rule": "undefined",
+      "acronym": "ALU",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 27,
+      "rule": "undefined",
+      "acronym": "DIMM",
+      "expansion": null,
+      "occurrences": 4
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "ACM",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "ASIC",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "ASPLOS",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "DSN",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "FPGA",
+      "expansion": null,
+      "occurrences": 12
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "HPCA",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "IEEE",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "ISCA",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 31,
+      "rule": "undefined",
+      "acronym": "MICRO",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 37,
+      "rule": "undefined",
+      "acronym": "SISA",
+      "expansion": null,
+      "occurrences": 5
+    },
+    {
+      "scope": "body",
+      "line": 38,
+      "rule": "undefined",
+      "acronym": "GaaS",
+      "expansion": null,
+      "occurrences": 5
+    },
+    {
+      "scope": "body",
+      "line": 38,
+      "rule": "undefined",
+      "acronym": "ReRAM",
+      "expansion": null,
+      "occurrences": 9
+    },
+    {
+      "scope": "body",
+      "line": 38,
+      "rule": "undefined",
+      "acronym": "SPICE",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 39,
+      "rule": "undefined",
+      "acronym": "ALPHA",
+      "expansion": null,
+      "occurrences": 4
+    },
+    {
+      "scope": "body",
+      "line": 39,
+      "rule": "undefined",
+      "acronym": "PrIM",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 39,
+      "rule": "undefined",
+      "acronym": "TC",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 41,
+      "rule": "undefined",
+      "acronym": "MEGA",
+      "expansion": null,
+      "occurrences": 5
+    },
+    {
+      "scope": "body",
+      "line": 42,
+      "rule": "undefined",
+      "acronym": "FALA",
+      "expansion": null,
+      "occurrences": 5
+    },
+    {
+      "scope": "body",
+      "line": 43,
+      "rule": "undefined",
+      "acronym": "IMPACT",
+      "expansion": null,
+      "occurrences": 5
+    },
+    {
+      "scope": "body",
+      "line": 43,
+      "rule": "undefined",
+      "acronym": "MGX",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 43,
+      "rule": "undefined",
+      "acronym": "PiD",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 51,
+      "rule": "undefined",
+      "acronym": "TB",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 57,
+      "rule": "undefined",
+      "acronym": "GRAM",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 61,
+      "rule": "undefined",
+      "acronym": "ISA",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 65,
+      "rule": "undefined",
+      "acronym": "KB",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 65,
+      "rule": "undefined",
+      "acronym": "MB",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 67,
+      "rule": "undefined",
+      "acronym": "DMA",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 73,
+      "rule": "undefined",
+      "acronym": "GPGPU",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 73,
+      "rule": "undefined",
+      "acronym": "GTEPS",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 73,
+      "rule": "undefined",
+      "acronym": "RTL",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 73,
+      "rule": "undefined",
+      "acronym": "VO",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 81,
+      "rule": "undefined",
+      "acronym": "TLB",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 85,
+      "rule": "undefined",
+      "acronym": "DDR",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 85,
+      "rule": "undefined",
+      "acronym": "DDR4",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 85,
+      "rule": "undefined",
+      "acronym": "HBM2",
+      "expansion": null,
+      "occurrences": 4
+    },
+    {
+      "scope": "body",
+      "line": 85,
+      "rule": "undefined",
+      "acronym": "PEI",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 121,
+      "rule": "undefined",
+      "acronym": "CAM",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 121,
+      "rule": "undefined",
+      "acronym": "MAC",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 125,
+      "rule": "undefined",
+      "acronym": "SW",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 126,
+      "rule": "undefined",
+      "acronym": "BW",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 132,
+      "rule": "undefined",
+      "acronym": "ROI",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 168,
+      "rule": "undefined",
+      "acronym": "ECC",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 168,
+      "rule": "undefined",
+      "acronym": "SRAM",
+      "expansion": null,
+      "occurrences": 1
+    }
+  ]
+}

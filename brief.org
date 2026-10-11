@@ -1,0 +1,58 @@
+#+title: Computer Architecture Survey Project
+DEADLINE: <2026-11-22 Sun>
+
+* Objective
+The aim of this project is to conduct and present high-quality research that explores state-of-the-art techniques discussed in class or presented at leading computer architecture and systems conferences. The deliverable will be a research survey paper that provides a thorough overview of a selected research area, supported by an extensive review of the literature and a critical analysis of existing approaches.
+
+The survey should not simply summarize prior work. Students are expected to identify key research questions, compare competing approaches, discuss architectural trade-offs, highlight open challenges, and evaluate the strengths and weaknesses of the proposed solutions. Where appropriate, comparative tables should be used to summarize the main characteristics, advantages, limitations, and trade-offs of competing approaches.
+
+Students may use generative AI tools as supporting tools, but they remain responsible for the accuracy, originality, and integrity of the submitted work. AI-generated content and references must be verified against the original sources.
+
+This project provides an opportunity to develop expertise in modern computer architectures and systems, making it particularly valuable for students interested in research, innovation, or doctoral studies.
+
+
+* Paper Requirements
+1. Summarize the state of the art in a specific research area, citing relevant literature.
+2. Present multiple perspectives and competing approaches with appropriate references.
+3. Identify the key research questions addressed by the literature.
+4. Compare architectural trade-offs, limitations, and design choices.
+5. Discuss open challenges and future research directions.
+6. Conclude with a critical synthesis of the strengths, weaknesses, and trade-offs of the surveyed approaches.
+7. Be structured and formatted as a research paper with proper citations.
+8. Include at least 20 relevant references, with most published within the last five years. References should primarily consist of peer-reviewed conference and journal papers.
+9. Have an expected length of approximately 8–12 pages (excluding references). The page limit excludes references but includes figures and tables.
+
+** Suggested Conferences
+Architecture-focused conferences:
+- ISCA (International Symposium on Computer Architecture)
+- MICRO (International Symposium on Microarchitecture)
+- HPCA (High-Performance Computer Architecture)
+- ASPLOS (Architectural Support for Programming Languages and Operating Systems)
+- DSN (Dependable Systems and Networks)
+- ISLPED (International Symposium on Low Power Electronics and Design)
+- Hot Chips
+
+Systems-focused conferences:
+- SOSP (Symposium on Operating Systems Principles)
+- OSDI (Operating Systems Design and Implementation)
+- EuroSys
+- USENIX ATC
+- FAST (Conference on File and Storage Technologies)
+
+
+* Evaluation Criteria
+
+The project will be assessed according to the following criteria:
+- Quality, breadth, and depth of literature review: 30%
+- Critical analysis, comparison, and discussion: 30%
+- Organization, structure, and writing quality: 15%
+- Relevance and quality of references: 10%
+- Oral presentation: 15%
+
+
+* Conclusion
+This research project is an opportunity to deepen your understanding of the architectural techniques that underpin modern computing systems. Your survey should go beyond summarizing existing work by critically analyzing architectural trade-offs, identifying open challenges, and discussing future directions.
+
+Choose a topic that aligns with your interests and career goals, and ensure that your work is grounded in high-quality, recent research from leading conferences and journals.
+
+For topics related to critical systems, students must explicitly discuss how architectural choices affect relevant system properties such as performance, efficiency, dependability, security, or predictability.

@@ -1,0 +1,18 @@
+.DS_Store
+
+# Locally installed Claude Code skill (third-party, installed via plugin)
+.claude/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Source papers (copyrighted PDFs, kept locally only)
+*.pdf
+pipeline/fulltext/
