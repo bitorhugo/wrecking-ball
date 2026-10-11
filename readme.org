@@ -73,14 +73,15 @@ against the original sources, as the brief requires.
 * Building the paper
 
 The paper is built with [[https://tectonic-typesetting.github.io][Tectonic]], which downloads the LaTeX packages it
-needs on first run and handles BibTeX passes automatically:
+needs on first run and handles BibTeX passes automatically. From the repository
+root:
 
 #+begin_src sh
-cd paper
-tectonic -X compile main.tex
+make
 #+end_src
 
-The output is =paper/main.pdf= (ignored by git, like all PDFs).
+The output is =paper/main.pdf= (ignored by git, like all PDFs). =make clean=
+removes it.
 
 * License
 
