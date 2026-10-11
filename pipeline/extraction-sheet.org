@@ -40,7 +40,7 @@ Source: =papers/= PDFs extracted to =pipeline/fulltext/*.txt= (pypdf). Page refs
 | PrIM (arXiv/Access) | UPMEM 2,556- & 640-DPU | 16 benchmarks incl. BFS | PIM beats CPU 93.0× / 27.9× on 13 benchmarks /that avoid inter-DPU sync/. *BFS pays the "huge overhead of inter-DPU synchronization via the host CPU"* (p3); host merges frontier serially each iteration (p17, p23) | CPU, GPU | static |
 | PimPam (SIGMOD'24) | UPMEM | graph pattern matching | 22.5× avg vs. GraphPi (CPU) (p17) | CPU SW | static; partitioning to fit MRAM (p10) |
 | ALPHA-PIM (IISWC'25) | UPMEM + PIMulator | BFS, SSSP, PPR via SpMSpV | compute utilization 18.5% kernel / 5% total (BFS) vs. 0.01–0.05% CPU/GPU (p9). The best partitioning depends on input density and dataset (p7). Calls for DMA, ILP, and direct inter-PIM-core interconnect (abstract) | CPU, GPU, SparseP | static |
-| Triangle counting (GrAPL'25, arXiv) | UPMEM | TC | Loses to CPU(CSR) and GPU on static graphs. Beats CPU when updates arrive as 10 append-only batches with full recount, because COO avoids CSR rebuilds (p1, Fig. 7) | CPU, GPU | *insert-only batched updates, non-incremental* |
+| Triangle counting (GrAPL'25, arXiv) | UPMEM | TC | Generally loses to CPU(CSR) and GPU on static graphs. Beats CPU when updates arrive as 10 appended COO batches; PIM and GPU count the triangles formed by each new batch, while the CPU must reconvert the whole graph to CSR (p8, Fig. 7). [Corrected at Stage 2.5: earlier note said "full recount, non-incremental", which the text does not support] | CPU, GPU | *insert-only batched updates* |
 
 ** DSA (ASIC/on-chip; FPGA reference)
 | Graphicionado (MICRO'16) | Chisel RTL + DRAMSim2 | vertex programs | 1.76–6.54× speedup, 50–100× less energy (p1) | 32-thread SW on 16-core Xeon | static |
@@ -67,7 +67,7 @@ CommonGraph (ASPLOS'23), Glign (ASPLOS'23), KickStarter/GraphBolt (as baselines)
 | Gui et al. (JCST'19) survey | first author confirmed: "Gui CY, Zheng L, He BS et al." (p1) |
 
 * C. Thesis status after full-text check
-- *Assumption axis (mutability)*: strengthened. Every PIM and hybrid hardware design checked is static. The only PIM evidence with updates (triangle counting) is real-hardware, insert-only, non-incremental, and its advantage comes from the data format, not the architecture. DSA dynamic designs: JetStream → TDGraph → MEGA.
+- *Assumption axis (mutability)*: strengthened. Every PIM and hybrid hardware design checked is static. The only PIM evidence with updates (triangle counting) is a real-hardware software study with insert-only batches; its advantage over the CPU comes from the COO data format (no CSR reconversion), not from a dynamic-graph PIM architecture. [Corrected at Stage 2.5: "non-incremental" removed] DSA dynamic designs: JetStream → TDGraph → MEGA.
 - *Real-PIM reality check*: strengthened. PrIM gives direct evidence that *BFS* (the RQ's flagship traversal) is bottlenecked by host-mediated inter-DPU synchronization.
 - *Hybrid convergence*: Piccolo uses a DSA (GraphDynS) as its baseline and adds in-memory scatter-gather. FALA beats Piccolo and PEI. This is concrete evidence that the two camps are merging.
 - *Security*: IMPACT evaluates on graph workloads, which strengthens the critical-systems section.

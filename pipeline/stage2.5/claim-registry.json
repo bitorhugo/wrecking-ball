@@ -1,0 +1,5161 @@
+[
+ {
+  "id": "C001",
+  "para": 0,
+  "text": "This survey examines 30 hardware designs, real-hardware studies, and position papers from 2015 to 2026, with a focus on 2021--2026.",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "30": [],
+   "2015": [],
+   "2026": [],
+   "2021": []
+  }
+ },
+ {
+  "id": "C002",
+  "para": 0,
+  "text": "Hybrid designs from 2025--2026 combine the bandwidth of PIM with the locality management of DSAs.",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "2025": [],
+   "2026": []
+  }
+ },
+ {
+  "id": "C003",
+  "para": 3,
+  "text": "Graph algorithms such as breadth-first search (BFS), single-source shortest paths (SSSP), PageRank, and subgraph pattern matching are used in many applications, from social-network analysis to bioinformatics and network security~.",
+  "cites": [
+   "ahn2015tesseract",
+   "ham2016graphicionado",
+   "asquini2025tc"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "ham2016graphicionado",
+   "asquini2025tc"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C004",
+  "para": 3,
+  "text": "On a four-socket, 32-core server with 640\\,GB/s of memory bandwidth, ideal execution of five graph workloads would need close to 500\\,GB/s of mostly random traffic.",
+  "cites": [],
+  "srcs": [
+   "ahn2015tesseract",
+   "ham2016graphicionado",
+   "asquini2025tc",
+   "ahn2015tesseract",
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "32": [
+    [
+     "ahn2015tesseract",
+     "a conven- tional high-performance baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01v"
+    ],
+    [
+     "ham2016graphicionado",
+     "te-of-the-art software graph analytics processing framework executing 32 threads on a 16-core Haswell Xeon processor. I. I NTRODUCTION Startin"
+    ],
+    [
+     "asquini2025tc",
+     "], [21], [22], [23], [24], [25], [26], [27], [28], [29], [30], [31], [32], [33], [34], [35], [36], [37], [38], [39], [40], [41], [42], [43], ["
+    ],
+    [
+     "ahn2015tesseract",
+     "a conven- tional high-performance baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01v"
+    ],
+    [
+     "shin2025piccolo",
+     "above, a 128B cache line stores 16 sectors of 8B data from a range of 32KB (15 address bits from fg-tag (8) + fg-offset (4) + byte offset (3))"
+    ]
+   ],
+   "640": [
+    [
+     "ahn2015tesseract",
+     "nce baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01ve different graph processing wo"
+    ],
+    [
+     "ahn2015tesseract",
+     "nce baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01ve different graph processing wo"
+    ]
+   ],
+   "500": [
+    [
+     "ahn2015tesseract",
+     "igh performance requires a massive amount of memory band- width (near 500 GB/s) as shown in Figure 2b. This is beyond the level of what convent"
+    ],
+    [
+     "ham2016graphicionado",
+     "earch (BFS) BFS is a widely-used graph search algorithm from the Graph500 Benchmark, operating on an unweighted graph [1]. Starting from a give"
+    ],
+    [
+     "asquini2025tc",
+     "covery from Data, 2022. [157] 2021. [Online]. Available: https://graph500.org/ ?page_id=12 [158] T. A. Davis and Y. Hu, \u201cThe university of flor"
+    ],
+    [
+     "ahn2015tesseract",
+     "igh performance requires a massive amount of memory band- width (near 500 GB/s) as shown in Figure 2b. This is beyond the level of what convent"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C005",
+  "para": 3,
+  "text": "The authors note that pin-limited systems cannot deliver this bandwidth for random access~.",
+  "cites": [
+   "ahn2015tesseract"
+  ],
+  "srcs": [
+   "ahn2015tesseract"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C006",
+  "para": 3,
+  "text": "Piccolo measures that more than 90\\% of the bytes that a cache fetches during BFS are evicted before they are used.",
+  "cites": [],
+  "srcs": [
+   "ahn2015tesseract",
+   "ham2016graphicionado",
+   "asquini2025tc",
+   "ahn2015tesseract",
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "90": [
+    [
+     "ham2016graphicionado",
+     "otal of 50x-100x energy difference. In Fig. 16, most of the energy ( \u223c90%) is spent on the eDRAM. The hardware modules themselves are mostly s"
+    ],
+    [
+     "asquini2025tc",
+     "], [79], [80], [81], [82], [83], [84], [85], [86], [87], [88], [89], [90], [91], [92], [93], [94], [95], [96], [97], [98], [99], [100], [101],"
+    ],
+    [
+     "shin2025piccolo",
+     "nularity is much smaller than the individual vertex data ( 64B), over 90% of the accessed data are evicted from the cache without being used. "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C007",
+  "para": 3,
+  "text": "The reason is that one useful vertex of 4--8\\,B arrives inside a 64\\,B burst~.",
+  "cites": [
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "4": [
+    [
+     "shin2025piccolo",
+     "ff-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), which is depicted in Fig. 1a with red (unuseful dat"
+    ]
+   ],
+   "8": [
+    [
+     "shin2025piccolo",
+     "Chip I/O DRAM ... ... ... ... ... ... Processor Cache Tag 1 Tag 2 Tag 8 Prefetcher Vertex Prefetch Edge Prefetch PE S I M D UE Updater ... RA"
+    ]
+   ],
+   "64": [
+    [
+     "shin2025piccolo",
+     "h can be attributed to the discrepancy between off-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), whic"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C008",
+  "para": 4,
+  "text": "It places compute units in the logic layer of 3D-stacked memory, in the buffer chips of dynamic random-access memory (DRAM), next to DRAM banks, or inside resistive crossbars.",
+  "cites": [],
+  "srcs": [
+   "ahn2015tesseract",
+   "song2018graphr",
+   "gomezluna2022prim",
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "yan2019graphdyns",
+   "gui2019survey",
+   "gomezluna2022prim",
+   "barkhordar2025alphapim",
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega",
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {
+   "3": [
+    [
+     "ahn2015tesseract",
+     "tive. The key modern enabler for PIM is the recent advancement of the 3D integration technology that facilitates stacking logic and memory di"
+    ],
+    [
+     "song2018graphr",
+     "8.91\u00d7 less energy. G RAPH R gains a speedup of 1.16\u00d7 to 4.12\u00d7, and is 3.67\u00d7 to 10.96\u00d7 more energy ef\ufb01ciency compared to PIM-based architectur"
+    ],
+    [
+     "gomezluna2022prim",
+     "n-Memory Architecture Juan G\u00f3mez-Luna1 Izzat El Hajj2 Ivan Fernandez1,3 Christina Giannoula1,4 Geraldo F. Oliveira1 Onur Mutlu1 1ETH Z\u00fcrich 2"
+    ],
+    [
+     "ham2016graphicionado",
+     "types and does not effectively retain high locality data on-chip, and 3) mismatch in execution granularity\u2014computation and communication of d"
+    ],
+    [
+     "mukkara2018hats",
+     "rheads, allowing BDFS to improve performance by 83% on average (up to 3.1 \u00d7) over a locality-oblivious software implementation and by 31% on "
+    ],
+    [
+     "yan2019graphdyns",
+     "cs Acceleration: a Hardware/Software Co-Design Approach Mingyu Yan1,2,3, Xing Hu3, Shuangchen Li3, Abanti Basak3, Han Li1,2, Xin Ma3, Itir Ak"
+    ],
+    [
+     "gui2019survey",
+     "ent Member, CCF , Long Zheng 1,\u2217, Member, CCF, ACM, IEEE Bing-Sheng He3, Senior Member, IEEE, Member, ACM , Cheng Liu 2,3, Xin-Yu Chen3 Xiao-"
+    ],
+    [
+     "gomezluna2022prim",
+     "n-Memory Architecture Juan G\u00f3mez-Luna1 Izzat El Hajj2 Ivan Fernandez1,3 Christina Giannoula1,4 Geraldo F. Oliveira1 Onur Mutlu1 1ETH Z\u00fcrich 2"
+    ],
+    [
+     "barkhordar2025alphapim",
+     "re; (2) characterize their performance and identify key bottlenecks; (3) compare results against CPU and GPU baselines; and (4) derive insigh"
+    ],
+    [
+     "rahman2021jetstream",
+     "ncremental algorithm (top) and static algorithm (bottom). A B E D C 7 3 8 5 2 7 2 6 EDCBA EDCBA 128350 128350 128350 128350 delete(A\u2192C) expec"
+    ],
+    [
+     "zhao2022tdgraph",
+     "S, Minnow, PHI, and DepGraph, TDGraph gains the speedups of 4.6\u223c12.7, 3.2\u223c8.6, 3.8\u223c9.7, and 2.3\u223c6.1 times, respectively. \u2217 Corresponding Auth"
+    ],
+    [
+     "gao2023mega",
+     "PUs and custom accelerators to enhance performance and scala- bility [3, 4, 9, 16, 19, 23, 25, 26, 29\u201331, 37\u201339, 45, 50, 52, 58]. In real-wor"
+    ],
+    [
+     "shin2025piccolo",
+     "iling and in-memory operations. Piccolo achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% r"
+    ],
+    [
+     "shin2025fala",
+     "84], recommendation systems [ 27, 52, 95], bioinformatics analy- sis [3, 18, 37] and robotics [ 19]. Graph processing [ 63] extracts and util"
+    ],
+    [
+     "yenimol2026cograf",
+     "well. We achieve an average speedup in the region of interest of 1.8\u00d7/3\u00d7 compared to naive FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art n"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C009",
+  "para": 4,
+  "text": "Data then moves over short internal paths instead of the external bus~.",
+  "cites": [
+   "ahn2015tesseract",
+   "song2018graphr",
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "song2018graphr",
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C010",
+  "para": 4,
+  "text": "This approach keeps the memory conventional and builds specialized pipelines, schedulers, and on-chip storage around the vertex-centric execution model~.",
+  "cites": [
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "yan2019graphdyns"
+  ],
+  "srcs": [
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "yan2019graphdyns"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C011",
+  "para": 4,
+  "text": "A 2019 survey of graph accelerators concluded that there was ``not an absolute winner'' across preprocessing, parallel computation, and runtime scheduling~.",
+  "cites": [
+   "gui2019survey"
+  ],
+  "srcs": [
+   "gui2019survey"
+  ],
+  "nums": {
+   "2019": [
+    [
+     "gui2019survey",
+     "{x\ufb02iao, hjin}@hust.edu.cn Received July xx, 2018; revised January xx, 2019. Abstract Graph is a well known data structure to represent the assoc"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C012",
+  "para": 4,
+  "text": "Researchers have characterized commercial PIM hardware (UPMEM) on real workloads~.",
+  "cites": [
+   "gomezluna2022prim",
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "gomezluna2022prim",
+   "barkhordar2025alphapim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C013",
+  "para": 4,
+  "text": "DSAs now support streaming and evolving graphs~.",
+  "cites": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "srcs": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C014",
+  "para": 4,
+  "text": "A new class of hybrid designs has also appeared~.",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C015",
+  "para": 6,
+  "text": "\\textbf{SQ1}: Which bottleneck does each camp address, and how have its designs developed over time?",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "1": []
+  }
+ },
+ {
+  "id": "C016",
+  "para": 6,
+  "text": "\\textbf{SQ2}: What do the reported results show once their baselines and evaluation substrates are made explicit?",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "2": []
+  }
+ },
+ {
+  "id": "C017",
+  "para": 6,
+  "text": "\\textbf{SQ3}: Which assumptions decide which camp is better?",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "3": []
+  }
+ },
+ {
+  "id": "C018",
+  "para": 6,
+  "text": "\\textbf{SQ4}: How do the camps differ in security, dependability, and predictability?",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "4": []
+  }
+ },
+ {
+  "id": "C019",
+  "para": 6,
+  "text": "Our contributions are the following: (i)~a taxonomy of 30 works, based on where the compute is placed in the memory hierarchy (Section~); (ii)~a review of each camp that follows how its designs developed and reports every headline number together with its baseline (Sections~--); (iii)~a comparative analysis of the assumptions that decide between the camps (Section~); and (iv)~an assessment of the ",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "30": []
+  }
+ },
+ {
+  "id": "C020",
+  "para": 9,
+  "text": "The updates are then combined into the properties of the destination vertices (\\emph{apply})~.",
+  "cites": [
+   "ham2016graphicionado",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "ham2016graphicionado",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C021",
+  "para": 9,
+  "text": "Coordinate (COO) lists are easy to extend but harder to traverse~.",
+  "cites": [
+   "asquini2025tc"
+  ],
+  "srcs": [
+   "asquini2025tc"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C022",
+  "para": 9,
+  "text": "Graph mining, in contrast, consists mostly of set intersections and unions over neighbor lists~.",
+  "cites": [
+   "besta2021sisa"
+  ],
+  "srcs": [
+   "besta2021sisa"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C023",
+  "para": 9,
+  "text": "First, vertex properties are small (4--8\\,B) compared with the 64\\,B DRAM burst, so most of a cache line fetched for one vertex is wasted~.",
+  "cites": [
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "4": [
+    [
+     "shin2025piccolo",
+     "ff-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), which is depicted in Fig. 1a with red (unuseful dat"
+    ]
+   ],
+   "8": [
+    [
+     "shin2025piccolo",
+     "Chip I/O DRAM ... ... ... ... ... ... Processor Cache Tag 1 Tag 2 Tag 8 Prefetcher Vertex Prefetch Edge Prefetch PE S I M D UE Updater ... RA"
+    ]
+   ],
+   "64": [
+    [
+     "shin2025piccolo",
+     "h can be attributed to the discrepancy between off-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), whic"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C024",
+  "para": 9,
+  "text": "This makes both partitions and crossbar mappings unbalanced~.",
+  "cites": [
+   "zheng2020spara",
+   "cai2024pimpam"
+  ],
+  "srcs": [
+   "zheng2020spara",
+   "cai2024pimpam"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C025",
+  "para": 10,
+  "text": "Bulk-synchronous designs, such as Graphicionado, process all active vertices of an iteration before they start the next one~.",
+  "cites": [
+   "ham2016graphicionado"
+  ],
+  "srcs": [
+   "ham2016graphicionado"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C026",
+  "para": 10,
+  "text": "JetStream builds on such an event-driven accelerator, which its authors report was up to $6\\times$ faster than a bulk-synchronous design~.",
+  "cites": [
+   "rahman2021jetstream"
+  ],
+  "srcs": [
+   "rahman2021jetstream"
+  ],
+  "nums": {
+   "6": [
+    [
+     "rahman2021jetstream",
+     "driven asynchronous processing model, with reported speedups of up to 6\u00d7 relative to BSP-based accelerator (Graphi- cionado [13]). The event-"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C027",
+  "para": 10,
+  "text": "GraphQ's multi-node model also accepts values that are out of date by a bounded amount~.",
+  "cites": [
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "zhuo2019graphq"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C028",
+  "para": 10,
+  "text": "For this reason, CoGraf, for example, evaluates only push-based variants~.",
+  "cites": [
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C029",
+  "para": 10,
+  "text": "GraphDynS describes the resulting difficulties as three kinds of irregularity~.",
+  "cites": [
+   "yan2019graphdyns"
+  ],
+  "srcs": [
+   "yan2019graphdyns"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C030",
+  "para": 10,
+  "text": "Most papers report speedup and energy relative to a baseline, but some report traversed edges per second (TEPS) or TEPS per watt~.",
+  "cites": [
+   "lee2022graphwave"
+  ],
+  "srcs": [
+   "lee2022graphwave"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C031",
+  "para": 11,
+  "text": "They are either stand-alone accelerators or units attached to cores~.",
+  "cites": [
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "zhao2022tdgraph"
+  ],
+  "srcs": [
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "zhao2022tdgraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C032",
+  "para": 11,
+  "text": "\\emph{Processing-near-memory} (PnM) places programmable cores or fixed-function units in the logic layer of a 3D stack~, in the buffer chip of a dual in-line memory module (DIMM)~, or next to each DRAM bank, as in UPMEM~.",
+  "cites": [
+   "ahn2015tesseract",
+   "zhuo2019graphq",
+   "talati2022ndminer",
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhuo2019graphq",
+   "talati2022ndminer",
+   "gomezluna2022prim"
+  ],
+  "nums": {
+   "3": [
+    [
+     "ahn2015tesseract",
+     "tive. The key modern enabler for PIM is the recent advancement of the 3D integration technology that facilitates stacking logic and memory di"
+    ],
+    [
+     "zhuo2019graphq",
+     "ive real-world graphs and four algorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tesse"
+    ],
+    [
+     "gomezluna2022prim",
+     "n-Memory Architecture Juan G\u00f3mez-Luna1 Izzat El Hajj2 Ivan Fernandez1,3 Christina Giannoula1,4 Geraldo F. Oliveira1 Onur Mutlu1 1ETH Z\u00fcrich 2"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C033",
+  "para": 11,
+  "text": "\\emph{Fine-grained} or \\emph{bank-level} PIM adds simple arithmetic logic units (ALUs) that operate on whole DRAM columns inside the banks~.",
+  "cites": [
+   "yenimol2026cograf",
+   "shin2025fala"
+  ],
+  "srcs": [
+   "yenimol2026cograf",
+   "shin2025fala"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C034",
+  "para": 11,
+  "text": "\\emph{Processing-using-memory} with resistive crossbars performs analog sparse matrix--vector multiplication inside the memory array itself~.",
+  "cites": [
+   "song2018graphr",
+   "zheng2020spara",
+   "challapalle2020gaasx"
+  ],
+  "srcs": [
+   "song2018graphr",
+   "zheng2020spara",
+   "challapalle2020gaasx"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C035",
+  "para": 14,
+  "text": "The search focused on ISCA, MICRO, HPCA, ASPLOS, and DSN, with 2021--2026 as the main time window.",
+  "cites": [],
+  "srcs": [
+   "chen2022regraph",
+   "afarin2023commongraph",
+   "yin2023glign"
+  ],
+  "nums": {
+   "2021": [
+    [
+     "chen2022regraph",
+     "essing on FPGAs with caches for thousands of simultaneous misses,\u201d in 2021 ACM/IEEE 48th Annual International Symposium on Computer Architecture"
+    ],
+    [
+     "afarin2023commongraph",
+     "r. MICRO \u201921. New York, NY, USA: Association for Computing Machinery, 2021, p. 1036\u20131050. [Online]. Available: https://doi.org/10.1145/3466752.3"
+    ],
+    [
+     "yin2023glign",
+     " 595\u015b602. [6] Hongzheng Chen, Minghua Shen, Nong Xiao, and Yutong Lu. 2021. Krill: a compiler and runtime system for concurrent graph processing"
+    ]
+   ],
+   "2026": []
+  }
+ },
+ {
+  "id": "C036",
+  "para": 14,
+  "text": "We also included important designs from before 2021 when later work compares against them.",
+  "cites": [],
+  "srcs": [
+   "chen2022regraph",
+   "afarin2023commongraph",
+   "yin2023glign"
+  ],
+  "nums": {
+   "2021": [
+    [
+     "chen2022regraph",
+     "essing on FPGAs with caches for thousands of simultaneous misses,\u201d in 2021 ACM/IEEE 48th Annual International Symposium on Computer Architecture"
+    ],
+    [
+     "afarin2023commongraph",
+     "r. MICRO \u201921. New York, NY, USA: Association for Computing Machinery, 2021, p. 1036\u20131050. [Online]. Available: https://doi.org/10.1145/3466752.3"
+    ],
+    [
+     "yin2023glign",
+     " 595\u015b602. [6] Hongzheng Chen, Minghua Shen, Nong Xiao, and Yutong Lu. 2021. Krill: a compiler and runtime system for concurrent graph processing"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C037",
+  "para": 14,
+  "text": "One FPGA design (ReGraph~) serves as a reference point, because our comparison is about PIM and application-specific integrated circuit (ASIC) design approaches.",
+  "cites": [
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "chen2022regraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C038",
+  "para": 14,
+  "text": "Two software systems, CommonGraph~ and Glign~, are cited as algorithmic context and are not counted as hardware.",
+  "cites": [
+   "afarin2023commongraph",
+   "yin2023glign"
+  ],
+  "srcs": [
+   "afarin2023commongraph",
+   "yin2023glign"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C039",
+  "para": 14,
+  "text": "This is partly a finding: since 2021, graph PIM has been the more active design space at the target venues, while many graph DSAs are older.",
+  "cites": [],
+  "srcs": [
+   "chen2022regraph",
+   "afarin2023commongraph",
+   "yin2023glign"
+  ],
+  "nums": {
+   "2021": [
+    [
+     "chen2022regraph",
+     "essing on FPGAs with caches for thousands of simultaneous misses,\u201d in 2021 ACM/IEEE 48th Annual International Symposium on Computer Architecture"
+    ],
+    [
+     "afarin2023commongraph",
+     "r. MICRO \u201921. New York, NY, USA: Association for Computing Machinery, 2021, p. 1036\u20131050. [Online]. Available: https://doi.org/10.1145/3466752.3"
+    ],
+    [
+     "yin2023glign",
+     " 595\u015b602. [6] Hongzheng Chen, Minghua Shen, Nong Xiao, and Yutong Lu. 2021. Krill: a compiler and runtime system for concurrent graph processing"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C040",
+  "para": 16,
+  "text": "\\begin{table}[t] \\caption{Surveyed corpus by camp and evaluation substrate} \\centering\\footnotesize \\begin{tabularx}{\\columnwidth}{@{}L{3.3cm}YL{2.4cm}@{}} \\toprule Camp / class & Works & Substrate",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "3.3": [],
+   "2.4": []
+  }
+ },
+ {
+  "id": "C041",
+  "para": 17,
+  "text": "\\midrule PIM, 3D-stack / buffer & Tesseract~, GraphP~, GraphQ~, SISA~, SynCron~, NDMiner~ & simulation",
+  "cites": [
+   "ahn2015tesseract",
+   "zhang2018graphp",
+   "zhuo2019graphq",
+   "besta2021sisa",
+   "giannoula2021syncron",
+   "talati2022ndminer"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhang2018graphp",
+   "zhuo2019graphq",
+   "besta2021sisa",
+   "giannoula2021syncron",
+   "talati2022ndminer"
+  ],
+  "nums": {
+   "3": [
+    [
+     "ahn2015tesseract",
+     "tive. The key modern enabler for PIM is the recent advancement of the 3D integration technology that facilitates stacking logic and memory di"
+    ],
+    [
+     "zhang2018graphp",
+     " processing units within memory. The recent advance of \u201cbig data\u201d and 3D stacking technology make PIM a practical and viable solution for the"
+    ],
+    [
+     "zhuo2019graphq",
+     "ive real-world graphs and four algorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tesse"
+    ],
+    [
+     "besta2021sisa",
+     "aghavendra Kanakagiri2, Grzegorz Kwasniewski1, Rachata Ausavarungnirun3, Jakub Ber\u00e1nek4, Konstantinos Kanellopoulos1, Kacper Janda5, Zur Vona"
+    ],
+    [
+     "giannoula2021syncron",
+     " minimize expensive communication across NDP units of the system, and 3) a hardware-only over\ufb02ow management scheme to avoid performance degra"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C042",
+  "para": 18,
+  "text": "PIM, analog ReRAM & GraphR~, Spara~, GaaS-X~ & sim.\\ + SPICE",
+  "cites": [
+   "song2018graphr",
+   "zheng2020spara",
+   "challapalle2020gaasx"
+  ],
+  "srcs": [
+   "song2018graphr",
+   "zheng2020spara",
+   "challapalle2020gaasx"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C043",
+  "para": 19,
+  "text": "PIM, real hardware & PrIM~, PimPam~, ALPHA-PIM~, TC on UPMEM~ & UPMEM silicon",
+  "cites": [
+   "gomezluna2022prim",
+   "cai2024pimpam",
+   "barkhordar2025alphapim",
+   "asquini2025tc"
+  ],
+  "srcs": [
+   "gomezluna2022prim",
+   "cai2024pimpam",
+   "barkhordar2025alphapim",
+   "asquini2025tc"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C044",
+  "para": 20,
+  "text": "DSA, static & Graphicionado~, HATS~, GraphDynS~, GraphWave~, ReGraph~ & sim.; FPGA",
+  "cites": [
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "yan2019graphdyns",
+   "lee2022graphwave",
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "yan2019graphdyns",
+   "lee2022graphwave",
+   "chen2022regraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C045",
+  "para": 21,
+  "text": "DSA, dynamic & JetStream~, TDGraph~, MEGA~ & simulation",
+  "cites": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "srcs": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C046",
+  "para": 22,
+  "text": "Hybrid & Piccolo~, FALA~, CoGraf~ & sim.; FPGA emul.",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C047",
+  "para": 23,
+  "text": "Security / position & MGX~, IMPACT~, PiD security~, Kim \\& Kim~ & mixed",
+  "cites": [
+   "hua2022mgx",
+   "bostanci2025impact",
+   "yuksel2026pid",
+   "kim2020dynamic"
+  ],
+  "srcs": [
+   "hua2022mgx",
+   "bostanci2025impact",
+   "yuksel2026pid",
+   "kim2020dynamic"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C048",
+  "para": 24,
+  "text": "Software context & CommonGraph~, Glign~ & CPU",
+  "cites": [
+   "afarin2023commongraph",
+   "yin2023glign"
+  ],
+  "srcs": [
+   "afarin2023commongraph",
+   "yin2023glign"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C049",
+  "para": 27,
+  "text": "\\subsection{3D-stacked PIM: the communication problem} Tesseract set the template for graph PIM~.",
+  "cites": [
+   "ahn2015tesseract"
+  ],
+  "srcs": [
+   "ahn2015tesseract"
+  ],
+  "nums": {
+   "3": [
+    [
+     "ahn2015tesseract",
+     "tive. The key modern enabler for PIM is the recent advancement of the 3D integration technology that facilitates stacking logic and memory di"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C050",
+  "para": 27,
+  "text": "With 16 cubes, the cores have 8\\,TB/s of total internal bandwidth, compared with 640\\,GB/s for the baseline server.",
+  "cites": [],
+  "srcs": [
+   "ahn2015tesseract",
+   "ahn2015tesseract"
+  ],
+  "nums": {
+   "16": [
+    [
+     "ahn2015tesseract",
+     "he representative examples of this is large-scale graph analysis [12, 16, 17, 37, 39, 51, 58], which has recently been studied as an alternati"
+    ],
+    [
+     "ahn2015tesseract",
+     "he representative examples of this is large-scale graph analysis [12, 16, 17, 37, 39, 51, 58], which has recently been studied as an alternati"
+    ]
+   ],
+   "8": [
+    [
+     "ahn2015tesseract",
+     "n be accelerated by parallelizing the ver- tex loops [17] (lines 1\u20134, 8\u201313, and 14\u201318) since computation for each vertex is almost independen"
+    ],
+    [
+     "ahn2015tesseract",
+     "n be accelerated by parallelizing the ver- tex loops [17] (lines 1\u20134, 8\u201313, and 14\u201318) since computation for each vertex is almost independen"
+    ]
+   ],
+   "640": [
+    [
+     "ahn2015tesseract",
+     "nce baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01ve different graph processing wo"
+    ],
+    [
+     "ahn2015tesseract",
+     "nce baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01ve different graph processing wo"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C051",
+  "para": 27,
+  "text": "Tesseract reports about $10\\times$ higher performance and 87\\% lower energy than this baseline on graphs with four to seven million vertices~.",
+  "cites": [
+   "ahn2015tesseract"
+  ],
+  "srcs": [
+   "ahn2015tesseract"
+  ],
+  "nums": {
+   "10": [
+    [
+     "ahn2015tesseract",
+     "\u00a9 2015 ACM. ISBN 978-1-4503-3402-0/15/06$15.00 DOI: http://dx.doi.org/10.1145/2749469.2750386 demand for more data and their analyses, the des"
+    ]
+   ],
+   "87": [
+    [
+     "ahn2015tesseract",
+     "improves average system perfor- mance by a factor of ten and achieves 87% average energy reduction over conventional systems. 1. Introduction "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C052",
+  "para": 28,
+  "text": "This gives a $1.7\\times$ speedup and 89\\% energy saving \\emph{over Tesseract} in cycle-accurate simulation~.",
+  "cites": [
+   "zhang2018graphp"
+  ],
+  "srcs": [
+   "zhang2018graphp"
+  ],
+  "nums": {
+   "1.7": [
+    [
+     "zhang2018graphp",
+     "graphs and 4 algorithms. The results show that it provides on average 1.7 speedup and 89% energy saving compared to T ESSERACT . I. I NTRODUCTI"
+    ]
+   ],
+   "89": [
+    [
+     "zhang2018graphp",
+     "orithms. The results show that it provides on average 1.7 speedup and 89% energy saving compared to T ESSERACT . I. I NTRODUCTION Processing-I"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C053",
+  "para": 28,
+  "text": "This model works for asynchronous iterative algorithms that accept values that are out of date by a bounded amount~.",
+  "cites": [
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "zhuo2019graphq"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C054",
+  "para": 28,
+  "text": "GraphQ reports $3.3\\times$ on average ($13.9\\times$ maximum) and 81\\% energy saving over Tesseract in zSim~.",
+  "cites": [
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "zhuo2019graphq"
+  ],
+  "nums": {
+   "3.3": [
+    [
+     "zhuo2019graphq",
+     "ive real-world graphs and four algorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tessera"
+    ]
+   ],
+   "13.9": [
+    [
+     "zhuo2019graphq",
+     "aphs and four algorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tesseract. We show that i"
+    ]
+   ],
+   "81": [
+    [
+     "zhuo2019graphq",
+     "lgorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tesseract. We show that increasing mem"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C055",
+  "para": 28,
+  "text": "Its often-quoted $98.34\\times$ figure compares a four-node GraphQ with a \\emph{single node that uses a conventional memory hierarchy}.",
+  "cites": [],
+  "srcs": [
+   "zhang2018graphp",
+   "zhuo2019graphq",
+   "zhuo2019graphq",
+   "zhuo2019graphq"
+  ],
+  "nums": {
+   "98.34": [
+    [
+     "zhuo2019graphq",
+     "proportionally increases compute capability: a 4-node GraphQ achieves 98.34\u00d7 speedup compared with a single node with the same memory size and co"
+    ],
+    [
+     "zhuo2019graphq",
+     "proportionally increases compute capability: a 4-node GraphQ achieves 98.34\u00d7 speedup compared with a single node with the same memory size and co"
+    ],
+    [
+     "zhuo2019graphq",
+     "proportionally increases compute capability: a 4-node GraphQ achieves 98.34\u00d7 speedup compared with a single node with the same memory size and co"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C056",
+  "para": 28,
+  "text": "It is not a gain over earlier PIM~.",
+  "cites": [
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "zhuo2019graphq"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C057",
+  "para": 29,
+  "text": "If a vertex program can be written as sparse matrix--vector multiplication (SpMV), small blocks of the graph can be stored in ReRAM crossbars and processed in the analog domain~.",
+  "cites": [
+   "song2018graphr"
+  ],
+  "srcs": [
+   "song2018graphr"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C058",
+  "para": 29,
+  "text": "GraphR reports a geometric-mean speedup of $16.01\\times$ (maximum $132.67\\times$) and $33.82\\times$ energy saving over a CPU baseline.",
+  "cites": [],
+  "srcs": [
+   "song2018graphr",
+   "song2018graphr",
+   "zheng2020spara",
+   "challapalle2020gaasx",
+   "song2018graphr"
+  ],
+  "nums": {
+   "16.01": [
+    [
+     "song2018graphr",
+     "due to sparsity. The experiment results show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric m"
+    ],
+    [
+     "song2018graphr",
+     "due to sparsity. The experiment results show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric m"
+    ],
+    [
+     "song2018graphr",
+     "due to sparsity. The experiment results show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric m"
+    ]
+   ],
+   "132.67": [
+    [
+     "song2018graphr",
+     ". The experiment results show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric mean compared to "
+    ],
+    [
+     "song2018graphr",
+     ". The experiment results show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric mean compared to "
+    ],
+    [
+     "song2018graphr",
+     ". The experiment results show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric mean compared to "
+    ]
+   ],
+   "33.82": [
+    [
+     "song2018graphr",
+     " show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric mean compared to a CPU baseline system. "
+    ],
+    [
+     "song2018graphr",
+     " show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric mean compared to a CPU baseline system. "
+    ],
+    [
+     "song2018graphr",
+     " show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric mean compared to a CPU baseline system. "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C059",
+  "para": 29,
+  "text": "It also reports a $1.69$--$2.19\\times$ speedup over a GPU and a $1.16$--$4.12\\times$ speedup over a PIM architecture~.",
+  "cites": [
+   "song2018graphr"
+  ],
+  "srcs": [
+   "song2018graphr"
+  ],
+  "nums": {
+   "1.69": [
+    [
+     "song2018graphr",
+     "mpared to a CPU baseline system. Com- pared to GPU, G RAPH R achieves 1.69\u00d7 to 2.19\u00d7 speedup and consumes 4.77\u00d7 to 8.91\u00d7 less energy. G RAPH R g"
+    ]
+   ],
+   "2.19": [
+    [
+     "song2018graphr",
+     " a CPU baseline system. Com- pared to GPU, G RAPH R achieves 1.69\u00d7 to 2.19\u00d7 speedup and consumes 4.77\u00d7 to 8.91\u00d7 less energy. G RAPH R gains a sp"
+    ]
+   ],
+   "1.16": [
+    [
+     "song2018graphr",
+     " and consumes 4.77\u00d7 to 8.91\u00d7 less energy. G RAPH R gains a speedup of 1.16\u00d7 to 4.12\u00d7, and is 3.67\u00d7 to 10.96\u00d7 more energy ef\ufb01ciency compared to P"
+    ]
+   ],
+   "4.12": [
+    [
+     "song2018graphr",
+     "umes 4.77\u00d7 to 8.91\u00d7 less energy. G RAPH R gains a speedup of 1.16\u00d7 to 4.12\u00d7, and is 3.67\u00d7 to 10.96\u00d7 more energy ef\ufb01ciency compared to PIM-based "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C060",
+  "para": 29,
+  "text": "Spara reports $8.21\\times$ and $5.01\\times$ higher performance and $8.97\\times$ and $5.68\\times$ energy savings over GraphR and GraphSAR, respectively.",
+  "cites": [],
+  "srcs": [
+   "song2018graphr",
+   "song2018graphr",
+   "zheng2020spara",
+   "challapalle2020gaasx",
+   "song2018graphr"
+  ],
+  "nums": {
+   "8.21": [
+    [
+     "zheng2020spara",
+     "synthesized graphs show that Spara outperforms GraphR and GraphSAR by 8.21\u00d7 and 5.01\u00d7 in terms of performance, and by 8.97\u00d7 and 5.68\u00d7 in terms o"
+    ]
+   ],
+   "5.01": [
+    [
+     "zheng2020spara",
+     "d graphs show that Spara outperforms GraphR and GraphSAR by 8.21\u00d7 and 5.01\u00d7 in terms of performance, and by 8.97\u00d7 and 5.68\u00d7 in terms of energy s"
+    ]
+   ],
+   "8.97": [
+    [
+     "zheng2020spara",
+     "raphR and GraphSAR by 8.21\u00d7 and 5.01\u00d7 in terms of performance, and by 8.97\u00d7 and 5.68\u00d7 in terms of energy savings (on average), while incurring a"
+    ]
+   ],
+   "5.68": [
+    [
+     "zheng2020spara",
+     "GraphSAR by 8.21\u00d7 and 5.01\u00d7 in terms of performance, and by 8.97\u00d7 and 5.68\u00d7 in terms of energy savings (on average), while incurring a reasonabl"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C061",
+  "para": 29,
+  "text": "Its lightweight reordering adds only 3.9--6.6\\% extra preprocessing time on the largest graph evaluated~.",
+  "cites": [
+   "zheng2020spara"
+  ],
+  "srcs": [
+   "zheng2020spara"
+  ],
+  "nums": {
+   "3.9": [
+    [
+     "zheng2020spara",
+     "e Spara incurs extra 25.6 seconds and 15.6 seconds with only 6.6% and 3.9% extra overheads, respectively. The maximum overhead is WV but does n"
+    ]
+   ],
+   "6.6": [
+    [
+     "zheng2020spara",
+     "ds), while Spara incurs extra 25.6 seconds and 15.6 seconds with only 6.6% and 3.9% extra overheads, respectively. The maximum overhead is WV b"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C062",
+  "para": 29,
+  "text": "It reports $7.7\\times$ and $2.4\\times$ higher performance and $22\\times$ and $5.7\\times$ energy savings over GraphR and GRAM~.",
+  "cites": [
+   "challapalle2020gaasx"
+  ],
+  "srcs": [
+   "challapalle2020gaasx"
+  ],
+  "nums": {
+   "7.7": [
+    [
+     "challapalle2020gaasx",
+     "the state of the art crossbar-based PIM accelerators. GaaS-X achieves 7.7\u00d7 and 2.4\u00d7 performance and 22\u00d7 and 5.7\u00d7, energy savings, respectively,"
+    ]
+   ],
+   "2.4": [
+    [
+     "challapalle2020gaasx",
+     " of the art crossbar-based PIM accelerators. GaaS-X achieves 7.7\u00d7 and 2.4\u00d7 performance and 22\u00d7 and 5.7\u00d7, energy savings, respectively, over two"
+    ]
+   ],
+   "22": [
+    [
+     "challapalle2020gaasx",
+     "based PIM accelerators. GaaS-X achieves 7.7\u00d7 and 2.4\u00d7 performance and 22\u00d7 and 5.7\u00d7, energy savings, respectively, over two state-of-the-art cr"
+    ]
+   ],
+   "5.7": [
+    [
+     "challapalle2020gaasx",
+     "M accelerators. GaaS-X achieves 7.7\u00d7 and 2.4\u00d7 performance and 22\u00d7 and 5.7\u00d7, energy savings, respectively, over two state-of-the-art crossbar ac"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C063",
+  "para": 29,
+  "text": "GraphR argues that iterative graph algorithms tolerate this imprecision~.",
+  "cites": [
+   "song2018graphr"
+  ],
+  "srcs": [
+   "song2018graphr"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C064",
+  "para": 30,
+  "text": "Between 5\\% and 30\\% of the largest neighborhoods are stored as bitvectors and the rest as integer arrays, so the data representation itself adapts to the skewed degrees.",
+  "cites": [],
+  "srcs": [
+   "besta2021sisa",
+   "talati2022ndminer",
+   "giannoula2021syncron"
+  ],
+  "nums": {
+   "5": [
+    [
+     "besta2021sisa",
+     "arungnirun3, Jakub Ber\u00e1nek4, Konstantinos Kanellopoulos1, Kacper Janda5, Zur Vonarburg-Shmaria1, Lukas Gianinazzi1, Ioana Stefan1, Juan G\u00f3mez"
+    ],
+    [
+     "giannoula2021syncron",
+     "not ef\ufb01cient or suitable for NDP systems (Section 7). For instance, CM5 [94] provides a barrier primitive via a dedicated physical network, w"
+    ]
+   ],
+   "30": [
+    [
+     "besta2021sisa",
+     "y [49], health- care [157], web graph analysis [85], and many others [30, 39, 74, 84]. These problems often run in time at least quadratic in "
+    ],
+    [
+     "giannoula2021syncron",
+     "i- tectures. Moreover, based on prior works on synchroniza- tion [22, 30, 76, 102, 107, 140], coherence-based synchroniza- tion would exhibit "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C065",
+  "para": 30,
+  "text": "SISA reports more than $10\\times$ speedup over the Bron--Kerbosch maximal-clique algorithm~.",
+  "cites": [
+   "besta2021sisa"
+  ],
+  "srcs": [
+   "besta2021sisa"
+  ],
+  "nums": {
+   "10": [
+    [
+     "besta2021sisa",
+     "are efficient and outperform hand-tuned baselines, offering more than 10\u00d7 speedup over the established Bron-Kerbosch algorithm for listing max"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C066",
+  "para": 30,
+  "text": "Its abstract reports gains of $6.4\\times$ and $2.5\\times$ over software and hardware baselines~.",
+  "cites": [
+   "talati2022ndminer"
+  ],
+  "srcs": [
+   "talati2022ndminer"
+  ],
+  "nums": {
+   "6.4": [
+    [
+     "talati2022ndminer",
+     "tes unnecessary loads. outperforms software and hardware baselines by 6.4X and 2.5X"
+    ]
+   ],
+   "2.5": [
+    [
+     "talati2022ndminer",
+     "essary loads. outperforms software and hardware baselines by 6.4X and 2.5X"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C067",
+  "para": 30,
+  "text": "SynCron provides synchronization engines near the data and reports improvements of $1.27\\times$ (high contention) and $1.35\\times$ (real applications) over earlier schemes~.",
+  "cites": [
+   "giannoula2021syncron"
+  ],
+  "srcs": [
+   "giannoula2021syncron"
+  ],
+  "nums": {
+   "1.27": [
+    [
+     "giannoula2021syncron",
+     "overing various contention scenarios. SynCron improves performance by 1.27\u00d7 on average (up to 1.78\u00d7) under high- contention scenarios, and by 1."
+    ]
+   ],
+   "1.35": [
+    [
+     "giannoula2021syncron",
+     "27\u00d7 on average (up to 1.78\u00d7) under high- contention scenarios, and by 1.35\u00d7 on average (up to 2.29\u00d7) under low-contention real applications, com"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C068",
+  "para": 31,
+  "text": "\\subsection{Real hardware: results on UPMEM} Until recently, the evidence for PIM came from simulation or, at best, from simplified hardware prototypes~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C069",
+  "para": 31,
+  "text": "Each DRAM processing unit (DPU) is a 350\\,MHz in-order core with exclusive access to a 64\\,MB bank and a 64\\,KB scratchpad.",
+  "cites": [],
+  "srcs": [
+   "gomezluna2022prim",
+   "gomezluna2022prim",
+   "gomezluna2022prim",
+   "gomezluna2022prim"
+  ],
+  "nums": {
+   "350": [
+    [
+     "gomezluna2022prim",
+     "s Frequency Memory DIMMs Memory 2,556-DPU System P21 20 2 128 2,556 9 350 MHz 159.75 GB 4 256 GB 640-DPU System E19 10 1 64 640 267 MHz 40 GB 2"
+    ],
+    [
+     "gomezluna2022prim",
+     "s Frequency Memory DIMMs Memory 2,556-DPU System P21 20 2 128 2,556 9 350 MHz 159.75 GB 4 256 GB 640-DPU System E19 10 1 64 640 267 MHz 40 GB 2"
+    ],
+    [
+     "gomezluna2022prim",
+     "s Frequency Memory DIMMs Memory 2,556-DPU System P21 20 2 128 2,556 9 350 MHz 159.75 GB 4 256 GB 640-DPU System E19 10 1 64 640 267 MHz 40 GB 2"
+    ],
+    [
+     "gomezluna2022prim",
+     "s Frequency Memory DIMMs Memory 2,556-DPU System P21 20 2 128 2,556 9 350 MHz 159.75 GB 4 256 GB 640-DPU System E19 10 1 64 640 267 MHz 40 GB 2"
+    ]
+   ],
+   "64": [
+    [
+     "gomezluna2022prim",
+     " a UPMEM-based PIM system with (1) a host CPU (e.g., an x86 [219], ARM64 [220], or 64-bit RISC-V [221] multi-core system), (2) standard main m"
+    ],
+    [
+     "gomezluna2022prim",
+     " a UPMEM-based PIM system with (1) a host CPU (e.g., an x86 [219], ARM64 [220], or 64-bit RISC-V [221] multi-core system), (2) standard main m"
+    ],
+    [
+     "gomezluna2022prim",
+     " a UPMEM-based PIM system with (1) a host CPU (e.g., an x86 [219], ARM64 [220], or 64-bit RISC-V [221] multi-core system), (2) standard main m"
+    ],
+    [
+     "gomezluna2022prim",
+     " a UPMEM-based PIM system with (1) a host CPU (e.g., an x86 [219], ARM64 [220], or 64-bit RISC-V [221] multi-core system), (2) standard main m"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C070",
+  "para": 31,
+  "text": "All data exchanged between DPUs moves through the host CPU over the memory bus~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C071",
+  "para": 31,
+  "text": "The PrIM characterization found that a system with 2,556 DPUs is $93.0\\times$ faster than a modern CPU on average, on the 13 benchmarks that do not need heavy synchronization between DPUs.",
+  "cites": [],
+  "srcs": [
+   "gomezluna2022prim",
+   "gomezluna2022prim",
+   "gomezluna2022prim",
+   "gomezluna2022prim"
+  ],
+  "nums": {
+   "2,556": [
+    [
+     "gomezluna2022prim",
+     "alua- tion conducted on two real UPMEM-based PIM systems with 640 and 2,556 DPUs provides new insights about suitability of different workloads t"
+    ],
+    [
+     "gomezluna2022prim",
+     "alua- tion conducted on two real UPMEM-based PIM systems with 640 and 2,556 DPUs provides new insights about suitability of different workloads t"
+    ],
+    [
+     "gomezluna2022prim",
+     "alua- tion conducted on two real UPMEM-based PIM systems with 640 and 2,556 DPUs provides new insights about suitability of different workloads t"
+    ],
+    [
+     "gomezluna2022prim",
+     "alua- tion conducted on two real UPMEM-based PIM systems with 640 and 2,556 DPUs provides new insights about suitability of different workloads t"
+    ]
+   ],
+   "93.0": [
+    [
+     "gomezluna2022prim",
+     "ings. First, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks"
+    ],
+    [
+     "gomezluna2022prim",
+     "ings. First, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks"
+    ],
+    [
+     "gomezluna2022prim",
+     "ings. First, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks"
+    ],
+    [
+     "gomezluna2022prim",
+     "ings. First, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks"
+    ]
+   ],
+   "13": [
+    [
+     "gomezluna2022prim",
+     "rform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which donot require intensive inter-DPU syn"
+    ],
+    [
+     "gomezluna2022prim",
+     "rform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which donot require intensive inter-DPU syn"
+    ],
+    [
+     "gomezluna2022prim",
+     "rform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which donot require intensive inter-DPU syn"
+    ],
+    [
+     "gomezluna2022prim",
+     "rform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which donot require intensive inter-DPU syn"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C072",
+  "para": 31,
+  "text": "A system with 640 DPUs is $27.9\\times$ faster.",
+  "cites": [],
+  "srcs": [
+   "gomezluna2022prim",
+   "gomezluna2022prim",
+   "gomezluna2022prim",
+   "gomezluna2022prim"
+  ],
+  "nums": {
+   "640": [
+    [
+     "gomezluna2022prim",
+     "nsive evalua- tion conducted on two real UPMEM-based PIM systems with 640 and 2,556 DPUs provides new insights about suitability of different w"
+    ],
+    [
+     "gomezluna2022prim",
+     "nsive evalua- tion conducted on two real UPMEM-based PIM systems with 640 and 2,556 DPUs provides new insights about suitability of different w"
+    ],
+    [
+     "gomezluna2022prim",
+     "nsive evalua- tion conducted on two real UPMEM-based PIM systems with 640 and 2,556 DPUs provides new insights about suitability of different w"
+    ],
+    [
+     "gomezluna2022prim",
+     "nsive evalua- tion conducted on two real UPMEM-based PIM systems with 640 and 2,556 DPUs provides new insights about suitability of different w"
+    ]
+   ],
+   "27.9": [
+    [
+     "gomezluna2022prim",
+     "t, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which do"
+    ],
+    [
+     "gomezluna2022prim",
+     "t, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which do"
+    ],
+    [
+     "gomezluna2022prim",
+     "t, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which do"
+    ],
+    [
+     "gomezluna2022prim",
+     "t, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which do"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C073",
+  "para": 31,
+  "text": "However, the smaller system is slower than a GPU on most benchmarks~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C074",
+  "para": 31,
+  "text": "For this reason, adding DPUs hardly reduces the synchronization time~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C075",
+  "para": 32,
+  "text": "PimPam achieves a $22.5\\times$ average speedup over the GraphPi CPU framework for pattern matching~.",
+  "cites": [
+   "cai2024pimpam"
+  ],
+  "srcs": [
+   "cai2024pimpam"
+  ],
+  "nums": {
+   "22.5": [
+    [
+     "cai2024pimpam",
+     "raphs, PimPam outperforms the state-of-the-art CPU baseline system by 22.5\u00d7 on average and up to 71.7\u00d7, demonstrating significant performance im"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C076",
+  "para": 32,
+  "text": "Its four main optimizations are revealing: task assignment based on load, space-efficient parallel partitioning that fits each DPU's part of the graph into its 64\\,MB bank, adaptive multithreading, and dynamic bitmaps.",
+  "cites": [],
+  "srcs": [
+   "cai2024pimpam",
+   "cai2024pimpam",
+   "barkhordar2025alphapim",
+   "asquini2025tc"
+  ],
+  "nums": {
+   "64": [
+    [
+     "cai2024pimpam",
+     "ical to perform sufficient multi-threading processing. Each DPU has a 64 MB private local memory bank as its main memory (MRAM), as well as a "
+    ],
+    [
+     "cai2024pimpam",
+     "ical to perform sufficient multi-threading processing. Each DPU has a 64 MB private local memory bank as its main memory (MRAM), as well as a "
+    ],
+    [
+     "barkhordar2025alphapim",
+     "ture [48], [61]. A UPMEM system consists of a host CPU (e.g., x86, ARM64, or 64-bit RISC-V), standard DRAM modules, and PIM-enabled memory mod"
+    ],
+    [
+     "asquini2025tc",
+     "ng the data movement bot- tleneck [4], [59], [60], [61], [62], [63], [64], [65], [66], [67], [68], [69], [70], [71], [72], [73], [74], [75], ["
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C077",
+  "para": 32,
+  "text": "None of them exploits a property of the graph~.",
+  "cites": [
+   "cai2024pimpam"
+  ],
+  "srcs": [
+   "cai2024pimpam"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C078",
+  "para": 32,
+  "text": "For BFS, it measures a DPU compute utilization of 18.5\\% inside the kernel but only 5\\% end to end.",
+  "cites": [],
+  "srcs": [
+   "cai2024pimpam",
+   "cai2024pimpam",
+   "barkhordar2025alphapim",
+   "asquini2025tc"
+  ],
+  "nums": {
+   "18.5": [
+    [
+     "barkhordar2025alphapim",
+     "PHA-PIM shows much higher compute utiliza- tion with UPMEM averaging: 18.5% (kernel) / 5% (total) for BFS, 31.8% / 7.1% for SSSP, and 6.4% / 2.8"
+    ]
+   ],
+   "5": [
+    [
+     "cai2024pimpam",
+     "rn Matching on Real Processing-in-Memory Hardware 161:3 Graph 1 2 3 4 5 Pattern A B C D Embeddings (Automorphisms) 1 2 3 5 1 3 2 5 5 2 3 1 5 "
+    ],
+    [
+     "cai2024pimpam",
+     "rn Matching on Real Processing-in-Memory Hardware 161:3 Graph 1 2 3 4 5 Pattern A B C D Embeddings (Automorphisms) 1 2 3 5 1 3 2 5 5 2 3 1 5 "
+    ],
+    [
+     "barkhordar2025alphapim",
+     "1,2026 at 02:05:26 UTC from IEEE Xplore. Restrictions apply. === PAGE 5 === host CPU (Merge). We exclude the time needed for loading the matr"
+    ],
+    [
+     "asquini2025tc",
+     " Such problems could be alleviated using Processing-In- Memory (PIM) [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], a data-cent"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C079",
+  "para": 32,
+  "text": "This is still far above the 0.01--0.05\\% that it measures on CPU and GPU.",
+  "cites": [],
+  "srcs": [
+   "cai2024pimpam",
+   "cai2024pimpam",
+   "barkhordar2025alphapim",
+   "asquini2025tc"
+  ],
+  "nums": {
+   "0.01": [
+    [
+     "barkhordar2025alphapim",
+     "FS, 31.8% / 7.1% for SSSP, and 6.4% / 2.8% for PPR , compared to only 0.01\u20130.05% on CPU/GPU. This suggests that the PIM system is better balance"
+    ],
+    [
+     "asquini2025tc",
+     "umber of threads used by the host processor is 32. Graph 0.5 0.25 0.1 0.01 Kronecker 23 0.025% 0.050% 0.128% 0.133% Kronecker 24 0.009% 0.096% 0"
+    ]
+   ],
+   "0.05": [
+    [
+     "barkhordar2025alphapim",
+     "1.8% / 7.1% for SSSP, and 6.4% / 2.8% for PPR , compared to only 0.01\u20130.05% on CPU/GPU. This suggests that the PIM system is better balanced bet"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C080",
+  "para": 32,
+  "text": "The authors ask for better direct memory access (DMA) engines, more instruction-level parallelism, and direct interconnects between PIM cores~.",
+  "cites": [
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "barkhordar2025alphapim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C081",
+  "para": 32,
+  "text": "A 2025 workshop paper on triangle counting uses vertex coloring to avoid communication between DPUs, reservoir sampling to fit the data into the bank, and a Misra--Gries summary to handle high-degree vertices.",
+  "cites": [],
+  "srcs": [
+   "cai2024pimpam",
+   "cai2024pimpam",
+   "barkhordar2025alphapim",
+   "asquini2025tc"
+  ],
+  "nums": {
+   "2025": [
+    [
+     "barkhordar2025alphapim",
+     "sets across various application domains are highly sparse, making 257 2025 IEEE International Symposium on Workload Characterization (IISWC) 283"
+    ],
+    [
+     "asquini2025tc",
+     "ks, each equipped with 8 processing elements called DPUs (as of March 2025). The DPUs are 32-bit in-order RISC-style, general-purpose processing"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C082",
+  "para": 32,
+  "text": "Even so, it finds that UPMEM is slower than CPU (CSR) and GPU implementations on static graphs~.",
+  "cites": [
+   "asquini2025tc"
+  ],
+  "srcs": [
+   "asquini2025tc"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C083",
+  "para": 34,
+  "text": "\\subsection{Pipelines for static graphs} Graphicionado is the reference design for graph DSAs~.",
+  "cites": [
+   "ham2016graphicionado"
+  ],
+  "srcs": [
+   "ham2016graphicionado"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C084",
+  "para": 34,
+  "text": "It replicates each part separately and sends edges between them through a crossbar, based on the destination vertex~.",
+  "cites": [
+   "ham2016graphicionado"
+  ],
+  "srcs": [
+   "ham2016graphicionado"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C085",
+  "para": 34,
+  "text": "Graphicionado reports a $1.76$--$6.54\\times$ speedup and $50$--$100\\times$ lower energy than a 32-thread software framework on a 16-core Xeon.",
+  "cites": [],
+  "srcs": [
+   "ham2016graphicionado",
+   "ham2016graphicionado",
+   "ham2016graphicionado"
+  ],
+  "nums": {
+   "1.76": [
+    [
+     "ham2016graphicionado",
+     " general-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a s"
+    ],
+    [
+     "ham2016graphicionado",
+     " general-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a s"
+    ],
+    [
+     "ham2016graphicionado",
+     " general-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a s"
+    ]
+   ],
+   "6.54": [
+    [
+     "ham2016graphicionado",
+     "l-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of"
+    ],
+    [
+     "ham2016graphicionado",
+     "l-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of"
+    ],
+    [
+     "ham2016graphicionado",
+     "l-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of"
+    ]
+   ],
+   "50": [
+    [
+     "ham2016graphicionado",
+     "ow that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph anal"
+    ],
+    [
+     "ham2016graphicionado",
+     "ow that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph anal"
+    ],
+    [
+     "ham2016graphicionado",
+     "ow that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph anal"
+    ]
+   ],
+   "100": [
+    [
+     "ham2016graphicionado",
+     "at Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph analytics "
+    ],
+    [
+     "ham2016graphicionado",
+     "at Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph analytics "
+    ],
+    [
+     "ham2016graphicionado",
+     "at Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph analytics "
+    ]
+   ],
+   "32": [
+    [
+     "ham2016graphicionado",
+     "te-of-the-art software graph analytics processing framework executing 32 threads on a 16-core Haswell Xeon processor. I. I NTRODUCTION Startin"
+    ],
+    [
+     "ham2016graphicionado",
+     "te-of-the-art software graph analytics processing framework executing 32 threads on a 16-core Haswell Xeon processor. I. I NTRODUCTION Startin"
+    ],
+    [
+     "ham2016graphicionado",
+     "te-of-the-art software graph analytics processing framework executing 32 threads on a 16-core Haswell Xeon processor. I. I NTRODUCTION Startin"
+    ]
+   ],
+   "16": [
+    [
+     "ham2016graphicionado",
+     "ftware graph analytics processing framework executing 32 threads on a 16-core Haswell Xeon processor. I. I NTRODUCTION Starting out as a recre"
+    ],
+    [
+     "ham2016graphicionado",
+     "ftware graph analytics processing framework executing 32 threads on a 16-core Haswell Xeon processor. I. I NTRODUCTION Starting out as a recre"
+    ],
+    [
+     "ham2016graphicionado",
+     "ftware graph analytics processing framework executing 32 threads on a 16-core Haswell Xeon processor. I. I NTRODUCTION Starting out as a recre"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C086",
+  "para": 34,
+  "text": "It was evaluated with register-transfer level (RTL) synthesis and DRAMSim2~.",
+  "cites": [
+   "ham2016graphicionado"
+  ],
+  "srcs": [
+   "ham2016graphicionado"
+  ],
+  "nums": {
+   "2": [
+    [
+     "ham2016graphicionado",
+     "e data while operating on only a portion of the data (e.g., 4 bytes), 2) ineffective on-chip memory usage \u2014hardware cache is oblivious to gra"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C087",
+  "para": 35,
+  "text": "On PageRank Delta over the uk-2002 graph, they improve performance by $1.8\\times$ and $2.7\\times$, respectively.",
+  "cites": [],
+  "srcs": [
+   "mukkara2018hats",
+   "mukkara2018hats",
+   "zhao2022tdgraph"
+  ],
+  "nums": {
+   "2002": [
+    [
+     "mukkara2018hats",
+     "ig. 1: BDFS reduces memory accesses by 1.8 \u00d7 for PageRank Delta on uk-2002. Fig. 2: VO-HATS and BDFS- HA TS improve performance by 1.8\u00d7 and 2.7\u00d7"
+    ],
+    [
+     "mukkara2018hats",
+     "ig. 1: BDFS reduces memory accesses by 1.8 \u00d7 for PageRank Delta on uk-2002. Fig. 2: VO-HATS and BDFS- HA TS improve performance by 1.8\u00d7 and 2.7\u00d7"
+    ],
+    [
+     "zhao2022tdgraph",
+     "uter Architecture. 411\u2013424. [29] Kevin M. Lepak and Mikko H. Lipasti. 2002. Temporally silent stores. InProceed- ingsofthe10thInternationalConfe"
+    ]
+   ],
+   "1.8": [
+    [
+     "mukkara2018hats",
+     "ling itself. 1 === PAGE 2 === Fig. 1: BDFS reduces memory accesses by 1.8 \u00d7 for PageRank Delta on uk-2002. Fig. 2: VO-HATS and BDFS- HA TS impr"
+    ],
+    [
+     "mukkara2018hats",
+     "ling itself. 1 === PAGE 2 === Fig. 1: BDFS reduces memory accesses by 1.8 \u00d7 for PageRank Delta on uk-2002. Fig. 2: VO-HATS and BDFS- HA TS impr"
+    ]
+   ],
+   "2.7": [
+    [
+     "mukkara2018hats",
+     "2002. Fig. 2: VO-HATS and BDFS- HA TS improve performance by 1.8\u00d7 and 2.7\u00d7 for PageRank Delta on uk-2002. Speci\ufb01cally, we propose bounded depth"
+    ],
+    [
+     "mukkara2018hats",
+     "2002. Fig. 2: VO-HATS and BDFS- HA TS improve performance by 1.8\u00d7 and 2.7\u00d7 for PageRank Delta on uk-2002. Speci\ufb01cally, we propose bounded depth"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C088",
+  "para": 35,
+  "text": "In zsim, BDFS reduces main-memory accesses by up to $2.4\\times$ (30\\% on average) without any preprocessing~.",
+  "cites": [
+   "mukkara2018hats"
+  ],
+  "srcs": [
+   "mukkara2018hats"
+  ],
+  "nums": {
+   "2.4": [
+    [
+     "mukkara2018hats",
+     " simulated 16-core system, BDFS reduces main memory accesses by up to 2.4 \u00d7 and by 30% on average. However, BDFS is too expensive in software a"
+    ]
+   ],
+   "30": [
+    [
+     "mukkara2018hats",
+     "-core system, BDFS reduces main memory accesses by up to 2.4 \u00d7 and by 30% on average. However, BDFS is too expensive in software and degrades "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C089",
+  "para": 35,
+  "text": "It is also cheap: 0.14\\,mm$^2$ and 72\\,mW at 65\\,nm, very small compared with a general-purpose core~.",
+  "cites": [
+   "mukkara2018hats"
+  ],
+  "srcs": [
+   "mukkara2018hats"
+  ],
+  "nums": {
+   "0.14": [
+    [
+     "mukkara2018hats",
+     "performance cores). BDFS-HA TS is easy to implement and requires just 0.14 mm 2 and 72 mW at 65 nm (or 3.2 K FPGA LUTs). This translates to 0.4%"
+    ]
+   ],
+   "2": [
+    [
+     "mukkara2018hats",
+     " simulated 16-core system, BDFS reduces main memory accesses by up to 2.4 \u00d7 and by 30% on average. However, BDFS is too expensive in software"
+    ]
+   ],
+   "72": [
+    [
+     "mukkara2018hats",
+     "res). BDFS-HA TS is easy to implement and requires just 0.14 mm 2 and 72 mW at 65 nm (or 3.2 K FPGA LUTs). This translates to 0.4% area and 0."
+    ]
+   ],
+   "65": [
+    [
+     "mukkara2018hats",
+     "S-HA TS is easy to implement and requires just 0.14 mm 2 and 72 mW at 65 nm (or 3.2 K FPGA LUTs). This translates to 0.4% area and 0.2% power "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C090",
+  "para": 35,
+  "text": "TDGraph's per-core engines follow the same approach, and TDGraph uses HATS as one of its baselines~.",
+  "cites": [
+   "zhao2022tdgraph"
+  ],
+  "srcs": [
+   "zhao2022tdgraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C091",
+  "para": 36,
+  "text": "The design is implemented in RTL and evaluated with five algorithms on six real-world and five synthetic graphs~.",
+  "cites": [
+   "yan2019graphdyns"
+  ],
+  "srcs": [
+   "yan2019graphdyns"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C092",
+  "para": 36,
+  "text": "It reports $4.4\\times$ speedup and $11.6\\times$ less energy than a GPGPU solution \\emph{while using half the memory bandwidth}.",
+  "cites": [],
+  "srcs": [
+   "yan2019graphdyns",
+   "yan2019graphdyns",
+   "lee2022graphwave"
+  ],
+  "nums": {
+   "4.4": [
+    [
+     "yan2019graphdyns",
+     "rkloads, data accesses, and computations. Overall, GraphDynS achieves 4.4\u00d7 speedup and 11.6\u00d7 less energy on aver- age with half the memory band"
+    ],
+    [
+     "yan2019graphdyns",
+     "rkloads, data accesses, and computations. Overall, GraphDynS achieves 4.4\u00d7 speedup and 11.6\u00d7 less energy on aver- age with half the memory band"
+    ]
+   ],
+   "11.6": [
+    [
+     "yan2019graphdyns",
+     "esses, and computations. Overall, GraphDynS achieves 4.4\u00d7 speedup and 11.6\u00d7 less energy on aver- age with half the memory bandwidth compared to "
+    ],
+    [
+     "yan2019graphdyns",
+     "esses, and computations. Overall, GraphDynS achieves 4.4\u00d7 speedup and 11.6\u00d7 less energy on aver- age with half the memory bandwidth compared to "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C093",
+  "para": 36,
+  "text": "It also reports $1.9\\times$ speedup and $1.8\\times$ less energy than an earlier graph accelerator with \\emph{the same} bandwidth~.",
+  "cites": [
+   "yan2019graphdyns"
+  ],
+  "srcs": [
+   "yan2019graphdyns"
+  ],
+  "nums": {
+   "1.9": [
+    [
+     "yan2019graphdyns",
+     "ate-of-the-art graph ana- lytics accelerator, GraphDynS also achieves 1.9\u00d7 speedup and 1.8\u00d7 less energy on average using the same memory bandwi"
+    ]
+   ],
+   "1.8": [
+    [
+     "yan2019graphdyns",
+     "aph ana- lytics accelerator, GraphDynS also achieves 1.9\u00d7 speedup and 1.8\u00d7 less energy on average using the same memory bandwidth. CCS CONCEPTS"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C094",
+  "para": 36,
+  "text": "It reaches 97.8\\,GTEPS at 63.94\\,GTEPS/W in gate-level simulation, but the number of on-chip units limits the size of the graphs it supports~.",
+  "cites": [
+   "lee2022graphwave"
+  ],
+  "srcs": [
+   "lee2022graphwave"
+  ],
+  "nums": {
+   "97.8": [
+    [
+     "lee2022graphwave",
+     "Ef\ufb01ciency Tech Arch. (GTEPS) (W) (GTEPS/W) (nm) GraphWave (this work) 97.8 1.5 (1) 63.94 22 ASIC PolyGraph [6] 60.0 2.3 (2) 26.1 28 ASIC GraphH "
+    ]
+   ],
+   "63.94": [
+    [
+     "lee2022graphwave",
+     ", to the best of our knowledge, a state-of-the-art ef\ufb01ciency of up to 63.94 GTEPS/W with a throughput of 97.80 GTEPS (billion traversed edges per"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C095",
+  "para": 37,
+  "text": "\\subsection{An FPGA reference point} ReGraph shows what happens when a DSA has PIM-like bandwidth through a High Bandwidth Memory (HBM) package~.",
+  "cites": [
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "chen2022regraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C096",
+  "para": 37,
+  "text": "On an Alveo U280 with 32 HBM channels (460\\,GB/s), monolithic pipeline designs run out of logic resources long before they can use all the channels.",
+  "cites": [],
+  "srcs": [
+   "chen2022regraph",
+   "chen2022regraph"
+  ],
+  "nums": {
+   "280": [
+    [
+     "chen2022regraph",
+     "4% *Numbers are obtained from corresponding papers and normalized to U280 while others are proportionally scaled with the number of memory chan"
+    ],
+    [
+     "chen2022regraph",
+     "4% *Numbers are obtained from corresponding papers and normalized to U280 while others are proportionally scaled with the number of memory chan"
+    ]
+   ],
+   "32": [
+    [
+     "chen2022regraph",
+     "e Type 1 CH (14 GB/s) 4 CH (58 GB/s) 8 CH (115 GB/s) 16 CH (230 GB/s) 32 CH (460 GB/s) HitGraph [51] LUT *16.9% *68.1% 136.2% 272.4% 544.8% Fa"
+    ],
+    [
+     "chen2022regraph",
+     "e Type 1 CH (14 GB/s) 4 CH (58 GB/s) 8 CH (115 GB/s) 16 CH (230 GB/s) 32 CH (460 GB/s) HitGraph [51] LUT *16.9% *68.1% 136.2% 272.4% 544.8% Fa"
+    ]
+   ],
+   "460": [
+    [
+     "chen2022regraph",
+     "1 CH (14 GB/s) 4 CH (58 GB/s) 8 CH (115 GB/s) 16 CH (230 GB/s) 32 CH (460 GB/s) HitGraph [51] LUT *16.9% *68.1% 136.2% 272.4% 544.8% FabGraph ["
+    ],
+    [
+     "chen2022regraph",
+     "1 CH (14 GB/s) 4 CH (58 GB/s) 8 CH (115 GB/s) 16 CH (230 GB/s) 32 CH (460 GB/s) HitGraph [51] LUT *16.9% *68.1% 136.2% 272.4% 544.8% FabGraph ["
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C097",
+  "para": 37,
+  "text": "It reports $1.6$--$5.9\\times$ higher performance and $12\\times$ better resource efficiency than earlier FPGA designs~.",
+  "cites": [
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "chen2022regraph"
+  ],
+  "nums": {
+   "1.6": [
+    [
+     "chen2022regraph",
+     "-button manner. \u2022 The comprehensive evaluation shows ReGraph delivers 1.6\u00d7\u20135.9\u00d7 performance speedup and 12 \u00d7 resource ef- \ufb01ciency improvement o"
+    ]
+   ],
+   "5.9": [
+    [
+     "chen2022regraph",
+     "cess. ReGraph outperforms state-of-the-art FPGA accelerators by up to 5.9 \u00d7 in terms of performance and 12 \u00d7 in terms of resource ef\ufb01ciency. I."
+    ]
+   ],
+   "12": [
+    [
+     "chen2022regraph",
+     "-the-art FPGA accelerators by up to 5.9 \u00d7 in terms of performance and 12 \u00d7 in terms of resource ef\ufb01ciency. I. I NTRODUCTION Graphs are de fact"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C098",
+  "para": 38,
+  "text": "\\subsection{Streaming and evolving graphs} The most distinctive DSA development after 2021 concerns graphs that change.",
+  "cites": [],
+  "srcs": [
+   "rahman2021jetstream"
+  ],
+  "nums": {
+   "2021": [
+    [
+     "rahman2021jetstream",
+     "t: Shafiur Rahman, Mahbod Afarin, Nael Abu-Ghazaleh, and Rajiv Gupta. 2021. JetStream: Graph Analytics on Streaming Data with Event-Driven Hardw"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C099",
+  "para": 38,
+  "text": "JetStream reports 90\\% less computation time than recomputing from scratch, and about $18\\times$ speedup over the KickStarter and GraphBolt software frameworks, with larger gains for smaller batches~.",
+  "cites": [
+   "rahman2021jetstream"
+  ],
+  "srcs": [
+   "rahman2021jetstream"
+  ],
+  "nums": {
+   "90": [
+    [
+     "rahman2021jetstream",
+     "ator that supports streaming graphs, reducing the computation time by 90% compared with cold-start computation using an existing accelerator. "
+    ]
+   ],
+   "18": [
+    [
+     "rahman2021jetstream",
+     " using an existing accelerator. In addition, JetStream achieves about 18\u00d7 speedup over KickStarter and GraphBolt soft- ware frameworks at the "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C100",
+  "para": 39,
+  "text": "The engine sits between the core and its private L2 cache.",
+  "cites": [],
+  "srcs": [
+   "zhao2022tdgraph",
+   "zhao2022tdgraph"
+  ],
+  "nums": {
+   "2": [
+    [
+     "zhao2022tdgraph",
+     "pGraph, TDGraph gains the speedups of 4.6\u223c12.7, 3.2\u223c8.6, 3.8\u223c9.7, and 2.3\u223c6.1 times, respectively. \u2217 Corresponding Author: Yu Zhang (zhyu@hus"
+    ],
+    [
+     "zhao2022tdgraph",
+     "pGraph, TDGraph gains the speedups of 4.6\u223c12.7, 3.2\u223c8.6, 3.8\u223c9.7, and 2.3\u223c6.1 times, respectively. \u2217 Corresponding Author: Yu Zhang (zhyu@hus"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C101",
+  "para": 39,
+  "text": "It works on virtual addresses through the core's translation lookaside buffer (TLB), so it shares the conventional memory hierarchy instead of replacing it~.",
+  "cites": [
+   "zhao2022tdgraph"
+  ],
+  "srcs": [
+   "zhao2022tdgraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C102",
+  "para": 39,
+  "text": "In a simulated 64-core system, it reports gains of $7.1$--$21.4\\times$ over a software streaming system and $4.6$--$12.7\\times$ over HATS, at an area cost of 0.73\\%~.",
+  "cites": [
+   "zhao2022tdgraph"
+  ],
+  "srcs": [
+   "zhao2022tdgraph"
+  ],
+  "nums": {
+   "64": [
+    [
+     "zhao2022tdgraph",
+     " cache and memory bandwidth. We have evaluated TDGraph on a simulated 64-core processor. The results show that, the state-of-the-art software "
+    ]
+   ],
+   "7.1": [
+    [
+     "zhao2022tdgraph",
+     "ow that, the state-of-the-art software system achieves the speedup of 7.1\u223c21.4 times after integrating with TDGraph, while incurring only 0.73%"
+    ]
+   ],
+   "21.4": [
+    [
+     "zhao2022tdgraph",
+     "hat, the state-of-the-art software system achieves the speedup of 7.1\u223c21.4 times after integrating with TDGraph, while incurring only 0.73% area"
+    ]
+   ],
+   "4.6": [
+    [
+     "zhao2022tdgraph",
+     " i.e., HATS, Minnow, PHI, and DepGraph, TDGraph gains the speedups of 4.6\u223c12.7, 3.2\u223c8.6, 3.8\u223c9.7, and 2.3\u223c6.1 times, respectively. \u2217 Correspond"
+    ]
+   ],
+   "12.7": [
+    [
+     "zhao2022tdgraph",
+     "., HATS, Minnow, PHI, and DepGraph, TDGraph gains the speedups of 4.6\u223c12.7, 3.2\u223c8.6, 3.8\u223c9.7, and 2.3\u223c6.1 times, respectively. \u2217 Corresponding A"
+    ]
+   ],
+   "0.73": [
+    [
+     "zhao2022tdgraph",
+     "f 7.1\u223c21.4 times after integrating with TDGraph, while incurring only 0.73% area cost. Compared with four cutting-edge accelerators, i.e., HATS,"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C103",
+  "para": 40,
+  "text": "It builds on an idea from the CommonGraph software system: converting deletions into additions against a common base graph avoids expensive deletions~.",
+  "cites": [
+   "afarin2023commongraph"
+  ],
+  "srcs": [
+   "afarin2023commongraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C104",
+  "para": 40,
+  "text": "It reports $24$--$120\\times$ over CommonGraph and $4.08$--$5.98\\times$ over JetStream~.",
+  "cites": [
+   "gao2023mega"
+  ],
+  "srcs": [
+   "gao2023mega"
+  ],
+  "nums": {
+   "24": [
+    [
+     "gao2023mega",
+     "s graph queries over multiple snapshots simultaneously. MEGA achieves 24\u00d7-120\u00d7 speedup over CommonGraph. It also achieves speedups ranging fro"
+    ]
+   ],
+   "120": [
+    [
+     "gao2023mega",
+     "aph queries over multiple snapshots simultaneously. MEGA achieves 24\u00d7-120\u00d7 speedup over CommonGraph. It also achieves speedups ranging from 4.0"
+    ]
+   ],
+   "4.08": [
+    [
+     "gao2023mega",
+     "120\u00d7 speedup over CommonGraph. It also achieves speedups ranging from 4.08\u00d7 to 5.98\u00d7 over JetStream, a state-of-the-art streaming graph accelera"
+    ]
+   ],
+   "5.98": [
+    [
+     "gao2023mega",
+     "dup over CommonGraph. It also achieves speedups ranging from 4.08\u00d7 to 5.98\u00d7 over JetStream, a state-of-the-art streaming graph accelerator. CCS "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C105",
+  "para": 40,
+  "text": "So far, this problem has been addressed in software, by Glign, which aligns concurrent traversals to recover shared locality~.",
+  "cites": [
+   "yin2023glign"
+  ],
+  "srcs": [
+   "yin2023glign"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C106",
+  "para": 42,
+  "text": "Both camps lead to hybrid designs in 2025--2026, but only the DSA camp has a branch for dynamic graphs.} \\end{figure}",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "2025": [],
+   "2026": []
+  }
+ },
+ {
+  "id": "C107",
+  "para": 44,
+  "text": "They argue that a pure DSA wastes bandwidth on coarse DRAM bursts, and that a pure PIM design cannot use the data reuse that tiling provides~.",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C108",
+  "para": 44,
+  "text": "Piccolo starts from a DSA and uses GraphDynS as its baseline accelerator~.",
+  "cites": [
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "shin2025piccolo"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C109",
+  "para": 44,
+  "text": "It targets the burst waste described in Section~I: a 64\\,B DDR burst for a 4--8\\,B vertex property.",
+  "cites": [],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "shin2025piccolo",
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "64": [
+    [
+     "shin2025piccolo",
+     "h can be attributed to the discrepancy between off-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), whic"
+    ],
+    [
+     "shin2025fala",
+     " PIM approaches only process data in row granularity [34, 39, 42, 45, 64, 91] of a few KBs, or in a burst granularity of 32/64B [17, 78]. Allo"
+    ],
+    [
+     "shin2025piccolo",
+     "h can be attributed to the discrepancy between off-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), whic"
+    ],
+    [
+     "shin2025piccolo",
+     "h can be attributed to the discrepancy between off-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), whic"
+    ]
+   ],
+   "4": [
+    [
+     "shin2025piccolo",
+     "ff-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), which is depicted in Fig. 1a with red (unuseful dat"
+    ],
+    [
+     "shin2025fala",
+     "Processing This work is licensed under a Creative Commons Attribution 4.0 International License. MICRO \u201925, Seoul, Republic of Korea \u00a9 2025 C"
+    ],
+    [
+     "shin2025piccolo",
+     "ff-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), which is depicted in Fig. 1a with red (unuseful dat"
+    ],
+    [
+     "shin2025piccolo",
+     "ff-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), which is depicted in Fig. 1a with red (unuseful dat"
+    ]
+   ],
+   "8": [
+    [
+     "shin2025piccolo",
+     "Chip I/O DRAM ... ... ... ... ... ... Processor Cache Tag 1 Tag 2 Tag 8 Prefetcher Vertex Prefetch Edge Prefetch PE S I M D UE Updater ... RA"
+    ],
+    [
+     "shin2025fala",
+     "c of Korea \u00a9 2025 Copyright held by the owner/author(s). ACM ISBN 979-8-4007-1573-0/25/10 https://doi.org/10.1145/3725843.3756127 ACM Referen"
+    ],
+    [
+     "shin2025piccolo",
+     "Chip I/O DRAM ... ... ... ... ... ... Processor Cache Tag 1 Tag 2 Tag 8 Prefetcher Vertex Prefetch Edge Prefetch PE S I M D UE Updater ... RA"
+    ],
+    [
+     "shin2025piccolo",
+     "Chip I/O DRAM ... ... ... ... ... ... Processor Cache Tag 1 Tag 2 Tag 8 Prefetcher Vertex Prefetch Edge Prefetch PE S I M D UE Updater ... RA"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C110",
+  "para": 44,
+  "text": "It reports a $1.62\\times$ geometric-mean speedup (up to $3.28\\times$) over its strongest baseline, a cache-based GraphDynS, and up to 59.7\\% energy reduction.",
+  "cites": [],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "shin2025piccolo",
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "1.62": [
+    [
+     "shin2025piccolo",
+     " achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across vari"
+    ],
+    [
+     "shin2025piccolo",
+     " achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across vari"
+    ],
+    [
+     "shin2025piccolo",
+     " achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across vari"
+    ]
+   ],
+   "3.28": [
+    [
+     "shin2025piccolo",
+     "iling and in-memory operations. Piccolo achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% redu"
+    ],
+    [
+     "shin2025piccolo",
+     "iling and in-memory operations. Piccolo achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% redu"
+    ],
+    [
+     "shin2025piccolo",
+     "iling and in-memory operations. Piccolo achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% redu"
+    ]
+   ],
+   "59.7": [
+    [
+     "shin2025piccolo",
+     "up of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across various and extensive benchma"
+    ],
+    [
+     "shin2025piccolo",
+     "up of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across various and extensive benchma"
+    ],
+    [
+     "shin2025piccolo",
+     "up of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across various and extensive benchma"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C111",
+  "para": 44,
+  "text": "The in-memory mechanism is validated by FPGA emulation, and performance is measured with cycle-level simulation based on Ramulator~.",
+  "cites": [
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "shin2025piccolo"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C112",
+  "para": 45,
+  "text": "First, a lightweight unit in each HBM2 bank performs the reduce phase of the vertex program.",
+  "cites": [],
+  "srcs": [
+   "shin2025fala"
+  ],
+  "nums": {
+   "2": [
+    [
+     "shin2025fala",
+     "such memory bottlenecks, numerous graph process- ing accelerators [1, 2, 14, 16, 24, 54, 58, 61, 70, 78, 87, 88, 93, 94, 97] have been develo"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C113",
+  "para": 45,
+  "text": "Second, a fine-grained column-access mechanism fetches several non-contiguous 8\\,B columns from one open row.",
+  "cites": [],
+  "srcs": [
+   "shin2025fala"
+  ],
+  "nums": {
+   "8": [
+    [
+     "shin2025fala",
+     "c of Korea \u00a9 2025 Copyright held by the owner/author(s). ACM ISBN 979-8-4007-1573-0/25/10 https://doi.org/10.1145/3725843.3756127 ACM Referen"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C114",
+  "para": 45,
+  "text": "FALA reports $1.56\\times$ speedup and 35.3\\% energy reduction (geometric mean) over the best earlier design.",
+  "cites": [],
+  "srcs": [
+   "shin2025fala"
+  ],
+  "nums": {
+   "1.56": [
+    [
+     "shin2025fala",
+     "sing accelerators. Experimental results demonstrate that FALAachieves 1.56\u00d7 speedup and reduces energy consumption by 35.3% in geometric mean, c"
+    ]
+   ],
+   "35.3": [
+    [
+     "shin2025fala",
+     "ate that FALAachieves 1.56\u00d7 speedup and reduces energy consumption by 35.3% in geometric mean, compared to the prior art. CCS Concepts \u2022 Compute"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C115",
+  "para": 45,
+  "text": "It is evaluated against Piccolo, PEI, and GraphPIM~.",
+  "cites": [
+   "shin2025fala"
+  ],
+  "srcs": [
+   "shin2025fala"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C116",
+  "para": 46,
+  "text": "It reports $4.4\\times$/$9.8\\times$ speedups over a state-of-the-art non-PIM baseline on HBM2/DDR4, and 88\\%/94\\% lower DRAM energy.",
+  "cites": [],
+  "srcs": [
+   "yenimol2026cograf"
+  ],
+  "nums": {
+   "4.4": [
+    [
+     "yenimol2026cograf",
+     "edup in the region of interest of 1.8\u00d7/3\u00d7 compared to naive FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art non-PIM baseline (HBM2/DDR4), and "
+    ]
+   ],
+   "9.8": [
+    [
+     "yenimol2026cograf",
+     "in the region of interest of 1.8\u00d7/3\u00d7 compared to naive FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art non-PIM baseline (HBM2/DDR4), and DRAM "
+    ]
+   ],
+   "2": [
+    [
+     "yenimol2026cograf",
+     "FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art non-PIM baseline (HBM2/DDR4), and DRAM energy reduction of 67%/86% and 88%/94%. These re- su"
+    ]
+   ],
+   "4": [
+    [
+     "yenimol2026cograf",
+     "edup in the region of interest of 1.8\u00d7/3\u00d7 compared to naive FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art non-PIM baseline (HBM2/DDR4), an"
+    ]
+   ],
+   "88": [
+    [
+     "yenimol2026cograf",
+     "on-PIM baseline (HBM2/DDR4), and DRAM energy reduction of 67%/86% and 88%/94%. These re- sults show the importance of providing a complete sol"
+    ]
+   ],
+   "94": [
+    [
+     "yenimol2026cograf",
+     "IM baseline (HBM2/DDR4), and DRAM energy reduction of 67%/86% and 88%/94%. These re- sults show the importance of providing a complete solutio"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C117",
+  "para": 46,
+  "text": "These figures are measured over the region of interest, not end to end~.",
+  "cites": [
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C118",
+  "para": 47,
+  "text": "Its authors state that this is expensive and that supporting several operation types there is impractical~.",
+  "cites": [
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "shin2025piccolo"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C119",
+  "para": 47,
+  "text": "FALA notes that commercial DRAM-PIM products with parallel arithmetic units have been reported to add up to 50\\% area overhead to the DRAM die.",
+  "cites": [],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala"
+  ],
+  "nums": {
+   "50": [
+    [
+     "shin2025piccolo",
+     "icates that supporting a single type (fp16) contributes approximately 50% area overhead to the entire die [42], [45], [49]. Such overheads are"
+    ],
+    [
+     "shin2025fala",
+     "s with parallel arithmetic units [39, 42] are reported to incur up to 50% area overhead on the DRAM die. In addition, because it is also diffi"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C120",
+  "para": 47,
+  "text": "It also points out that many earlier PIM proposals assumed separate logic dies with serial interconnects, which do not map onto monolithic DRAM-PIM~.",
+  "cites": [
+   "shin2025fala"
+  ],
+  "srcs": [
+   "shin2025fala"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C121",
+  "para": 48,
+  "text": "Second, all three keep the static-graph assumption: none of their full texts mentions dynamic, streaming, or evolving graphs~.",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C122",
+  "para": 50,
+  "text": "Tesseract reports $10\\times$ over a 32-core server~, and GraphR reports $16.01\\times$ over a CPU~.",
+  "cites": [
+   "ahn2015tesseract",
+   "song2018graphr"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "song2018graphr"
+  ],
+  "nums": {
+   "10": [
+    [
+     "ahn2015tesseract",
+     "\u00a9 2015 ACM. ISBN 978-1-4503-3402-0/15/06$15.00 DOI: http://dx.doi.org/10.1145/2749469.2750386 demand for more data and their analyses, the des"
+    ],
+    [
+     "song2018graphr",
+     "s energy. G RAPH R gains a speedup of 1.16\u00d7 to 4.12\u00d7, and is 3.67\u00d7 to 10.96\u00d7 more energy ef\ufb01ciency compared to PIM-based architecture. 1. INTR"
+    ]
+   ],
+   "32": [
+    [
+     "ahn2015tesseract",
+     "a conven- tional high-performance baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01v"
+    ],
+    [
+     "song2018graphr",
+     " high: the coordinate list can only take 0.2% of space for WikiV ote [32] compared to an adjacency matrix. 3. GRAPHR ARCHITECTURE 3.1 Sparse M"
+    ]
+   ],
+   "16.01": [
+    [
+     "song2018graphr",
+     "due to sparsity. The experiment results show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric m"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C123",
+  "para": 50,
+  "text": "When PIM designs are compared with each other, the speedups are single-digit, such as GraphQ's $3.3\\times$ over Tesseract~ and FALA's $1.56\\times$ over the strongest earlier design~.",
+  "cites": [
+   "zhuo2019graphq",
+   "shin2025fala"
+  ],
+  "srcs": [
+   "zhuo2019graphq",
+   "shin2025fala"
+  ],
+  "nums": {
+   "3.3": [
+    [
+     "zhuo2019graphq",
+     "ive real-world graphs and four algorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tessera"
+    ]
+   ],
+   "1.56": [
+    [
+     "shin2025fala",
+     "sing accelerators. Experimental results demonstrate that FALAachieves 1.56\u00d7 speedup and reduces energy consumption by 35.3% in geometric mean, c"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C124",
+  "para": 50,
+  "text": "DSAs report $1.76$--$6.54\\times$ over multithreaded software~ and $1.9\\times$ over an earlier accelerator with the same bandwidth~.",
+  "cites": [
+   "ham2016graphicionado",
+   "yan2019graphdyns"
+  ],
+  "srcs": [
+   "ham2016graphicionado",
+   "yan2019graphdyns"
+  ],
+  "nums": {
+   "1.76": [
+    [
+     "ham2016graphicionado",
+     " general-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a s"
+    ],
+    [
+     "yan2019graphdyns",
+     "mory to mitigate the traversal irreg- ularity. Therefore, it achieves 1.76-6.54\u00d7 speedup while consuming 50-100\u00d7 less energy compared to a state"
+    ]
+   ],
+   "6.54": [
+    [
+     "ham2016graphicionado",
+     "l-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of"
+    ],
+    [
+     "yan2019graphdyns",
+     "to mitigate the traversal irreg- ularity. Therefore, it achieves 1.76-6.54\u00d7 speedup while consuming 50-100\u00d7 less energy compared to a state-of-t"
+    ]
+   ],
+   "1.9": [
+    [
+     "yan2019graphdyns",
+     "ate-of-the-art graph ana- lytics accelerator, GraphDynS also achieves 1.9\u00d7 speedup and 1.8\u00d7 less energy on average using the same memory bandwi"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C125",
+  "para": 50,
+  "text": "The closest evidence is a hybrid, not a pure PIM design: Piccolo's $1.62\\times$ speedup over a DSA baseline (GraphDynS)~.",
+  "cites": [
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "1.62": [
+    [
+     "shin2025piccolo",
+     " achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across vari"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C126",
+  "para": 51,
+  "text": "\\subsection{Energy} Energy is where the advantage of PIM is most consistent, because data movement is a large part of the energy cost in memory-bound workloads~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C127",
+  "para": 51,
+  "text": "Tesseract reports 87\\% less energy than its host baseline, GraphP 89\\% less than Tesseract, and CoGraf 88--94\\% less DRAM energy than its non-PIM baseline~.",
+  "cites": [
+   "ahn2015tesseract",
+   "zhang2018graphp",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhang2018graphp",
+   "yenimol2026cograf"
+  ],
+  "nums": {
+   "87": [
+    [
+     "ahn2015tesseract",
+     "improves average system perfor- mance by a factor of ten and achieves 87% average energy reduction over conventional systems. 1. Introduction "
+    ]
+   ],
+   "89": [
+    [
+     "zhang2018graphp",
+     "orithms. The results show that it provides on average 1.7 speedup and 89% energy saving compared to T ESSERACT . I. I NTRODUCTION Processing-I"
+    ]
+   ],
+   "88": [
+    [
+     "zhang2018graphp",
+     "uting, 1996. Proceedings Frontiers \u201996., Sixth Symposium on the , pp. 88\u201397, Oct 1996. [2] P. M. Kogge, \u201cExecube-a new architecture for scalea"
+    ],
+    [
+     "yenimol2026cograf",
+     "on-PIM baseline (HBM2/DDR4), and DRAM energy reduction of 67%/86% and 88%/94%. These re- sults show the importance of providing a complete sol"
+    ]
+   ],
+   "94": [
+    [
+     "ahn2015tesseract",
+     "density of the logic die across all work- loads in our experiments is 94 mW/mm2 in Tesseract, which remains below the maximum power density th"
+    ],
+    [
+     "zhang2018graphp",
+     "4 International Conference on Parallel Processing - Volume 01 , ICPP \u201994, (Washington, DC, USA), pp. 77\u201384, IEEE Computer Society, 1994. [3] G"
+    ],
+    [
+     "yenimol2026cograf",
+     "IM baseline (HBM2/DDR4), and DRAM energy reduction of 67%/86% and 88%/94%. These re- sults show the importance of providing a complete solutio"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C128",
+  "para": 51,
+  "text": "Analog ReRAM saves even more energy, but it is less general: GraphR saves $33.82\\times$ over a CPU, and GaaS-X saves $22\\times$ over GraphR~.",
+  "cites": [
+   "song2018graphr",
+   "challapalle2020gaasx"
+  ],
+  "srcs": [
+   "song2018graphr",
+   "challapalle2020gaasx"
+  ],
+  "nums": {
+   "33.82": [
+    [
+     "song2018graphr",
+     " show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric mean compared to a CPU baseline system. "
+    ]
+   ],
+   "22": [
+    [
+     "song2018graphr",
+     "veral ways to perform graph processing. The distributed systems [ 10, 22, 30, 36, 57, 67] leverage the am- ple computing resources to process "
+    ],
+    [
+     "challapalle2020gaasx",
+     "based PIM accelerators. GaaS-X achieves 7.7\u00d7 and 2.4\u00d7 performance and 22\u00d7 and 5.7\u00d7, energy savings, respectively, over two state-of-the-art cr"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C129",
+  "para": 51,
+  "text": "Graphicionado uses $50$--$100\\times$ less energy than multithreaded software~, and GraphDynS uses $11.6\\times$ less than a GPU~.",
+  "cites": [
+   "ham2016graphicionado",
+   "yan2019graphdyns"
+  ],
+  "srcs": [
+   "ham2016graphicionado",
+   "yan2019graphdyns"
+  ],
+  "nums": {
+   "50": [
+    [
+     "ham2016graphicionado",
+     "ow that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph anal"
+    ],
+    [
+     "yan2019graphdyns",
+     "g- ularity. Therefore, it achieves 1.76-6.54\u00d7 speedup while consuming 50-100\u00d7 less energy compared to a state-of-the-art software graph analyt"
+    ]
+   ],
+   "100": [
+    [
+     "ham2016graphicionado",
+     "at Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph analytics "
+    ],
+    [
+     "yan2019graphdyns",
+     "ularity. Therefore, it achieves 1.76-6.54\u00d7 speedup while consuming 50-100\u00d7 less energy compared to a state-of-the-art software graph analytics "
+    ]
+   ],
+   "11.6": [
+    [
+     "yan2019graphdyns",
+     "esses, and computations. Overall, GraphDynS achieves 4.4\u00d7 speedup and 11.6\u00d7 less energy on aver- age with half the memory bandwidth compared to "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C130",
+  "para": 52,
+  "text": "Its design effort goes into getting more useful bytes from each transferred byte, through scratchpads, locality-aware scheduling, and separate handling of dense and sparse partitions~.",
+  "cites": [
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "ham2016graphicionado",
+   "mukkara2018hats",
+   "chen2022regraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C131",
+  "para": 52,
+  "text": "A PIM design has a lot of internal bandwidth, 8\\,TB/s in Tesseract's configuration~, but it is limited by the bandwidth \\emph{between units}.",
+  "cites": [
+   "ahn2015tesseract"
+  ],
+  "srcs": [
+   "ahn2015tesseract"
+  ],
+  "nums": {
+   "8": [
+    [
+     "ahn2015tesseract",
+     "n be accelerated by parallelizing the ver- tex loops [17] (lines 1\u20134, 8\u201313, and 14\u201318) since computation for each vertex is almost independen"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C132",
+  "para": 52,
+  "text": "In HMC, this means the SerDes links, which motivated GraphP and GraphQ~.",
+  "cites": [
+   "zhang2018graphp",
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "zhang2018graphp",
+   "zhuo2019graphq"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C133",
+  "para": 52,
+  "text": "In UPMEM, it means the host itself, which carries all traffic between DPUs~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C134",
+  "para": 52,
+  "text": "The mismatch between burst size and property size that limits DSAs~ is the same problem that fine-grained column access addresses on the PIM side~.",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C135",
+  "para": 53,
+  "text": "Among the hardware designs surveyed, only the UPMEM studies measure silicon, and only ReGraph and Piccolo's in-memory mechanism run on FPGA hardware~.",
+  "cites": [
+   "gomezluna2022prim",
+   "cai2024pimpam",
+   "barkhordar2025alphapim",
+   "asquini2025tc",
+   "chen2022regraph",
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "gomezluna2022prim",
+   "cai2024pimpam",
+   "barkhordar2025alphapim",
+   "asquini2025tc",
+   "chen2022regraph",
+   "shin2025piccolo"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C136",
+  "para": 53,
+  "text": "Simulated 3D-stacked PIM assumes efficient message passing between cubes~, but on UPMEM the host limits BFS synchronization~ and BFS utilization drops to 5\\% end to end~.",
+  "cites": [
+   "ahn2015tesseract",
+   "zhuo2019graphq",
+   "gomezluna2022prim",
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhuo2019graphq",
+   "gomezluna2022prim",
+   "barkhordar2025alphapim"
+  ],
+  "nums": {
+   "3": [
+    [
+     "ahn2015tesseract",
+     "tive. The key modern enabler for PIM is the recent advancement of the 3D integration technology that facilitates stacking logic and memory di"
+    ],
+    [
+     "zhuo2019graphq",
+     "ive real-world graphs and four algorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tesse"
+    ],
+    [
+     "gomezluna2022prim",
+     "n-Memory Architecture Juan G\u00f3mez-Luna1 Izzat El Hajj2 Ivan Fernandez1,3 Christina Giannoula1,4 Geraldo F. Oliveira1 Onur Mutlu1 1ETH Z\u00fcrich 2"
+    ],
+    [
+     "barkhordar2025alphapim",
+     "re; (2) characterize their performance and identify key bottlenecks; (3) compare results against CPU and GPU baselines; and (4) derive insigh"
+    ]
+   ],
+   "5": [
+    [
+     "ahn2015tesseract",
+     " cluding average teenage follower[20], conductance [17,20], PageRank [5,17,20,39], single-source shortest path[20,39], and vertex cover [17]."
+    ],
+    [
+     "zhuo2019graphq",
+     "utEdges(v)) { 3 res = processEdge(e, v.value, ...) 4 u \u2190 comp[e.dest] 5 u.temp = reduce(u.temp, res) 6 } 7 } 8 for (v \u2190 Graph.vertices) { 9 v"
+    ],
+    [
+     "gomezluna2022prim",
+     "er of processors for a fixed problem size per proces- sor [216, 218]. 5We refer the reader to a recent overview paper [2] on the state-of-the"
+    ],
+    [
+     "barkhordar2025alphapim",
+     "1,2026 at 02:05:26 UTC from IEEE Xplore. Restrictions apply. === PAGE 5 === host CPU (Merge). We exclude the time needed for loading the matr"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C137",
+  "para": 53,
+  "text": "GraphWave's per-vertex functional units limit the graph size~, and CoGraf reports gains for the region of interest (ROI) rather than end to end~.",
+  "cites": [
+   "lee2022graphwave",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "lee2022graphwave",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C138",
+  "para": 53,
+  "text": "On the DSA side, only ReGraph runs on real hardware~, so the same gap for ASIC-class graph DSAs has never been measured.",
+  "cites": [
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "chen2022regraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C139",
+  "para": 54,
+  "text": "It can be an ASIC, a unit attached to each core~, or an FPGA on an HBM card~, and the memory does not need to change.",
+  "cites": [
+   "mukkara2018hats",
+   "zhao2022tdgraph",
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "mukkara2018hats",
+   "zhao2022tdgraph",
+   "chen2022regraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C140",
+  "para": 54,
+  "text": "PIM needs new memory parts: HMC logic layers~, logic in the DIMM buffer chip~, ReRAM crossbars~, or modified DRAM dies with a significant area cost~.",
+  "cites": [
+   "ahn2015tesseract",
+   "talati2022ndminer",
+   "song2018graphr",
+   "shin2025fala"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "talati2022ndminer",
+   "song2018graphr",
+   "shin2025fala"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C141",
+  "para": 54,
+  "text": "Of the PIM substrates surveyed, only UPMEM has been evaluated as a commercially available product~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C142",
+  "para": 54,
+  "text": "The hybrids are designed to keep the changes in memory small~.",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C143",
+  "para": 55,
+  "text": "DSAs keep a single shared address space and a vertex-programming interface that existing frameworks already support~.",
+  "cites": [
+   "ham2016graphicionado"
+  ],
+  "srcs": [
+   "ham2016graphicionado"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C144",
+  "para": 55,
+  "text": "Programmable PnM cores (Tesseract, UPMEM) also accept general code, but they leave partitioning, data placement, and communication to the programmer or the runtime~.",
+  "cites": [
+   "ahn2015tesseract",
+   "cai2024pimpam",
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "cai2024pimpam",
+   "barkhordar2025alphapim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C145",
+  "para": 55,
+  "text": "This is a tuning effort that DSAs do not need~.",
+  "cites": [
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "barkhordar2025alphapim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C146",
+  "para": 55,
+  "text": "Analog crossbars accept only SpMV-expressible kernels~, and fine-grained PIM adds new types of instructions that compilers must support~.",
+  "cites": [
+   "song2018graphr",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "song2018graphr",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C147",
+  "para": 56,
+  "text": "\\begin{table*}[t] \\caption{Representative designs: substrate, headline result \\emph{with its baseline}, and key assumption (numbers as reported; they cannot be compared across rows)} \\centering\\footnotesize \\begin{tabularx}{\\textwidth}{@{}L{2.3cm}L{1.1cm}L{3.0cm}YL{4.0cm}@{}} \\toprule Design & Camp & Substrate & Headline result (baseline) & Key assumption / limitation",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "2.3": [],
+   "1.1": [],
+   "3.0": [],
+   "4.0": []
+  }
+ },
+ {
+  "id": "C148",
+  "para": 57,
+  "text": "\\midrule Tesseract~ & PIM & HMC, simulation & $\\sim$10$\\times$ perf., $-$87\\% energy (32-core server, 640\\,GB/s) & static graph partitioned across cubes",
+  "cites": [
+   "ahn2015tesseract"
+  ],
+  "srcs": [
+   "ahn2015tesseract"
+  ],
+  "nums": {
+   "10": [
+    [
+     "ahn2015tesseract",
+     "\u00a9 2015 ACM. ISBN 978-1-4503-3402-0/15/06$15.00 DOI: http://dx.doi.org/10.1145/2749469.2750386 demand for more data and their analyses, the des"
+    ]
+   ],
+   "87": [
+    [
+     "ahn2015tesseract",
+     "improves average system perfor- mance by a factor of ten and achieves 87% average energy reduction over conventional systems. 1. Introduction "
+    ]
+   ],
+   "32": [
+    [
+     "ahn2015tesseract",
+     "a conven- tional high-performance baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01v"
+    ]
+   ],
+   "640": [
+    [
+     "ahn2015tesseract",
+     "nce baseline (a four-socket system with 32 out-of-order cores, having 640 GB/s of memory band- width), across \ufb01ve different graph processing wo"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C149",
+  "para": 58,
+  "text": "GraphQ~ & PIM & HMC, zSim & 3.3$\\times$ avg / 13.9$\\times$ max, $-$81\\% energy (Tesseract) & static; batched messages between cubes",
+  "cites": [
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "zhuo2019graphq"
+  ],
+  "nums": {
+   "3.3": [
+    [
+     "zhuo2019graphq",
+     "ive real-world graphs and four algorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tessera"
+    ]
+   ],
+   "13.9": [
+    [
+     "zhuo2019graphq",
+     "aphs and four algorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tesseract. We show that i"
+    ]
+   ],
+   "81": [
+    [
+     "zhuo2019graphq",
+     "lgorithms, GraphQ achieves on average 3.3\u00d7 and maximum 13.9\u00d7 speedup, 81% energy saving com- pared with Tesseract. We show that increasing mem"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C150",
+  "para": 59,
+  "text": "GraphR~ & PIM & ReRAM, sim.\\ & 16.01$\\times$ gmean, 33.82$\\times$ energy (CPU); 1.16--4.12$\\times$ (PIM) & SpMV-expressible kernels; analog precision",
+  "cites": [
+   "song2018graphr"
+  ],
+  "srcs": [
+   "song2018graphr"
+  ],
+  "nums": {
+   "16.01": [
+    [
+     "song2018graphr",
+     "due to sparsity. The experiment results show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric m"
+    ]
+   ],
+   "33.82": [
+    [
+     "song2018graphr",
+     " show that G RAPH R achieves a 16.01 \u00d7 (up to 132.67 \u00d7) speedup and a 33.82 \u00d7 energy saving on geometric mean compared to a CPU baseline system. "
+    ]
+   ],
+   "1.16": [
+    [
+     "song2018graphr",
+     " and consumes 4.77\u00d7 to 8.91\u00d7 less energy. G RAPH R gains a speedup of 1.16\u00d7 to 4.12\u00d7, and is 3.67\u00d7 to 10.96\u00d7 more energy ef\ufb01ciency compared to P"
+    ]
+   ],
+   "4.12": [
+    [
+     "song2018graphr",
+     "umes 4.77\u00d7 to 8.91\u00d7 less energy. G RAPH R gains a speedup of 1.16\u00d7 to 4.12\u00d7, and is 3.67\u00d7 to 10.96\u00d7 more energy ef\ufb01ciency compared to PIM-based "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C151",
+  "para": 60,
+  "text": "GaaS-X~ & PIM & CAM/MAC crossbar, sim.\\ & 7.7$\\times$ perf., 22$\\times$ energy (GraphR) & static; native sparse format",
+  "cites": [
+   "challapalle2020gaasx"
+  ],
+  "srcs": [
+   "challapalle2020gaasx"
+  ],
+  "nums": {
+   "7.7": [
+    [
+     "challapalle2020gaasx",
+     "the state of the art crossbar-based PIM accelerators. GaaS-X achieves 7.7\u00d7 and 2.4\u00d7 performance and 22\u00d7 and 5.7\u00d7, energy savings, respectively,"
+    ]
+   ],
+   "22": [
+    [
+     "challapalle2020gaasx",
+     "based PIM accelerators. GaaS-X achieves 7.7\u00d7 and 2.4\u00d7 performance and 22\u00d7 and 5.7\u00d7, energy savings, respectively, over two state-of-the-art cr"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C152",
+  "para": 61,
+  "text": "SISA~ & PIM & in-DRAM bitwise + logic layer & $>$10$\\times$ (Bron--Kerbosch) & mining; set operations only",
+  "cites": [
+   "besta2021sisa"
+  ],
+  "srcs": [
+   "besta2021sisa"
+  ],
+  "nums": {
+   "10": [
+    [
+     "besta2021sisa",
+     "are efficient and outperform hand-tuned baselines, offering more than 10\u00d7 speedup over the established Bron-Kerbosch algorithm for listing max"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C153",
+  "para": 62,
+  "text": "PrIM~ & PIM & UPMEM silicon & 93.0$\\times$ (CPU) on 13 sync-light benchmarks; BFS limited by host sync & no direct DPU interconnect",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {
+   "93.0": [
+    [
+     "gomezluna2022prim",
+     "ings. First, both UPMEM-based PIM systems outperform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks"
+    ]
+   ],
+   "13": [
+    [
+     "gomezluna2022prim",
+     "rform a modern CPU (by 93.0\u00d7 and 27.9\u00d7, on average, respectively) for 13 of the PrIM bench- marks, which donot require intensive inter-DPU syn"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C154",
+  "para": 63,
+  "text": "ALPHA-PIM~ & PIM & UPMEM silicon & BFS utilization 18.5\\% kernel / 5\\% total (CPU/GPU 0.01--0.05\\%) & partitioning depends on density",
+  "cites": [
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "barkhordar2025alphapim"
+  ],
+  "nums": {
+   "18.5": [
+    [
+     "barkhordar2025alphapim",
+     "PHA-PIM shows much higher compute utiliza- tion with UPMEM averaging: 18.5% (kernel) / 5% (total) for BFS, 31.8% / 7.1% for SSSP, and 6.4% / 2.8"
+    ]
+   ],
+   "5": [
+    [
+     "barkhordar2025alphapim",
+     "1,2026 at 02:05:26 UTC from IEEE Xplore. Restrictions apply. === PAGE 5 === host CPU (Merge). We exclude the time needed for loading the matr"
+    ]
+   ],
+   "0.01": [
+    [
+     "barkhordar2025alphapim",
+     "FS, 31.8% / 7.1% for SSSP, and 6.4% / 2.8% for PPR , compared to only 0.01\u20130.05% on CPU/GPU. This suggests that the PIM system is better balance"
+    ]
+   ],
+   "0.05": [
+    [
+     "barkhordar2025alphapim",
+     "1.8% / 7.1% for SSSP, and 6.4% / 2.8% for PPR , compared to only 0.01\u20130.05% on CPU/GPU. This suggests that the PIM system is better balanced bet"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C155",
+  "para": 64,
+  "text": "Graphicionado~ & DSA & RTL + DRAMSim2 & 1.76--6.54$\\times$, 50--100$\\times$ less energy (32-thread software) & static; scratchpad holds vertex data",
+  "cites": [
+   "ham2016graphicionado"
+  ],
+  "srcs": [
+   "ham2016graphicionado"
+  ],
+  "nums": {
+   "2": [
+    [
+     "ham2016graphicionado",
+     "e data while operating on only a portion of the data (e.g., 4 bytes), 2) ineffective on-chip memory usage \u2014hardware cache is oblivious to gra"
+    ]
+   ],
+   "1.76": [
+    [
+     "ham2016graphicionado",
+     " general-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a s"
+    ]
+   ],
+   "6.54": [
+    [
+     "ham2016graphicionado",
+     "l-purpose CPUs. Our results show that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of"
+    ]
+   ],
+   "50": [
+    [
+     "ham2016graphicionado",
+     "ow that Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph anal"
+    ]
+   ],
+   "100": [
+    [
+     "ham2016graphicionado",
+     "at Graphicionado achieves a 1.76 \u2212 6.54\u00d7 speedup while consuming 50 \u2212 100\u00d7 less energy compared to a state-of-the-art software graph analytics "
+    ]
+   ],
+   "32": [
+    [
+     "ham2016graphicionado",
+     "te-of-the-art software graph analytics processing framework executing 32 threads on a 16-core Haswell Xeon processor. I. I NTRODUCTION Startin"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C156",
+  "para": 65,
+  "text": "GraphDynS~ & DSA & simulation & 1.9$\\times$, 1.8$\\times$ less energy (earlier accel., same bandwidth) & static; runtime dependency scheduling",
+  "cites": [
+   "yan2019graphdyns"
+  ],
+  "srcs": [
+   "yan2019graphdyns"
+  ],
+  "nums": {
+   "1.9": [
+    [
+     "yan2019graphdyns",
+     "ate-of-the-art graph ana- lytics accelerator, GraphDynS also achieves 1.9\u00d7 speedup and 1.8\u00d7 less energy on average using the same memory bandwi"
+    ]
+   ],
+   "1.8": [
+    [
+     "yan2019graphdyns",
+     "aph ana- lytics accelerator, GraphDynS also achieves 1.9\u00d7 speedup and 1.8\u00d7 less energy on average using the same memory bandwidth. CCS CONCEPTS"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C157",
+  "para": 66,
+  "text": "ReGraph~ & DSA & HBM FPGA (U280) & 1.6--5.9$\\times$ (earlier FPGA designs) & pipeline count limits HBM use",
+  "cites": [
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "chen2022regraph"
+  ],
+  "nums": {
+   "280": [
+    [
+     "chen2022regraph",
+     "4% *Numbers are obtained from corresponding papers and normalized to U280 while others are proportionally scaled with the number of memory chan"
+    ]
+   ],
+   "1.6": [
+    [
+     "chen2022regraph",
+     "-button manner. \u2022 The comprehensive evaluation shows ReGraph delivers 1.6\u00d7\u20135.9\u00d7 performance speedup and 12 \u00d7 resource ef- \ufb01ciency improvement o"
+    ]
+   ],
+   "5.9": [
+    [
+     "chen2022regraph",
+     "cess. ReGraph outperforms state-of-the-art FPGA accelerators by up to 5.9 \u00d7 in terms of performance and 12 \u00d7 in terms of resource ef\ufb01ciency. I."
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C158",
+  "para": 67,
+  "text": "TDGraph~ & DSA & 64-core sim.\\ & 7.1--21.4$\\times$ (software streaming); 4.6--12.7$\\times$ (HATS) & \\textbf{dynamic}; incremental propagation",
+  "cites": [
+   "zhao2022tdgraph"
+  ],
+  "srcs": [
+   "zhao2022tdgraph"
+  ],
+  "nums": {
+   "64": [
+    [
+     "zhao2022tdgraph",
+     " cache and memory bandwidth. We have evaluated TDGraph on a simulated 64-core processor. The results show that, the state-of-the-art software "
+    ]
+   ],
+   "7.1": [
+    [
+     "zhao2022tdgraph",
+     "ow that, the state-of-the-art software system achieves the speedup of 7.1\u223c21.4 times after integrating with TDGraph, while incurring only 0.73%"
+    ]
+   ],
+   "21.4": [
+    [
+     "zhao2022tdgraph",
+     "hat, the state-of-the-art software system achieves the speedup of 7.1\u223c21.4 times after integrating with TDGraph, while incurring only 0.73% area"
+    ]
+   ],
+   "4.6": [
+    [
+     "zhao2022tdgraph",
+     " i.e., HATS, Minnow, PHI, and DepGraph, TDGraph gains the speedups of 4.6\u223c12.7, 3.2\u223c8.6, 3.8\u223c9.7, and 2.3\u223c6.1 times, respectively. \u2217 Correspond"
+    ]
+   ],
+   "12.7": [
+    [
+     "zhao2022tdgraph",
+     "., HATS, Minnow, PHI, and DepGraph, TDGraph gains the speedups of 4.6\u223c12.7, 3.2\u223c8.6, 3.8\u223c9.7, and 2.3\u223c6.1 times, respectively. \u2217 Corresponding A"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C159",
+  "para": 68,
+  "text": "MEGA~ & DSA & simulation & 24--120$\\times$ (CommonGraph software); 4.08--5.98$\\times$ (JetStream) & \\textbf{dynamic}; multi-snapshot",
+  "cites": [
+   "gao2023mega"
+  ],
+  "srcs": [
+   "gao2023mega"
+  ],
+  "nums": {
+   "24": [
+    [
+     "gao2023mega",
+     "s graph queries over multiple snapshots simultaneously. MEGA achieves 24\u00d7-120\u00d7 speedup over CommonGraph. It also achieves speedups ranging fro"
+    ]
+   ],
+   "120": [
+    [
+     "gao2023mega",
+     "aph queries over multiple snapshots simultaneously. MEGA achieves 24\u00d7-120\u00d7 speedup over CommonGraph. It also achieves speedups ranging from 4.0"
+    ]
+   ],
+   "4.08": [
+    [
+     "gao2023mega",
+     "120\u00d7 speedup over CommonGraph. It also achieves speedups ranging from 4.08\u00d7 to 5.98\u00d7 over JetStream, a state-of-the-art streaming graph accelera"
+    ]
+   ],
+   "5.98": [
+    [
+     "gao2023mega",
+     "dup over CommonGraph. It also achieves speedups ranging from 4.08\u00d7 to 5.98\u00d7 over JetStream, a state-of-the-art streaming graph accelerator. CCS "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C160",
+  "para": 69,
+  "text": "Piccolo~ & Hybrid & Ramulator + FPGA emul.\\ & 1.62$\\times$ gmean (max 3.28$\\times$), up to $-$59.7\\% energy (GraphDynS, cache) & static; DDR burst vs.\\ 4--8\\,B vertex",
+  "cites": [
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "1.62": [
+    [
+     "shin2025piccolo",
+     " achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across vari"
+    ]
+   ],
+   "3.28": [
+    [
+     "shin2025piccolo",
+     "iling and in-memory operations. Piccolo achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% redu"
+    ]
+   ],
+   "59.7": [
+    [
+     "shin2025piccolo",
+     "up of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% reduction in energy consumption across various and extensive benchma"
+    ]
+   ],
+   "4": [
+    [
+     "shin2025piccolo",
+     "ff-chip burst length (64B for DDR family) and the access granularity (4B/8B vertex data), which is depicted in Fig. 1a with red (unuseful dat"
+    ]
+   ],
+   "8": [
+    [
+     "shin2025piccolo",
+     "Chip I/O DRAM ... ... ... ... ... ... Processor Cache Tag 1 Tag 2 Tag 8 Prefetcher Vertex Prefetch Edge Prefetch PE S I M D UE Updater ... RA"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C161",
+  "para": 70,
+  "text": "FALA~ & Hybrid & HBM2, simulation & 1.56$\\times$, $-$35.3\\% energy gmean (Piccolo, PEI, GraphPIM) & static; fine-grained column access",
+  "cites": [
+   "shin2025fala"
+  ],
+  "srcs": [
+   "shin2025fala"
+  ],
+  "nums": {
+   "2": [
+    [
+     "shin2025fala",
+     "such memory bottlenecks, numerous graph process- ing accelerators [1, 2, 14, 16, 24, 54, 58, 61, 70, 78, 87, 88, 93, 94, 97] have been develo"
+    ]
+   ],
+   "1.56": [
+    [
+     "shin2025fala",
+     "sing accelerators. Experimental results demonstrate that FALAachieves 1.56\u00d7 speedup and reduces energy consumption by 35.3% in geometric mean, c"
+    ]
+   ],
+   "35.3": [
+    [
+     "shin2025fala",
+     "ate that FALAachieves 1.56\u00d7 speedup and reduces energy consumption by 35.3% in geometric mean, compared to the prior art. CCS Concepts \u2022 Compute"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C162",
+  "para": 71,
+  "text": "CoGraf~ & Hybrid & FGPIM, sim.\\ & 4.4$\\times$/9.8$\\times$ region of interest (non-PIM, HBM2/DDR4) & static; push-only; not end-to-end",
+  "cites": [
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "yenimol2026cograf"
+  ],
+  "nums": {
+   "4.4": [
+    [
+     "yenimol2026cograf",
+     "edup in the region of interest of 1.8\u00d7/3\u00d7 compared to naive FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art non-PIM baseline (HBM2/DDR4), and "
+    ]
+   ],
+   "9.8": [
+    [
+     "yenimol2026cograf",
+     "in the region of interest of 1.8\u00d7/3\u00d7 compared to naive FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art non-PIM baseline (HBM2/DDR4), and DRAM "
+    ]
+   ],
+   "2": [
+    [
+     "yenimol2026cograf",
+     "FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art non-PIM baseline (HBM2/DDR4), and DRAM energy reduction of 67%/86% and 88%/94%. These re- su"
+    ]
+   ],
+   "4": [
+    [
+     "yenimol2026cograf",
+     "edup in the region of interest of 1.8\u00d7/3\u00d7 compared to naive FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art non-PIM baseline (HBM2/DDR4), an"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C163",
+  "para": 73,
+  "text": "Analog ReRAM and 3D-stacked PIM report their largest gains for these kernels~, and hybrids benefit from tiling here~.",
+  "cites": [
+   "song2018graphr",
+   "challapalle2020gaasx",
+   "ahn2015tesseract",
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "song2018graphr",
+   "challapalle2020gaasx",
+   "ahn2015tesseract",
+   "shin2025piccolo"
+  ],
+  "nums": {
+   "3": [
+    [
+     "song2018graphr",
+     "8.91\u00d7 less energy. G RAPH R gains a speedup of 1.16\u00d7 to 4.12\u00d7, and is 3.67\u00d7 to 10.96\u00d7 more energy ef\ufb01ciency compared to PIM-based architectur"
+    ],
+    [
+     "challapalle2020gaasx",
+     "lapalle 1* Sahithi Rampalli 1* Linghao Song 2 Nandhini Chandramoorthy 3 Karthik Swaminathan 3 John Sampson 1 Yiran Chen2 Vijaykrishnan Naraya"
+    ],
+    [
+     "ahn2015tesseract",
+     "tive. The key modern enabler for PIM is the recent advancement of the 3D integration technology that facilitates stacking logic and memory di"
+    ],
+    [
+     "shin2025piccolo",
+     "iling and in-memory operations. Piccolo achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% r"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C164",
+  "para": 73,
+  "text": "Here, the burst-waste problem is worst for DSAs~, and the synchronization problem is worst for real PIM~.",
+  "cites": [
+   "shin2025piccolo",
+   "gomezluna2022prim",
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "gomezluna2022prim",
+   "barkhordar2025alphapim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C165",
+  "para": 73,
+  "text": "Fine-grained hybrids target exactly this case~.",
+  "cites": [
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C166",
+  "para": 73,
+  "text": "PIM shows strong results here on both simulated and real hardware~.",
+  "cites": [
+   "besta2021sisa",
+   "talati2022ndminer",
+   "cai2024pimpam"
+  ],
+  "srcs": [
+   "besta2021sisa",
+   "talati2022ndminer",
+   "cai2024pimpam"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C167",
+  "para": 73,
+  "text": "For \\emph{streaming and evolving} workloads, only DSAs offer hardware support~.",
+  "cites": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "srcs": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C168",
+  "para": 75,
+  "text": "\\emph{Mutability.} Every PIM and hybrid hardware design we examined assumes a static graph~.",
+  "cites": [
+   "ahn2015tesseract",
+   "zhang2018graphp",
+   "zhuo2019graphq",
+   "song2018graphr",
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhang2018graphp",
+   "zhuo2019graphq",
+   "song2018graphr",
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C169",
+  "para": 75,
+  "text": "A 2020 position paper already noted that earlier graph PIM ``operated only on static graphs'' and described the design considerations for dynamic graphs~.",
+  "cites": [
+   "kim2020dynamic"
+  ],
+  "srcs": [
+   "kim2020dynamic"
+  ],
+  "nums": {
+   "2020": [
+    [
+     "kim2020dynamic",
+     "ssing, dynamic graphs ACM Reference Format: Euna Kim and Hyesoon Kim. 2020. Things to Consider to Enable Dynamic Graphs in Processing-in-Memory."
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C170",
+  "para": 75,
+  "text": "In our search of ISCA, MICRO, HPCA, and ASPLOS for 2021--2026, we found no PIM hardware design for streaming or evolving graphs.",
+  "cites": [],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhang2018graphp",
+   "zhuo2019graphq",
+   "song2018graphr",
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf",
+   "kim2020dynamic",
+   "asquini2025tc",
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega",
+   "cai2024pimpam",
+   "kim2020dynamic",
+   "gomezluna2022prim"
+  ],
+  "nums": {
+   "2021": [
+    [
+     "shin2025piccolo",
+     " on FPGAs with Caches for Thousands of Simultaneous Misses,\u201d in ISCA, 2021. [9] M. Bakhshalipour, M. Shakerinava, P. Lotfi-Kamran, and H. Sarbaz"
+    ],
+    [
+     "shin2025fala",
+     "tion (IITP) (RS-2024-00395134, RS-2024-00347394, RS-2023-00256081, RS-2021II211343). Jinho Lee is the correspond- ing author. 1532 === PAGE 14 ="
+    ],
+    [
+     "yenimol2026cograf",
+     "im, O Seongil, Anand Iyer, David Wang, Kyomin Sohn, and Nam Sung Kim. 2021. Hardware Architecture and Soft- ware Stack for PIM Based on Commerci"
+    ],
+    [
+     "asquini2025tc",
+     "Intelligent architectures for intelligent com- puting systems, \u201dDATE, 2021. [12] O. Mutlu, S. Ghose, J. G\u00f3mez-Luna, and R. Ausavarung- nirun, \u201cE"
+    ],
+    [
+     "rahman2021jetstream",
+     "t: Shafiur Rahman, Mahbod Afarin, Nael Abu-Ghazaleh, and Rajiv Gupta. 2021. JetStream: Graph Analytics on Streaming Data with Event-Driven Hardw"
+    ],
+    [
+     "zhao2022tdgraph",
+     " Systems36, 3 (2019), 8:1\u20138:34. [8] Mikhail Asiatici and Paolo Ienne. 2021. Large-Scale Graph Processing on FPGAs with Caches for Thousands of S"
+    ],
+    [
+     "gao2023mega",
+     "lan Lin, Alaa R Alameldeen, Zeshan Chishti, Yufei Ding, and Yuan Xie. 2021. Improving streaming graph processing performance using input knowled"
+    ],
+    [
+     "cai2024pimpam",
+     "vatore Di Girolamo, Marek Konieczny, Onur Mutlu, and Torsten Hoefler. 2021. SISA: Set-Centric Instruction Set Architecture for Graph Mining on P"
+    ],
+    [
+     "gomezluna2022prim",
+     "peline, as mentioned in Section 2.2. 10In this work, we use UPMEM SDK 2021.1.1 [234]. 5 === PAGE 6 === GENERAL PROGRAMMING RECOMMENDATIONS 1. Ex"
+    ]
+   ],
+   "2026": [
+    [
+     "song2018graphr",
+     "ed to: b-on: Instituto Politecnico do Porto. Downloaded on October 11,2026 at 01:56:56 UTC from IEEE Xplore. Restrictions apply. === PAGE 2 === "
+    ],
+    [
+     "yenimol2026cograf",
+     "emi Yenimol, Anirban Nag, Chang Hyun Park, and David Black- Schaffer. 2026. CoGraf: Fully Accelerating Graph Applications with This work is lice"
+    ],
+    [
+     "asquini2025tc",
+     "ng the triangle counting process. 1 arXiv:2505.04269v2 [cs.AR] 20 Mar 2026 === PAGE 2 === The contributions of this paper are: \u2022 We introduce th"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C171",
+  "para": 75,
+  "text": "Its advantage comes from avoiding CSR rebuilds, not from incremental computation~.",
+  "cites": [
+   "asquini2025tc"
+  ],
+  "srcs": [
+   "asquini2025tc"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C172",
+  "para": 75,
+  "text": "The DSA camp, in contrast, has three generations of designs~.",
+  "cites": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "srcs": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C173",
+  "para": 75,
+  "text": "An insertion can overflow a 64\\,MB DPU bank or make a partition unbalanced~.",
+  "cites": [
+   "cai2024pimpam"
+  ],
+  "srcs": [
+   "cai2024pimpam"
+  ],
+  "nums": {
+   "64": [
+    [
+     "cai2024pimpam",
+     "ical to perform sufficient multi-threading processing. Each DPU has a 64 MB private local memory bank as its main memory (MRAM), as well as a "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C174",
+  "para": 75,
+  "text": "Repartitioning, which Kim and Kim list as a necessary change for dynamic graphs~, moves data through exactly the narrow path that PIM is meant to avoid~.",
+  "cites": [
+   "kim2020dynamic",
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "kim2020dynamic",
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C175",
+  "para": 76,
+  "text": "\\emph{Access granularity.} When each access brings little useful data, both conventional DSAs and coarse-grained PIM waste bandwidth~.",
+  "cites": [
+   "shin2025piccolo"
+  ],
+  "srcs": [
+   "shin2025piccolo"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C176",
+  "para": 76,
+  "text": "Fine-grained PIM mechanisms help both camps~, and this explains why the camps are converging.",
+  "cites": [
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C177",
+  "para": 77,
+  "text": "Examples are pattern matching after partitioning~, set operations~, and benchmarks without synchronization~.",
+  "cites": [
+   "cai2024pimpam",
+   "besta2021sisa",
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "cai2024pimpam",
+   "besta2021sisa",
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C178",
+  "para": 77,
+  "text": "Its advantage becomes smaller on frontier-driven traversals that exchange data in every iteration, unless the design provides an interconnect between units~.",
+  "cites": [
+   "zhuo2019graphq",
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "zhuo2019graphq",
+   "barkhordar2025alphapim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C179",
+  "para": 78,
+  "text": "Graph \\emph{size} is usually presented as an argument for PIM, because its bandwidth grows with capacity~.",
+  "cites": [
+   "ahn2015tesseract",
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhuo2019graphq"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C180",
+  "para": 78,
+  "text": "However, the real-hardware results show that size helps only if communication does not grow with it~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C181",
+  "para": 78,
+  "text": "\\emph{Precision and programmability} separate analog ReRAM, which is limited to SpMV, from all other designs~.",
+  "cites": [
+   "song2018graphr"
+  ],
+  "srcs": [
+   "song2018graphr"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C182",
+  "para": 78,
+  "text": "\\emph{Concurrency}, meaning many queries over one graph, has been addressed in software~ but not in either hardware camp.",
+  "cites": [
+   "yin2023glign"
+  ],
+  "srcs": [
+   "yin2023glign"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C183",
+  "para": 79,
+  "text": "\\textbf{+} evidence favors the camp; \\textbf{--} evidence against; $\\pm$ mixed; \\textbf{?} not tested} \\centering\\footnotesize \\begin{tabularx}{\\columnwidth}{@{}L{4.2cm}cccY@{}} \\toprule Axis & PIM & DSA & Hyb.\\ & Basis",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "4.2": []
+  }
+ },
+ {
+  "id": "C184",
+  "para": 80,
+  "text": "\\midrule Dynamic graph & ? & + & ? &",
+  "cites": [
+   "kim2020dynamic",
+   "rahman2021jetstream",
+   "gao2023mega",
+   "asquini2025tc"
+  ],
+  "srcs": [
+   "kim2020dynamic",
+   "rahman2021jetstream",
+   "gao2023mega",
+   "asquini2025tc"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C185",
+  "para": 81,
+  "text": "Fine granularity & + & -- & + &",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C186",
+  "para": 82,
+  "text": "Low cross-partition traffic & + & + & + &",
+  "cites": [
+   "gomezluna2022prim",
+   "cai2024pimpam"
+  ],
+  "srcs": [
+   "gomezluna2022prim",
+   "cai2024pimpam"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C187",
+  "para": 83,
+  "text": "High cross-partition traffic & -- & + & ? &",
+  "cites": [
+   "gomezluna2022prim",
+   "barkhordar2025alphapim",
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "gomezluna2022prim",
+   "barkhordar2025alphapim",
+   "zhuo2019graphq"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C188",
+  "para": 84,
+  "text": "Graph size $\\gg$ on-chip & + & $\\pm$ & + &",
+  "cites": [
+   "ahn2015tesseract",
+   "lee2022graphwave",
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "lee2022graphwave",
+   "chen2022regraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C189",
+  "para": 85,
+  "text": "Concurrent queries & ? & ? & ? &",
+  "cites": [
+   "yin2023glign"
+  ],
+  "srcs": [
+   "yin2023glign"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C190",
+  "para": 88,
+  "text": "Graph analytics supports applications such as network-security analysis~, where results must be trustworthy and delivered on time.",
+  "cites": [
+   "asquini2025tc"
+  ],
+  "srcs": [
+   "asquini2025tc"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C191",
+  "para": 89,
+  "text": "According to the authors, this reduces the protection overhead for graph accelerators from 33\\% to 5\\%~.",
+  "cites": [
+   "hua2022mgx"
+  ],
+  "srcs": [
+   "hua2022mgx"
+  ],
+  "nums": {
+   "33": [
+    [
+     "hua2022mgx",
+     "MGX lowers the performance overhead of memory protection from 28% and 33% to 4% and 5% for DNN and graph processing accelerators. generates ve"
+    ]
+   ],
+   "5": [
+    [
+     "hua2022mgx",
+     " performance overhead of memory protection from 28% and 33% to 4% and 5% for DNN and graph processing accelerators. generates version numbers"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C192",
+  "para": 89,
+  "text": "Its two covert channels reach 8.2 and 14.8\\,Mb/s, which is $3.6\\times$ and $6.5\\times$ higher than earlier memory-based channels.",
+  "cites": [],
+  "srcs": [
+   "hua2022mgx",
+   "bostanci2025impact",
+   "yuksel2026pid"
+  ],
+  "nums": {
+   "8.2": [
+    [
+     "bostanci2025impact",
+     "roughput covert communication channels. Our covert chan- nels achieve 8.2 Mb/s and 14.8 Mb/s communication throughput, respectively, which is 3"
+    ]
+   ],
+   "14.8": [
+    [
+     "bostanci2025impact",
+     "rt communication channels. Our covert chan- nels achieve 8.2 Mb/s and 14.8 Mb/s communication throughput, respectively, which is 3.6 \u00d7 and 6.5 \u00d7"
+    ],
+    [
+     "yuksel2026pid",
+     "hroughput memory timing channels (e.g., a communication throughput of 14.8Mb/s). We believe it is time to design, use, and program DRAM, and in "
+    ]
+   ],
+   "3.6": [
+    [
+     "bostanci2025impact",
+     "2 Mb/s and 14.8 Mb/s communication throughput, respectively, which is 3.6 \u00d7 and 6.5 \u00d7 higher than the state- of-the-art main memory-based cover"
+    ]
+   ],
+   "6.5": [
+    [
+     "bostanci2025impact",
+     " 14.8 Mb/s communication throughput, respectively, which is 3.6 \u00d7 and 6.5 \u00d7 higher than the state- of-the-art main memory-based covert channel."
+    ],
+    [
+     "yuksel2026pid",
+     "Result.IMPACT-PuM achieves a communication through- put of 14.8 Mb/s, 6.5\u00d7 higher than the state-of-the-art main memory-based covert channel, a"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C193",
+  "para": 89,
+  "text": "The authors evaluate the performance cost of their defenses on GraphBIG workloads, including BFS, connected components, and triangle counting~.",
+  "cites": [
+   "bostanci2025impact"
+  ],
+  "srcs": [
+   "bostanci2025impact"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C194",
+  "para": 89,
+  "text": "A related analysis adds that processing-in-DRAM makes read disturbance worse: it reduces the number of accesses needed to cause the first bitflip by $158\\times$~.",
+  "cites": [
+   "yuksel2026pid"
+  ],
+  "srcs": [
+   "yuksel2026pid"
+  ],
+  "nums": {
+   "158": [
+    [
+     "yuksel2026pid",
+     "ey security challenges of PiD: amplified DRAM read disturbance (e.g., 158x reduction in the minimum number of DRAM accesses required to induce "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C195",
+  "para": 90,
+  "text": "On the DSA side, MGX is efficient because it adapts protection to the data movement of the accelerator and derives version numbers from on-chip state~.",
+  "cites": [
+   "hua2022mgx"
+  ],
+  "srcs": [
+   "hua2022mgx"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C196",
+  "para": 91,
+  "text": "\\emph{Dependability.} GraphR justifies analog computation by arguing that iterative algorithms, and integer algorithms such as BFS and SSSP, tolerate imprecision~.",
+  "cites": [
+   "song2018graphr"
+  ],
+  "srcs": [
+   "song2018graphr"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C197",
+  "para": 91,
+  "text": "A full-text search of GraphR, Spara, and GaaS-X finds no such evaluation~.",
+  "cites": [
+   "song2018graphr",
+   "zheng2020spara",
+   "challapalle2020gaasx"
+  ],
+  "srcs": [
+   "song2018graphr",
+   "zheng2020spara",
+   "challapalle2020gaasx"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C198",
+  "para": 91,
+  "text": "The read-disturbance problem mentioned above is also a reliability concern for digital PIM~.",
+  "cites": [
+   "yuksel2026pid"
+  ],
+  "srcs": [
+   "yuksel2026pid"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C199",
+  "para": 92,
+  "text": "On UPMEM, every BFS iteration includes a frontier merge that runs serially on the host, and its cost does not decrease when DPUs are added~.",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C200",
+  "para": 92,
+  "text": "Spara's evaluation finds that GraphR's performance varies by more than $5\\times$ as the edge count grows from 500 million to one billion~.",
+  "cites": [
+   "zheng2020spara"
+  ],
+  "srcs": [
+   "zheng2020spara"
+  ],
+  "nums": {
+   "5": [
+    [
+     "zheng2020spara",
+     "d graphs show that Spara outperforms GraphR and GraphSAR by 8.21\u00d7 and 5.01\u00d7 in terms of performance, and by 8.97\u00d7 and 5.68\u00d7 in terms of energ"
+    ]
+   ],
+   "500": [
+    [
+     "zheng2020spara",
+     "iation, which can be over 5\u00d7 when the number of edges is changed from 500 million to 1 billion. Threshold. Figure 9 depicts the performance of "
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C201",
+  "para": 92,
+  "text": "Interference between concurrent queries from several tenants has only been studied as a throughput problem, in software~.",
+  "cites": [
+   "yin2023glign"
+  ],
+  "srcs": [
+   "yin2023glign"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C202",
+  "para": 92,
+  "text": "A scratchpad, such as the one in Graphicionado, has a fixed access latency, unlike a cache whose hit rate depends on the graph~.",
+  "cites": [
+   "ham2016graphicionado"
+  ],
+  "srcs": [
+   "ham2016graphicionado"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C203",
+  "para": 92,
+  "text": "On the other hand, asynchronous and event-driven execution makes the order of updates, and therefore the number of iterations, depend on timing~.",
+  "cites": [
+   "rahman2021jetstream",
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "rahman2021jetstream",
+   "zhuo2019graphq"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C204",
+  "para": 92,
+  "text": "For incremental DSAs, latency is proportional to the size of the affected region, not to the size of the graph~.",
+  "cites": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph"
+  ],
+  "srcs": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C205",
+  "para": 93,
+  "text": "\\begin{table}[t] \\caption{How the surveyed works address properties for critical systems} \\centering\\footnotesize \\begin{tabularx}{\\columnwidth}{@{}L{2.6cm}YY@{}} \\toprule Property & PIM & DSA",
+  "cites": [],
+  "srcs": [],
+  "nums": {
+   "2.6": []
+  }
+ },
+ {
+  "id": "C206",
+  "para": 94,
+  "text": "\\midrule Security & New attack surface evaluated (timing channels, read disturbance)~ & Protection overhead reduced~",
+  "cites": [
+   "bostanci2025impact",
+   "yuksel2026pid",
+   "hua2022mgx"
+  ],
+  "srcs": [
+   "bostanci2025impact",
+   "yuksel2026pid",
+   "hua2022mgx"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C207",
+  "para": 95,
+  "text": "Dependability & Error tolerance claimed, not evaluated~ & Uses standard ECC DRAM; not studied",
+  "cites": [
+   "song2018graphr"
+  ],
+  "srcs": [
+   "song2018graphr"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C208",
+  "para": 96,
+  "text": "Predictability & Serial sync on the host adds variable latency~ & Not studied",
+  "cites": [
+   "gomezluna2022prim"
+  ],
+  "srcs": [
+   "gomezluna2022prim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C209",
+  "para": 99,
+  "text": "\\textbf{1) PIM for dynamic graphs.} The clearest gap is a PIM design that supports incremental updates without repeated repartitioning.",
+  "cites": [],
+  "srcs": [
+   "kim2020dynamic",
+   "asquini2025tc",
+   "shin2025fala",
+   "mukkara2018hats",
+   "gao2023mega"
+  ],
+  "nums": {
+   "1": [
+    [
+     "kim2020dynamic",
+     " === PAGE 1 === Things to Consider to Enable Dynamic Graphs in Processing-in-Memo"
+    ],
+    [
+     "asquini2025tc",
+     " === PAGE 1 === Accelerating Triangle Counting with Real Processing-in-Memory Sys"
+    ],
+    [
+     "shin2025fala",
+     " === PAGE 1 === FALA: Locality-Aware PIM-Host Cooperation for Graph Processing wi"
+    ],
+    [
+     "mukkara2018hats",
+     " === PAGE 1 === Appears in the Proceedings of the 51st Annual IEEE/ACM Internatio"
+    ],
+    [
+     "gao2023mega",
+     " === PAGE 1 === MEGA Evolving Graph Accelerator Chao Gao\u2217 cgao037@ucr.edu CSE Dep"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C210",
+  "para": 99,
+  "text": "Kim and Kim suggest keeping a log of edge and vertex changes in memory and merging it by streaming or in batches with explicit repartitioning~.",
+  "cites": [
+   "kim2020dynamic"
+  ],
+  "srcs": [
+   "kim2020dynamic"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C211",
+  "para": 99,
+  "text": "Other options are kernels that work directly on COO data, as the UPMEM triangle-counting result suggests~, and hybrids that keep changing data on the host and stable partitions in PIM~.",
+  "cites": [
+   "asquini2025tc",
+   "shin2025fala"
+  ],
+  "srcs": [
+   "asquini2025tc",
+   "shin2025fala"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C212",
+  "para": 99,
+  "text": "Can online locality scheduling, as in HATS~, replace offline partitioning?",
+  "cites": [
+   "mukkara2018hats"
+  ],
+  "srcs": [
+   "mukkara2018hats"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C213",
+  "para": 99,
+  "text": "Can multi-snapshot sharing, as in MEGA~, work with data that is local to a bank?",
+  "cites": [
+   "gao2023mega"
+  ],
+  "srcs": [
+   "gao2023mega"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C214",
+  "para": 100,
+  "text": "\\textbf{2) An interconnect between PIM units that does not go through the host.} Communication through the host is the main limit for traversal on real hardware~, while the simulated designs that performed well assumed a direct interconnect~.",
+  "cites": [
+   "gomezluna2022prim",
+   "barkhordar2025alphapim",
+   "ahn2015tesseract",
+   "zhuo2019graphq"
+  ],
+  "srcs": [
+   "gomezluna2022prim",
+   "barkhordar2025alphapim",
+   "ahn2015tesseract",
+   "zhuo2019graphq"
+  ],
+  "nums": {
+   "2": [
+    [
+     "gomezluna2022prim",
+     " Real Processing-in-Memory Architecture Juan G\u00f3mez-Luna1 Izzat El Hajj2 Ivan Fernandez1,3 Christina Giannoula1,4 Geraldo F. Oliveira1 Onur Mu"
+    ],
+    [
+     "barkhordar2025alphapim",
+     "tative graph algorithms on UPMEM\u2019s general-purpose PIM architecture; (2) characterize their performance and identify key bottlenecks; (3) com"
+    ],
+    [
+     "ahn2015tesseract",
+     "are architecture that fully utilizes the available memory bandwidth, (2) an ef\ufb01cient method of communication between different memory partiti"
+    ],
+    [
+     "zhuo2019graphq",
+     "ped inter-cube communication by reordering vertex pro- cessing order; 2) streamlined inter-cube communication by using heterogeneous cores fo"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C215",
+  "para": 101,
+  "text": "\\textbf{3) Evaluation methodology.} The field needs common CPU, GPU, and DSA baselines, end-to-end reporting instead of region-of-interest reporting~, and validation on real hardware or FPGA where possible~.",
+  "cites": [
+   "yenimol2026cograf",
+   "shin2025piccolo",
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "yenimol2026cograf",
+   "shin2025piccolo",
+   "chen2022regraph"
+  ],
+  "nums": {
+   "3": [
+    [
+     "yenimol2026cograf",
+     "well. We achieve an average speedup in the region of interest of 1.8\u00d7/3\u00d7 compared to naive FGPIM and 4.4\u00d7/9.8\u00d7 compared to state-of-the-art n"
+    ],
+    [
+     "shin2025piccolo",
+     "iling and in-memory operations. Piccolo achieves a maximum speedup of 3.28 \u00d7 and a geometric mean speedup of 1.62 \u00d7, along with up to 59.7% r"
+    ],
+    [
+     "chen2022regraph",
+     "GAs with Heterogeneous Pipelines Xinyu Chen 1, Yao Chen 2, Feng Cheng 3, Hongshi Tan 1, Bingsheng He 1, Weng-Fai Wong1 1National University o"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C216",
+  "para": 101,
+  "text": "PIM and DSA designs move energy between the memory and the processor, so each can look better when only part of the system is counted~.",
+  "cites": [
+   "yenimol2026cograf",
+   "ham2016graphicionado"
+  ],
+  "srcs": [
+   "yenimol2026cograf",
+   "ham2016graphicionado"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C217",
+  "para": 102,
+  "text": "\\textbf{4) Threat models that cover both camps.} Security has been studied separately for DSA memory protection~ and for PIM timing channels~.",
+  "cites": [
+   "hua2022mgx",
+   "bostanci2025impact"
+  ],
+  "srcs": [
+   "hua2022mgx",
+   "bostanci2025impact"
+  ],
+  "nums": {
+   "4": [
+    [
+     "hua2022mgx",
+     "ers the performance overhead of memory protection from 28% and 33% to 4% and 5% for DNN and graph processing accelerators. generates version "
+    ],
+    [
+     "bostanci2025impact",
+     " === PAGE 1 === arXiv:2404.11284v4 [cs.CR] 12 Jun 2025 Revisiting Main Memory-Based Covert and Side Chan"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C218",
+  "para": 102,
+  "text": "Such a model should cover both confidentiality (leakage of structure through timing) and integrity (bitflips caused by read disturbance in the stored adjacency data~).",
+  "cites": [
+   "yuksel2026pid"
+  ],
+  "srcs": [
+   "yuksel2026pid"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C219",
+  "para": 102,
+  "text": "It should also measure the cost of defenses on graph kernels, as IMPACT started to do~.",
+  "cites": [
+   "bostanci2025impact"
+  ],
+  "srcs": [
+   "bostanci2025impact"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C220",
+  "para": 103,
+  "text": "\\textbf{5) Fault tolerance for analog graph PIM.} ReRAM graph accelerators need fault-injection studies before they can be used in critical systems~.",
+  "cites": [
+   "song2018graphr",
+   "zheng2020spara"
+  ],
+  "srcs": [
+   "song2018graphr",
+   "zheng2020spara"
+  ],
+  "nums": {
+   "5": [
+    [
+     "song2018graphr",
+     " presents processing pat- terns for various graph algorithms. Section 5 presents the evaluation methodology and experiment results. Section 6"
+    ],
+    [
+     "zheng2020spara",
+     "d graphs show that Spara outperforms GraphR and GraphSAR by 8.21\u00d7 and 5.01\u00d7 in terms of performance, and by 8.97\u00d7 and 5.68\u00d7 in terms of energ"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C221",
+  "para": 104,
+  "text": "\\textbf{6) Programmability across hybrid designs.} Each hybrid introduces its own instructions or access modes~.",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {
+   "6": [
+    [
+     "shin2025piccolo",
+     " res = Process(e.weight, Vprop[u]) 5 Vtemp[v] = Reduce(Vtemp[v], res) 6 foreach v \u2208 Vtile do 7 applyres = Apply(Vprop[v], Vtemp[v], Vconst[v]"
+    ],
+    [
+     "shin2025fala",
+     "ight,\ud835\udc49\ud835\udc5d\ud835\udc5f\ud835\udc5c\ud835\udc5d [\ud835\udc62]) 5 \ud835\udc49\ud835\udc61\ud835\udc52\ud835\udc5a\ud835\udc5d [\ud835\udc63]\u2190 Reduce(\ud835\udc49\ud835\udc61\ud835\udc52\ud835\udc5a\ud835\udc5d [\ud835\udc63],\ud835\udc45\ud835\udc52\ud835\udc60\ud835\udc62\ud835\udc59\ud835\udc61 ) // Apply Phase 6 foreach\ud835\udc63 in current tile do 7 \ud835\udc4e\ud835\udc5d\ud835\udc5d\ud835\udc59\ud835\udc66\ud835\udc45\ud835\udc52\ud835\udc60\u2190 Apply(\ud835\udc49\ud835\udc5d\ud835\udc5f\ud835\udc5c\ud835\udc5d [\ud835\udc63],\ud835\udc49\ud835\udc61\ud835\udc52\ud835\udc5a\ud835\udc5d [\ud835\udc63],\ud835\udc49\ud835\udc50\ud835\udc5c"
+    ],
+    [
+     "yenimol2026cograf",
+     "el Instructions 0.0 0.1 0.2 0.3 0.4 Baseline Step 1 Step 2 Step 3 0 3 6 9 12 Activations / Traffic Performance DRAM Row Activations DRAM Traf"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C222",
+  "para": 104,
+  "text": "The vertex-programming model already serves as a common front end for DSAs~, and linear-algebra formulations play the same role for PIM~.",
+  "cites": [
+   "ham2016graphicionado",
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "ham2016graphicionado",
+   "barkhordar2025alphapim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C223",
+  "para": 106,
+  "text": "We surveyed 30 works and compared them using an explicit rule for comparability.",
+  "cites": [],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhuo2019graphq",
+   "gomezluna2022prim",
+   "cai2024pimpam",
+   "gomezluna2022prim",
+   "barkhordar2025alphapim",
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega",
+   "shin2025piccolo",
+   "chen2022regraph"
+  ],
+  "nums": {
+   "30": [
+    [
+     "ahn2015tesseract",
+     "specialized on-chip accelerators for a limited set of operations [13, 30, 34, 59]. Such accelerators mainly focus on improving core ef\ufb01ciency,"
+    ],
+    [
+     "zhuo2019graphq",
+     "apping com- munication and computation [41, 54, 65], graph partition [30, 71], graph load balance [59], and graph load characterization [60, 6"
+    ],
+    [
+     "gomezluna2022prim",
+     "c Throughput (MOPS) #Tasklets (c)FLOAT(1 DPU) ADD SUB MUL DIV 0 10 20 30 40 50 60 70 1 3 5 7 9 11 13 15 17 19 21 23 Arithmetic Throughput (MOP"
+    ],
+    [
+     "cai2024pimpam",
+     "Figure 4, which runs the House pattern (Figure 6) on the LiveJournal [30] graph. On the left, we see that the processing time of search tree t"
+    ],
+    [
+     "gomezluna2022prim",
+     "c Throughput (MOPS) #Tasklets (c)FLOAT(1 DPU) ADD SUB MUL DIV 0 10 20 30 40 50 60 70 1 3 5 7 9 11 13 15 17 19 21 23 Arithmetic Throughput (MOP"
+    ],
+    [
+     "barkhordar2025alphapim",
+     " levels of parallelism and provide substantial memory bandwidth [24]\u2013[30], which significantly improve performance of memory-bound opera- tion"
+    ],
+    [
+     "rahman2021jetstream",
+     ".74 1.24 1.61 8.12 17.75 BFS GP 3.10\u00d7 5.35\u00d7 7.80\u00d7 8.18\u00d7 15.1\u00d7 6.9\u00d7 KS 30.1\u00d7 8.31\u00d7 11.7\u00d7 11.5\u00d7 5.57\u00d7 11.3\u00d7 Jet 1.64 1.44 2.59 5.07 11.73 CC GP "
+    ],
+    [
+     "zhao2022tdgraph",
+     "sly over time, and this type of graph is called streaming graphs [14, 30, 61]. For exam- ple, about 6,000 tweets are deleted or added on the t"
+    ],
+    [
+     "gao2023mega",
+     " 01020304050 Number of Events (Thousands) Rounds SSNP 0 5 10 15 20 25 30 0 1020304050 Number of Events (Thousands) Rounds BFS Rounds Rounds Fi"
+    ],
+    [
+     "shin2025piccolo",
+     "ed to current off-chip memory (e.g., DRAM) architectures [21], [22], [30]. This results in inefficient data accesses and makes graph processin"
+    ],
+    [
+     "chen2022regraph",
+     " 32 40 48 56 Partition ID 0.0% 0.1% 1.0% 10.0% 100.0% HD 0 6 12 18 24 30 36 42 48 Partition ID PK 0 15 30 45 60 75 90 105 Partition ID WP Vert"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "C224",
+  "para": 106,
+  "text": "Simulation shows these strengths~, and silicon partly confirms them for workloads with little communication~.",
+  "cites": [
+   "ahn2015tesseract",
+   "zhuo2019graphq",
+   "gomezluna2022prim",
+   "cai2024pimpam"
+  ],
+  "srcs": [
+   "ahn2015tesseract",
+   "zhuo2019graphq",
+   "gomezluna2022prim",
+   "cai2024pimpam"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C225",
+  "para": 106,
+  "text": "Its weaknesses are communication between units, which goes through the host on real hardware~, the static-graph assumption, and, for analog PIM, limited precision and unevaluated reliability.",
+  "cites": [
+   "gomezluna2022prim",
+   "barkhordar2025alphapim"
+  ],
+  "srcs": [
+   "gomezluna2022prim",
+   "barkhordar2025alphapim"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C226",
+  "para": 106,
+  "text": "The strengths of DSAs are flexibility and a mature path to dynamic and evolving graphs~.",
+  "cites": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "srcs": [
+   "rahman2021jetstream",
+   "zhao2022tdgraph",
+   "gao2023mega"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C227",
+  "para": 106,
+  "text": "Their weaknesses are the limit of external bandwidth and burst waste~, and the lack of real-silicon validation.",
+  "cites": [
+   "shin2025piccolo",
+   "chen2022regraph"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "chen2022regraph"
+  ],
+  "nums": {}
+ },
+ {
+  "id": "C228",
+  "para": 107,
+  "text": "The hybrids of 2025--2026 suggest that the field is moving toward a combination of both~.",
+  "cites": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "srcs": [
+   "shin2025piccolo",
+   "shin2025fala",
+   "yenimol2026cograf"
+  ],
+  "nums": {
+   "2025": [
+    [
+     "shin2025piccolo",
+     " === PAGE 1 === 2025 IEEE International Symposium on High-Performance Computer Architectur"
+    ],
+    [
+     "shin2025fala",
+     "tion 4.0 International License. MICRO \u201925, Seoul, Republic of Korea \u00a9 2025 Copyright held by the owner/author(s). ACM ISBN 979-8-4007-1573-0/25/"
+    ],
+    [
+     "yenimol2026cograf",
+     "-00503). The computations were enabled by resources in project UPPMAX 2025/2-135 provided by the National Academic Infrastructure for Super- com"
+    ]
+   ],
+   "2026": [
+    [
+     "yenimol2026cograf",
+     "emi Yenimol, Anirban Nag, Chang Hyun Park, and David Black- Schaffer. 2026. CoGraf: Fully Accelerating Graph Applications with This work is lice"
+    ]
+   ]
+  }
+ }
+]

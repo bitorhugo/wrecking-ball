@@ -1,0 +1,19 @@
+# Stage 3' Step A — perspective (Peer Reviewer 3, Cross-disciplinary)
+
+## Verdicts
+
+| item | obligation | verdict | residual_obligation_class | evidence anchor | reasoning |
+|---|---|---|---|---|---|
+| REV-25 | must_fix | FULLY_ADDRESSED | — | text: §7 Predictability "The only obvious bound is then the cost of a full recomputation, which is finite but loose, and no surveyed paper analyses it." | §7 now defines predictability as a WCET or latency bound that can be analysed, not merely low variance. The "no upper bound" claim has become "finite but loose" and unanalysed, and the Spara scaling example is gone from the paragraph. The paragraph also says what bounded latency would require: a bound on the work per update, and bounded timing for shared resources such as the UPMEM host merge and the memory controller. All three acceptance criteria are met. |
+| REV-26 | must_fix | FULLY_ADDRESSED | — | text: §7 Security "protects data values but does not hide the address trace that an attacker on the memory bus can observe." | Each surveyed study now has its adversary: MGX faces an attacker who can read or change off-chip memory, and IMPACT faces co-located software that observes row-buffer timing. The protected assets are given as data values and graph structure, and the text states that the two results cannot be weighed against each other. Controller-side encryption is explicitly said not to hide the address trace, so access-pattern leakage now applies to both camps, and Table tab:critical labels each cell with its adversary and adds "address trace not hidden" for DSAs. One residual wording issue is logged as NEW-perspective-1. |
+| REV-27 | consider | FULLY_ADDRESSED | — | text: §7 Dependability "ECC does not cover the datapath or control logic, however, and on-chip scratchpads need their own protection." | The ECC claim for DSAs is now limited to data stored in DRAM, with the datapath, control logic and scratchpads excluded. The PIM/ECC asymmetry (computation inside DRAM happens below the level where standard ECC checks data) is stated, and Table tab:critical reflects both points. |
+| REV-28 | consider | FULLY_ADDRESSED | — | text: §7 opening "A network graph changes all the time, and a detector must deliver correct results within a deadline." | "On time" is now a deadline on correct results. The use case is explicitly called the streaming setting and tied to the paper's finding that, within its search frame, only DSAs support it in hardware. JetStream's small-batch advantage is not repeated here, but the requested link to the mutability finding exists, which satisfies a consider-level item. |
+| REV-29 | consider | FULLY_ADDRESSED | — | text: §7 opening "we keep imprecision that is designed in, as in analog computation, separate from faults." | The start of §7 now defines all three properties. Security covers confidentiality and integrity of data and structure against a stated adversary. Dependability means correct results despite hardware faults, with designed-in imprecision kept separate. Predictability means an analysable WCET or latency bound. |
+
+## New Issues
+
+| id | attribution | severity | location | description | evidence anchor |
+|---|---|---|---|---|---|
+| NEW-perspective-1 | previously_missed | minor | §7 Security, second paragraph | In the MGX model the processor chip is trusted and off-chip memory is not. PIM therefore moves computation to the untrusted side of the boundary, where plaintext would be exposed. "Inside this boundary" reads as the trusted side, the opposite of what the argument needs. Suggest wording such as "moves computation across this boundary into memory, which this threat model treats as untrusted". The sentence is unchanged from the original manuscript. | text: §7 Security "PIM moves computation inside this boundary, where data must be processed as plaintext." |
+
+[EVIDENCE-COMMITTED]
